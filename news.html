@@ -861,7 +861,8 @@
             .featured-card, .wide-card, .standard-card, .compact-card { grid-column: span 2 !important; height: auto !important; min-height: auto !important; }
             
             .featured-card { grid-template-columns: 1fr; }
-            .featured-card .card-media { grid-column: span 1; height: 350px; }
+            /* stacked, the picture leads like every other card */
+            .featured-card .card-media { grid-column: span 1; height: 350px; order: -1; }
             .featured-card .card-body { grid-column: span 1; padding: 40px; }
 
             .card-body { padding: 40px; }
