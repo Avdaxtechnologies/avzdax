@@ -716,7 +716,7 @@
         text-transform: uppercase;
         letter-spacing: 0.3em;
         text-decoration: none;
-        border-radius: 2px;
+        border-radius: 8px;
         transition: all 0.4s ease;
       }
 
@@ -851,7 +851,7 @@
           display: inline-flex !important;
           background: rgba(255, 255, 255, 0.08) !important;
           backdrop-filter: blur(10px) !important;
-          border-radius: 4px !important;
+          border-radius: 8px;
           justify-content: center !important;
           letter-spacing: 0.1em !important;
           text-transform: uppercase !important;
@@ -1643,7 +1643,7 @@
                       control panel; it is an institutional check-and-balance designed to restore
                       the "Human-in-the-Loop" without sacrificing the velocity of machine
                       intelligence. It ensures that every high-stakes intervention is not just
-                      calculatedâ€”but authorized.
+                      calculated, but authorized.
                     </p>
                   </div>
                 </div>
@@ -2171,26 +2171,6 @@
           ease: 'power3.out',
         })
       })
-
-      const sections = ['#intel-philosophy', '#phase-1', '#phase-2', '#phase-3']
-      sections.forEach((id, i) => {
-        ScrollTrigger.create({
-          trigger: id,
-          start: 'top 50%',
-          end: 'bottom 50%',
-          onEnter: () => updateSidebar(i),
-          onEnterBack: () => updateSidebar(i),
-        })
-      })
-
-      function updateSidebar(index) {
-        const links = document.querySelectorAll('#intel-philosophy .mono.text-xs')
-        const lines = document.querySelectorAll('#intel-philosophy span.h-[1px]')
-        links.forEach((l, i) => (l.style.opacity = i === index ? '1' : '0.4'))
-        lines.forEach(
-          (l, i) => (l.style.backgroundColor = i === index ? '#00ff41' : 'rgba(255,255,255,0.1)')
-        )
-      }
 
       ;(function () {
         function initCapabilitiesHorizontalScroll() {

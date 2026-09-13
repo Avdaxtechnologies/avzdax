@@ -223,7 +223,8 @@
         }
         
         
-        .reveal-content > section:first-child {
+        .reveal-content > section:first-child,
+        .reveal-content .pin-spacer > section:first-child {
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
             overflow: hidden;
@@ -632,11 +633,6 @@
             .mobile-menu-toggle-modern.open .bar:nth-child(2) { opacity: 0; }
             .mobile-menu-toggle-modern.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-            
-            #neural-layer {
-                display: none !important;
-                visibility: hidden !important;
-            }
         }
         
         
@@ -1566,98 +1562,6 @@
             }
         }
 
-        
-        @media (max-width: 768px) {
-            #neural-layer {
-                height: 100vh;
-                padding: 20px;
-                position: relative;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            #neural-layer::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: radial-gradient(circle at 30% 20%, rgba(0, 255, 65, 0.03) 0%, transparent 50%);
-                pointer-events: none;
-            }
-            #neural-layer h4 {
-                font-size: 10px;
-                font-weight: 600;
-                letter-spacing: 0.15em;
-                color: rgba(255, 255, 255, 0.6);
-                margin-bottom: 12px;
-                text-align: center;
-            }
-            #neural-layer h2 {
-                font-size: clamp(2rem, 10vw, 3rem) !important;
-                line-height: 0.9;
-                margin-bottom: 20px;
-                text-align: center;
-                background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                color: transparent;
-            }
-            #neural-layer .grid {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-                position: relative;
-                z-index: 2;
-                flex: 1;
-                justify-content: center;
-            }
-            #neural-layer p {
-                font-size: 14px;
-                line-height: 1.4;
-                color: rgba(255, 255, 255, 0.9);
-                margin-bottom: 16px;
-            }
-            #neural-layer .flex {
-                flex-direction: column;
-                gap: 12px;
-            }
-            #neural-layer .border-l {
-                border-left: 2px solid rgba(0, 255, 65, 0.3);
-                padding-left: 12px;
-                margin: 8px 0;
-                background: rgba(255, 255, 255, 0.02);
-                border-radius: 6px;
-                padding: 12px;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-            }
-            #neural-layer .text-4xl {
-                font-size: 1rem;
-                opacity: 0.6;
-                margin-bottom: 2px;
-            }
-            #neural-layer .text-sm {
-                font-size: 10px;
-                font-weight: 500;
-                color: rgba(255, 255, 255, 0.8);
-            }
-            #neural-layer .h-\[1px\] {
-                height: 1px;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.1);
-                margin: 10px 0;
-            }
-            
-            #neural-layer button {
-                padding: 10px 20px !important;
-                font-size: 9px !important;
-                letter-spacing: 0.15em !important;
-            }
-        }
 
         
         @media (max-width: 1024px) {
@@ -2160,6 +2064,106 @@
         }
 
 
+
+        /* ---------- hero: predictive intelligence positioning ---------- */
+
+        #hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 38%, rgba(0,0,0,0.12) 68%, transparent 100%);
+        }
+
+
+        .hero-headline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: clamp(30px, 8.4vw, 44px);
+            line-height: 1.03;
+            letter-spacing: -0.035em;
+            color: #fff;
+            margin: 0 0 20px;
+            text-wrap: balance;
+        }
+
+        .hero-lede {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.62;
+            color: rgba(255,255,255,0.74);
+            margin: 0 0 26px;
+            max-width: 58ch;
+        }
+
+
+
+        .hero-actions { display: flex; flex-direction: row; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 28px;
+            background: #fff;
+            color: #000;
+            border: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .hero-cta:hover { background: rgba(255,255,255,0.82); }
+
+        .hero-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .hero-link:hover { color: rgba(255,255,255,0.62); }
+
+        @media (min-width: 640px) {
+            .hero-headline { font-size: clamp(40px, 6.6vw, 62px); }
+            .hero-lede { font-size: 16.5px; }
+            .hero-actions { gap: 28px; }
+            .hero-cta { min-height: 56px; padding: 0 38px; }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-headline { font-size: clamp(56px, 5.2vw, 80px); margin-bottom: 26px; }
+            .hero-lede { font-size: 18px; line-height: 1.6; margin-bottom: 34px; }
+        }
+
+        /* ---------- proposition section on small screens ---------- */
+
+        @media (max-width: 1023px) {
+            #neural-layer { height: auto; min-height: 0; padding: 0; display: block; overflow: visible; }
+            #peacetech-pinned { min-height: 0; padding: 72px 22px 80px; display: block; }
+            #neural-layer h3 { font-size: clamp(26px, 7.4vw, 40px) !important; line-height: 1.04; }
+            #neural-layer .grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+            #neural-layer p { font-size: 16px !important; line-height: 1.6 !important; max-width: 58ch; }
+            #neural-layer h4 { font-size: 13px !important; letter-spacing: 0.12em; margin-bottom: 8px !important; }
+            #neural-layer .space-y-10 > div + div { margin-top: 26px; }
+            #neural-layer .mb-14 { margin-bottom: 34px; }
+        }
 </style>
 </head>
 <body>
@@ -2198,8 +2202,14 @@
             <source src="/media/homepage-hero.webm" type="video/webm">
             <source src="/media/homepage-hero.mp4" type="video/mp4">
         </video>
-        <div class="absolute bottom-0 left-0 z-10 p-6 max-w-md">
-        <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-[0.85] text-white mb-4">PREDICTING <br> THE UNSEEN.</h1>
+        <div class="absolute bottom-0 left-0 z-10 px-6 pb-10 md:px-12 md:pb-16 lg:px-16 lg:pb-20 max-w-5xl">
+            <h1 class="hero-headline">Predictive intelligence<br>for critical environments.</h1>
+            <p class="hero-lede">AVZDAX builds the intelligence infrastructure governments and enterprises use to understand what is happening across their environments, anticipate what comes next, and act before it does.</p>
+            <div class="hero-actions">
+                <button onclick="document.getElementById('platform').scrollIntoView({behavior: 'smooth'})" class="hero-cta">Explore</button>
+                <a href="/contact" class="hero-link">Talk to us &rarr;</a>
+            </div>
+        </div>
         <script>
 
             const heroVid = document.querySelector('.hero-video-full');
@@ -2210,12 +2220,6 @@
                 });
             }
         </script>
-        <p class="text-white/80 text-xs font-light leading-relaxed uppercase tracking-wider mb-6">AVZDAX <span class="font-bold text-white">PEACETECH</span> is the global standard in predictive surveillance. We build the neural infrastructure that secures civilizations.</p>
-            <div class="flex gap-6 items-center">
-                <button onclick="document.getElementById('primus').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 border-2 border-white text-black text-[10px] font-black uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-300" style="background-color: #ffffff !important;">EXPLORE →</button>
-                <a href="/whitepaper" class="text-white text-[10px] font-black uppercase tracking-[0.2em] hover:text-white/60 transition-all duration-300">VIEW THESIS →</a>
-            </div>
-        </div>
     </section>
 
 
@@ -2225,10 +2229,10 @@
 <div class="reveal-content">
 
     
-    <section id="neural-layer" class="hidden lg:block bg-white relative overflow-hidden">
+    <section id="neural-layer" class="bg-white relative overflow-hidden">
         
         
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <div class="hidden lg:flex absolute inset-0 items-center justify-center pointer-events-none select-none overflow-hidden">
             <span class="text-[30vw] font-black text-black/[0.025] uppercase tracking-tighter leading-none" style="font-family: 'Inter', sans-serif;">PEACETECH</span>
         </div>
         
@@ -2239,49 +2243,39 @@
                 <div class="max-w-[1400px] mx-auto">
                     
                     
-                    <div class="mb-20">
-                        
-                        <div class="flex items-center gap-4 mb-10">
-                            <span class="w-12 h-[2px] bg-black/30"></span>
-                            <span class="text-[11px] font-black uppercase tracking-[0.4em] text-black/60" style="font-family: 'Inter', sans-serif;">PEACETECH PIONEER</span>
-                        </div>
+                    <div class="mb-14">
                         <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-[0.95] tracking-tight uppercase" style="font-family: 'Inter', sans-serif;">
-                            THE ARCHITECTURE OF<br>
-                            <span class="text-black/15">CIVILIZATIONAL FORESIGHT.</span>
+                            THE WORLD HAS MORE DATA THAN EVER.<br>
+                            <span class="text-black/15">THE CHALLENGE IS KNOWING WHAT IT MEANS.</span>
                         </h3>
                     </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                        
-                        
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
                         <div>
-                            <p class="text-xl md:text-2xl text-black/70 leading-relaxed mb-10" style="font-family: 'Inter', sans-serif;">
-                                AVZDAX represents the <strong class="text-black">global standard in predictive defense intelligence</strong>. We have built a unified cognitive security infrastructure engineered to perceive threats before they materialize, and respond with precision before escalation becomes inevitable.
+                            <p class="text-xl md:text-2xl text-black/70 leading-relaxed mb-8" style="font-family: 'Inter', sans-serif;">
+                                Cameras see. Sensors measure. Access systems record. Vehicles, infrastructure and operational systems generate signals constantly. Almost all of them work in isolation.
                             </p>
-                            <p class="text-xl md:text-2xl text-black/70 leading-relaxed mb-10" style="font-family: 'Inter', sans-serif;">
-                                We architect <strong class="text-black">sovereign, self-contained intelligence ecosystems</strong> that operate entirely within client-owned domains. Zero cloud dependencies. Zero external data transmission. Complete territorial sovereignty over your most critical assets.
-                            </p>
-                            <p class="text-xl md:text-2xl text-black/70 leading-relaxed mb-12" style="font-family: 'Inter', sans-serif;">
-                                Our continuously expanding portfolio of integrated platforms, proprietary hardware, and professional oversight services forms <strong class="text-black">an unbroken circle of predictive protection</strong>. Artificial intelligence provides omniscient awareness while human judgment provides ethical accountability. This is PeaceTech.
+                            <p class="text-xl md:text-2xl text-black/70 leading-relaxed" style="font-family: 'Inter', sans-serif;">
+                                AVZDAX connects those signals, gives them context and turns them into intelligence. Not only what happened, or what is happening, but <strong class="text-black">what is likely to happen next</strong>.
                             </p>
                         </div>
-                        
-                        
-                        <div class="space-y-12 lg:pl-16 lg:border-l border-black/10">
+
+                        <div class="space-y-10 lg:pl-16 lg:border-l border-black/10">
                             <div>
-                                <h4 class="text-xl font-black text-black mb-4 uppercase tracking-wide" style="font-family: 'Inter', sans-serif;">PREDICTIVE, NOT REACTIVE</h4>
-                                <p class="text-black/50 leading-relaxed text-lg" style="font-family: 'Inter', sans-serif;">Our neural networks analyze behavioral patterns across millions of data points, identifying anomalies before they materialize into threats. We don't respond to incidents. We prevent them.</p>
+                                <h4 class="text-xl font-black text-black mb-3 uppercase tracking-wide" style="font-family: 'Inter', sans-serif;">Observe</h4>
+                                <p class="text-black/50 leading-relaxed text-lg" style="font-family: 'Inter', sans-serif;">Understand what is happening across people, assets, systems and environments.</p>
                             </div>
                             <div>
-                                <h4 class="text-xl font-black text-black mb-4 uppercase tracking-wide" style="font-family: 'Inter', sans-serif;">SOVEREIGN BY DESIGN</h4>
-                                <p class="text-black/50 leading-relaxed text-lg" style="font-family: 'Inter', sans-serif;">Your infrastructure. Your data. Your sovereignty. AVZDAX operates entirely within client-owned domains with zero cloud dependencies, zero external data transmission, and zero third-party vulnerabilities.</p>
+                                <h4 class="text-xl font-black text-black mb-3 uppercase tracking-wide" style="font-family: 'Inter', sans-serif;">Predict</h4>
+                                <p class="text-black/50 leading-relaxed text-lg" style="font-family: 'Inter', sans-serif;">Identify the patterns and conditions associated with emerging risk.</p>
                             </div>
                             <div>
-                                <h4 class="text-xl font-black text-black mb-4 uppercase tracking-wide" style="font-family: 'Inter', sans-serif;">HUMAN-AI SYNTHESIS</h4>
-                                <p class="text-black/50 leading-relaxed text-lg" style="font-family: 'Inter', sans-serif;">Every critical decision flows through certified human operators. Artificial intelligence provides omniscient situational awareness while human judgment provides ethical accountability.</p>
+                                <h4 class="text-xl font-black text-black mb-3 uppercase tracking-wide" style="font-family: 'Inter', sans-serif;">Prevent</h4>
+                                <p class="text-black/50 leading-relaxed text-lg" style="font-family: 'Inter', sans-serif;">Intervene before a developing risk becomes an incident.</p>
                             </div>
                         </div>
-                        
+
                     </div>
                     
                 </div>
@@ -2306,7 +2300,7 @@
 
                     <h2 class="product-title text-7xl md:text-9xl font-black uppercase tracking-wide text-white leading-none" style="font-family: 'Inter', sans-serif;">PRIMUS</h2>
                     <p class="text-lg md:text-xl text-silver-400 font-light leading-relaxed max-w-xl uppercase tracking-widest text-left">Predictive intelligence system that identifies, predicts and prevents <span class="text-white font-black">threats before they happen.</span></p>
-                    <a href="/primus" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500">ENTER →</a>
+                    <a href="/primus" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500 rounded-lg">ENTER →</a>
                 </div>
             </div>
         </section>
@@ -2318,7 +2312,7 @@
 
                     <h2 class="product-title text-7xl md:text-9xl font-black uppercase tracking-wide text-white leading-none" style="font-family: 'Inter', sans-serif;">TELETRAAN</h2>
                     <p class="text-lg md:text-xl text-silver-400 font-light leading-relaxed max-w-xl uppercase tracking-widest text-left">The central command system. A real-time dashboard that gives you <span class="text-white font-black">complete visibility and control</span> of your entire operation.</p>
-                    <a href="/teletraan" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500">ENTER →</a>
+                    <a href="/teletraan" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500 rounded-lg">ENTER →</a>
                 </div>
             </div>
         </section>
@@ -2329,7 +2323,7 @@
 
                     <h2 class="product-title text-7xl md:text-9xl font-black uppercase tracking-wide text-white leading-none text-right pr-4" style="font-family: 'Inter', sans-serif;">TRION</h2>
                     <p class="text-lg md:text-xl text-silver-400 font-light leading-relaxed max-w-xl text-right ml-auto uppercase tracking-widest">Advanced optical hardware. Built to capture clear, critical details in any environment, <span class="text-white font-black">ensuring nothing goes unseen.</span></p>
-                    <div class="flex justify-end"><a href="/trion" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500">ENTER →</a></div>
+                    <div class="flex justify-end"><a href="/trion" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500 rounded-lg">ENTER →</a></div>
                 </div>
                 <div class="image-wrapper opacity-0 lg:order-2 order-1" style="will-change: transform, opacity;"><img src="/media/trion-core.webp" alt="TRION" class="product-image w-full h-auto" loading="lazy" decoding="async"></div>
             </div>
@@ -2342,7 +2336,7 @@
 
                     <h2 class="product-title text-7xl md:text-9xl font-black uppercase tracking-wide text-white leading-none" style="font-family: 'Inter', sans-serif;">NEST</h2>
                     <p class="text-lg md:text-xl text-silver-400 font-light leading-relaxed max-w-xl uppercase tracking-widest text-left">Continuous professional oversight. A dedicated team of experts works alongisde AI to <span class="text-white font-black">monitor your assets</span> 24/7.</p>
-                    <a href="/nest" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500">ENTER →</a>
+                    <a href="/nest" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500 rounded-lg">ENTER →</a>
                 </div>
             </div>
         </section>
@@ -2355,7 +2349,7 @@
                         <span class="obex-edge-logo whitespace-nowrap">OBEX EDGE</span>
                     </h2>
                     <p class="text-lg md:text-xl text-silver-400 font-light leading-relaxed max-w-xl text-right ml-auto uppercase tracking-widest">Discreet protection for elite spaces. Invisible security technology that <span class="text-white font-black">safeguards properties</span> with absolute visual discretion.</p>
-                    <div class="flex justify-end"><a href="/obex" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.4em] hover:bg-transparent hover:text-white transition-all duration-500">ENTER →</a></div>
+                    <div class="flex justify-end"><a href="/obex" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.4em] hover:bg-transparent hover:text-white transition-all duration-500 rounded-lg">ENTER →</a></div>
                 </div>
                 <div class="image-wrapper opacity-0 lg:order-2 order-1 group flex items-center justify-center" style="will-change: transform, opacity;">
                     <div class="relative w-full max-w-[800px] flex flex-col items-start translate-x-12 lg:translate-x-20">
@@ -2372,7 +2366,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center w-full">
                 <div class="image-wrapper opacity-0 group flex items-center justify-center" style="will-change: transform, opacity;">
                     <div class="relative w-full max-w-[800px] flex flex-col items-center">
-                        <img src="media/obex_fleet_back_nobg.png" class="w-[80%] h-auto relative z-10 transition-all duration-1000 group-hover:scale-110 group-hover:-translate-y-4" alt="OBEX EDGE Fleet Hardware" loading="lazy" decoding="async">
+                        <img src="media/obex_fleet_back_nobg.webp" class="w-[80%] h-auto relative z-10 transition-all duration-1000 group-hover:scale-110 group-hover:-translate-y-4" alt="OBEX EDGE Fleet Hardware" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                     </div>
                 </div>
@@ -2381,7 +2375,7 @@
                         <span class="obex-fleet-logo whitespace-nowrap">OBEX FLEET</span>
                     </h2>
                     <p class="text-lg md:text-xl text-silver-400 font-light leading-relaxed max-w-xl uppercase tracking-widest text-left">The definitive forensic authority for commercial fleets. Real-time neural monitoring that protects drivers and eliminates liability with <span class="text-white font-black">absolute evidentiary certainty.</span></p>
-                    <a href="/obex-fleet" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500">ENTER →</a>
+                    <a href="/obex-fleet" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500 rounded-lg">ENTER →</a>
                 </div>
             </div>
         </section>
@@ -2393,7 +2387,7 @@
 
                     <h2 class="product-title text-7xl md:text-9xl font-black uppercase tracking-wide text-white leading-none" style="font-family: 'Inter', sans-serif;">ARCLIGHT</h2>
                     <p class="text-lg md:text-xl text-silver-400 font-light leading-relaxed max-w-xl uppercase tracking-widest text-left">The physical anchor of the network. A hybrid power infrastructure that ensures intelligence <span class="text-white font-black">never goes dark</span>, even in hostile environments.</p>
-                    <a href="/arclight" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500">ENTER →</a>
+                    <a href="/arclight" class="inline-block px-12 py-5 border-2 border-white bg-white text-black text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-transparent hover:text-white transition-all duration-500 rounded-lg">ENTER →</a>
                 </div>
             </div>
         </section>
@@ -2699,6 +2693,7 @@
             }
 
             .industries-cta .cta-btn {
+                border-radius: 8px;
                 display: inline-flex;
                 align-items: center;
                 gap: 14px;
@@ -2811,6 +2806,7 @@
                     padding: 0 24px;
                 }
                 .industries-cta .cta-btn {
+                border-radius: 8px;
                     width: auto;
                     display: inline-flex;
                     padding: 14px 32px;
@@ -2952,12 +2948,14 @@
         const neuralSection = document.getElementById('neural-layer');
         if (neuralSection) {
 
+            const pinsOnDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
             ScrollTrigger.create({
                 trigger: neuralSection,
                 start: "top top",
-                end: "+=100%",
-                pin: true,
-                pinSpacing: true,
+                end: pinsOnDesktop ? "+=100%" : "bottom top",
+                pin: pinsOnDesktop,
+                pinSpacing: pinsOnDesktop,
                 onEnter: () => {
                     document.getElementById('main-nav')?.classList.add('nav-inverted');
                     document.querySelector('.mobile-nav-bar')?.classList.add('nav-inverted');
@@ -3014,7 +3012,7 @@
             </div>
 
             <div class="mt-12 text-center">
-                <a href="/news" class="inline-block px-12 py-4 border-2 border-white bg-white text-black hover:bg-transparent hover:text-white text-[11px] font-mono uppercase tracking-[0.3em] transition-all">Explore Newsroom</a>
+                <a href="/news" class="inline-block px-12 py-4 border-2 border-white bg-white text-black hover:bg-transparent hover:text-white text-[11px] font-mono uppercase tracking-[0.3em] transition-all rounded-lg">Explore Newsroom</a>
             </div>
         </div>
     </section>
@@ -3156,8 +3154,8 @@
         gsap.registerPlugin(ScrollTrigger);
 
 
-        if (document.querySelector("#neural-layer h2")) {
-            gsap.from("#neural-layer h2", {
+        if (document.querySelector("#neural-layer h3")) {
+            gsap.from("#neural-layer h3", {
                 scrollTrigger: { trigger: "#neural-layer", start: "top 70%" },
                 y: 100, opacity: 0, duration: 1.5, ease: "power4.out"
             });
@@ -3216,536 +3214,6 @@
             }
         });
 
-
-
-        const canvas = document.getElementById('footer-neural-canvas');
-        const ctx = canvas.getContext('2d');
-        let pts = [];
-        function resize() { 
-            const f = document.getElementById('footer-container');
-            canvas.width = window.innerWidth; 
-            canvas.height = f ? f.offsetHeight : 0; 
-            pts = []; 
-            for(let i=0; i<30; i++) pts.push(new P()); 
-        }
-        class P { constructor(){ this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height; this.vx=(Math.random()-0.5)*0.3; this.vy=(Math.random()-0.5)*0.3; } update(){ this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>canvas.width)this.vx*=-1; if(this.y<0||this.y>canvas.height)this.vy*=-1; } draw(){ ctx.beginPath(); ctx.arc(this.x, this.y, 1, 0, Math.PI * 2); ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'; ctx.fill(); } }
-        let lastTime = 0;
-        function draw(currentTime){
-            if(currentTime - lastTime < 33) {
-                requestAnimationFrame(draw);
-                return;
-            }
-            lastTime = currentTime;
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            const maxDistSq = 200 * 200;
-            pts.forEach((p,i)=>{
-                p.update(); p.draw();
-                for(let j=i+1;j<pts.length;j++){
-                    const dx = p.x-pts[j].x, dy = p.y-pts[j].y, dSq = dx*dx + dy*dy;
-                    if(dSq < maxDistSq){
-                        const alpha = 0.2 - (dSq/maxDistSq)*0.2;
-                        ctx.beginPath(); ctx.strokeStyle=`rgba(255,255,255,${alpha})`; ctx.lineWidth=1;
-                        ctx.moveTo(p.x,p.y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(draw);
-        }
-        resize(); draw(); window.onresize=resize;
-
-
-        function toggleSearch() {
-            const overlay = document.getElementById('search-overlay');
-            if (!overlay) return;
-            if (overlay.classList.contains('active')) {
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            } else {
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                setTimeout(() => document.getElementById('search-input')?.focus(), 100);
-            }
-        }
-        window.toggleSearch = toggleSearch;
-
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const overlay = document.getElementById('search-overlay');
-                if (overlay?.classList.contains('active')) toggleSearch();
-                const mobileMenu = document.getElementById('mobile-menu-overlay');
-                if (mobileMenu?.style.display !== 'none') closeMobileMenu();
-            }
-        });
-
-
-        const searchExitBtn = document.getElementById('search-close-btn');
-        if (searchExitBtn) {
-
-            searchExitBtn.replaceWith(searchExitBtn.cloneNode(true));
-
-            const freshExitBtn = document.getElementById('search-close-btn');
-            freshExitBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-                const overlay = document.getElementById('search-overlay');
-                if (overlay && overlay.classList.contains('active')) {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-                return false;
-            });
-        }
-
-
-        const searchIndex = [
-
-            { title: 'PRIMUS', description: 'Behavioral AI Platform — Predictive threat detection', url: 'primus.html', category: 'Platform' },
-            { title: 'TELETRAAN', description: 'Command UI — Digital Twin of Reality', url: 'teletraan.html', category: 'Platform' },
-            { title: 'NEST', description: 'Oversight Station — Centralized monitoring', url: 'nest.html', category: 'Platform' },
-            
-
-            { title: 'TRION', description: 'Optical Sensing — Advanced surveillance hardware', url: 'trion.html', category: 'Hardware' },
-            { title: 'OBEX EDGE', description: 'Architectural Imaging — 3D spatial capture', url: 'obex.html', category: 'Hardware' },
-            { title: 'ARCLIGHT', description: 'Urban Tower — City-wide monitoring', url: 'arclight.html', category: 'Hardware' },
-            
-
-            { title: 'WHITE PAPERS', description: 'Technical documentation and research', url: 'whitepaper.html', category: 'Intelligence' },
-            { title: 'NEWSROOM', description: 'Latest updates and press releases', url: 'news.html', category: 'Intelligence' },
-            { title: 'CASE STUDIES', description: 'Industry solutions and implementations', url: 'industries.html', category: 'Intelligence' },
-            
-
-            { title: 'ABOUT', description: 'Company overview and mission', url: 'about.html', category: 'Corporate' },
-            { title: 'CAREERS', description: 'Join the AVZDAX team', url: 'careers.html', category: 'Corporate' },
-            { title: 'CONTACT', description: 'Get in touch with us', url: 'contact.html', category: 'Corporate' },
-            { title: 'ETHICS POLICY', description: 'Our commitment to responsible AI', url: 'ethics.html', category: 'Corporate' },
-            
-
-            { title: 'HOME', description: 'AVZDAX Sovereign Predictive Defense', url: 'index.html', category: 'Home' },
-            
-
-            { title: 'SENTINEL', description: 'AI Defense System', url: 'sentinel.html', category: 'Platform' },
-            { title: 'PREDICTIVE SURVEILLANCE', description: 'Next-gen threat prediction', url: 'index.html', category: 'Technology' },
-            { title: 'NEURAL MESH', description: 'Global AI infrastructure', url: 'primus.html', category: 'Technology' },
-            { title: 'PEACETECH', description: 'Technology for peace', url: 'index.html', category: 'Mission' },
-            { title: 'SOVEREIGN DEFENSE', description: 'National security solutions', url: 'industries.html', category: 'Solutions' },
-            { title: 'SMART CITY', description: 'Urban intelligence systems', url: 'arclight.html', category: 'Solutions' },
-            { title: 'BORDER SECURITY', description: 'Perimeter protection', url: 'trion.html', category: 'Solutions' },
-            { title: 'CRITICAL INFRASTRUCTURE', description: 'Asset protection', url: 'obex.html', category: 'Solutions' }
-        ];
-
-
-        const searchInput = document.getElementById('search-input');
-        const searchResultsContainer = document.getElementById('search-results');
-        const searchResultsList = document.getElementById('search-results-list');
-        const searchResultsCount = document.getElementById('search-results-count');
-        const searchDefaultGrid = document.getElementById('search-default-grid');
-
-        if (searchInput) {
-            searchInput.addEventListener('input', function(e) {
-                const query = e.target.value.trim().toLowerCase();
-                
-                if (query.length === 0) {
-
-                    searchResultsContainer.classList.add('hidden');
-                    searchDefaultGrid.style.display = '';
-                    return;
-                }
-                
-
-                const results = searchIndex.filter(item => {
-                    const searchText = `${item.title} ${item.description} ${item.category}`.toLowerCase();
-                    return searchText.includes(query);
-                });
-                
-
-                displaySearchResults(results, query);
-            });
-            
-
-            const performSearchNavigation = (queryText) => {
-                const query = queryText.trim().toLowerCase();
-                if (query.length > 0) {
-                    const results = searchIndex.filter(item => {
-                        const searchText = `${item.title} ${item.description} ${item.category}`.toLowerCase();
-                        return searchText.includes(query);
-                    });
-                    if (results.length > 0) {
-                        window.location.href = results[0].url;
-                    }
-                }
-            };
-
-
-            searchInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    performSearchNavigation(e.target.value);
-                }
-            });
-
-
-            const searchIconBtn = document.getElementById('search-icon-btn');
-            if (searchIconBtn) {
-                searchIconBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    performSearchNavigation(searchInput.value);
-                });
-            }
-        }
-
-        function displaySearchResults(results, query) {
-            if (results.length === 0) {
-                searchResultsList.innerHTML = '<div class="text-white/30 text-2xl font-black uppercase tracking-widest text-center py-20">NO INTEL FOUND</div>';
-                if (searchResultsCount) searchResultsCount.textContent = '0 RESULTS';
-            } else {
-                if (searchResultsCount) searchResultsCount.textContent = `${results.length} RESULT${results.length !== 1 ? 'S' : ''}`;
-                
-                searchResultsList.innerHTML = results.map(item => {
-                    const highlightedTitle = highlightText(item.title, query);
-                    const highlightedDesc = highlightText(item.description, query);
-                    
-                    return `
-                        <a href="${item.url}" class="group block py-4 border-b border-white/5 hover:border-white/20 transition-all duration-300" onclick="toggleSearch()">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <div class="text-xl md:text-2xl font-black uppercase tracking-tight text-white group-hover:text-green-500 transition-colors">${highlightedTitle}</div>
-                                    <div class="text-xs text-white/40 group-hover:text-white/60 uppercase tracking-widest mt-1">${highlightedDesc}</div>
-                                </div>
-                                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0 transform">
-                                    <svg class="text-green-500 w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </div>
-                            </div>
-                        </a>
-                    `;
-                }).join('');
-            }
-            
-
-            searchResultsContainer.classList.remove('hidden');
-            if (searchDefaultGrid) searchDefaultGrid.style.display = 'none';
-        }
-
-        function highlightText(text, query) {
-            if (!query) return text;
-            const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
-            return text.replace(regex, '<span class="search-highlight">$1</span>');
-        }
-
-        function escapeRegex(string) {
-            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        }
-
-
-
-
-
-
-        const mobileSearchInput = document.getElementById('mobile-search-input');
-        const mobileSearchResultsContainer = document.getElementById('mobile-search-results');
-        const mobileSearchResultsList = document.getElementById('mobile-search-results-list');
-        const mobileSearchResultsCount = document.getElementById('mobile-search-results-count');
-        const mobileNavSections = document.querySelector('.minimalist-nav');
-        const mobileCTA = document.querySelector('.mobile-nav-content > .mt-8');
-        
-        if (mobileSearchInput) {
-            mobileSearchInput.addEventListener('input', function(e) {
-                const query = e.target.value.trim().toLowerCase();
-                
-                if (query.length === 0) {
-                    mobileSearchResultsContainer.classList.add('hidden');
-                    if (mobileNavSections) mobileNavSections.style.display = '';
-                    if (mobileCTA) mobileCTA.style.display = '';
-                    return;
-                }
-                
-                const results = searchIndex.filter(item => {
-                    const searchText = `${item.title} ${item.description} ${item.category}`.toLowerCase();
-                    return searchText.includes(query);
-                });
-                
-                displayMobileSearchResults(results, query);
-            });
-            
-            mobileSearchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    const query = e.target.value.trim().toLowerCase();
-                    if (query.length > 0) {
-                        const results = searchIndex.filter(item => {
-                            const searchText = `${item.title} ${item.description} ${item.category}`.toLowerCase();
-                            return searchText.includes(query);
-                        });
-                        if (results.length > 0) {
-                            window.location.href = results[0].url;
-                        }
-                    }
-                }
-            });
-        }
-        
-        function displayMobileSearchResults(results, query) {
-            if (results.length === 0) {
-                mobileSearchResultsList.innerHTML = '<div class="search-no-results py-8"><div class="text-lg font-bold uppercase tracking-wide">NO RESULTS FOUND</div><div class="text-sm text-white/40 mt-2">Try adjusting your search terms</div></div>';
-                mobileSearchResultsCount.textContent = '0 RESULTS';
-            } else {
-                mobileSearchResultsCount.textContent = `${results.length} RESULT${results.length !== 1 ? 'S' : ''}`;
-                
-                mobileSearchResultsList.innerHTML = results.map(item => {
-                    const highlightedTitle = highlightText(item.title, query);
-                    const highlightedDesc = highlightText(item.description, query);
-                    
-                    return `
-                        <a href="${item.url}" class="search-result-item block py-4 border-b border-white/5">
-                            <div class="search-result-content">
-                                <div class="search-result-title text-base font-bold uppercase tracking-wide text-white">${highlightedTitle}</div>
-                                <div class="search-result-description text-xs text-white/50 mt-1">${highlightedDesc}</div>
-                            </div>
-                            <div class="search-result-category text-[9px] font-mono text-white/30 uppercase tracking-widest mt-2">${item.category}</div>
-                        </a>
-                    `;
-                }).join('');
-            }
-            
-            mobileSearchResultsContainer.classList.remove('hidden');
-            if (mobileNavSections) mobileNavSections.style.display = 'none';
-            if (mobileCTA) mobileCTA.style.display = 'none';
-        }
-
-
-
-
-        const lazyVideoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target;
-                if (entry.isIntersecting) {
-                    if (video.dataset.lazyVideo !== undefined && !video.dataset.loaded) {
-                        video.load();
-                        video.play();
-                        video.dataset.loaded = 'true';
-                    }
-                } else {
-
-                    if (video.dataset.loaded === 'true') {
-                        video.pause();
-                    }
-                }
-            });
-        }, { rootMargin: '200px' });
-
-
-        document.querySelectorAll('video[data-lazy-video]').forEach(video => {
-            lazyVideoObserver.observe(video);
-        });
-
-
-        let canvasAnimationPaused = true;
-        const canvasObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                canvasAnimationPaused = !entry.isIntersecting;
-            });
-        }, { rootMargin: '100px' });
-        
-        const footerEl = document.getElementById('footer-container');
-        if (footerEl) canvasObserver.observe(footerEl);
-
-
-        const originalDraw = draw;
-        function optimizedDraw(currentTime) {
-            if (canvasAnimationPaused) {
-                requestAnimationFrame(optimizedDraw);
-                return;
-            }
-            if(currentTime - lastTime < 50) {
-                requestAnimationFrame(optimizedDraw);
-                return;
-            }
-            lastTime = currentTime;
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            const maxDistSq = 200 * 200;
-            pts.forEach((p,i)=>{
-                p.update(); p.draw();
-                for(let j=i+1;j<pts.length;j++){
-                    const dx = p.x-pts[j].x, dy = p.y-pts[j].y, dSq = dx*dx + dy*dy;
-                    if(dSq < maxDistSq){
-                        const alpha = 0.15 - (dSq/maxDistSq)*0.15;
-                        ctx.beginPath(); ctx.strokeStyle=`rgba(255,255,255,${alpha})`; ctx.lineWidth=1;
-                        ctx.moveTo(p.x,p.y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(optimizedDraw);
-        }
-
-        requestAnimationFrame(optimizedDraw);
-
-
-        gsap.registerPlugin(ScrollTrigger);
-
-
-        (function initHeroNav() {
-            const heroSection = document.getElementById('hero');
-            if (!heroSection) return;
-
-            function applyHeroDark() {
-                const desktopNav = document.getElementById('main-nav');
-                const mobileNav = document.querySelector('.mobile-nav-bar');
-                if (desktopNav) {
-                    desktopNav.style.background = '#000';
-                    desktopNav.style.backdropFilter = 'blur(20px)';
-                }
-                if (mobileNav) mobileNav.classList.add('nav-hero-dark');
-            }
-
-            function removeHeroDark() {
-                const desktopNav = document.getElementById('main-nav');
-                const mobileNav = document.querySelector('.mobile-nav-bar');
-                if (desktopNav) {
-                    desktopNav.style.background = '';
-                    desktopNav.style.backdropFilter = '';
-                }
-                if (mobileNav) mobileNav.classList.remove('nav-hero-dark');
-            }
-
-            applyHeroDark();
-
-            ScrollTrigger.create({
-                trigger: heroSection,
-                start: "top top",
-                end: "bottom 80px",
-                onEnter: applyHeroDark,
-                onLeave: removeHeroDark,
-                onEnterBack: applyHeroDark,
-                onLeaveBack: removeHeroDark
-            });
-        })();
-
-        (function initPeacetechHeaderInversion() {
-            const peacetechSection = document.getElementById('neural-layer');
-            
-            if (!peacetechSection) return;
-            
-
-            ScrollTrigger.create({
-                trigger: peacetechSection,
-                start: "top 80px",
-                end: "bottom 80px",
-                onEnter: () => {
-                    document.getElementById('main-nav')?.classList.add('nav-inverted');
-                    document.querySelector('.mobile-nav-bar')?.classList.add('nav-inverted');
-                },
-                onLeave: () => {
-                    document.getElementById('main-nav')?.classList.remove('nav-inverted');
-                    document.querySelector('.mobile-nav-bar')?.classList.remove('nav-inverted');
-                },
-                onEnterBack: () => {
-                    document.getElementById('main-nav')?.classList.add('nav-inverted');
-                    document.querySelector('.mobile-nav-bar')?.classList.add('nav-inverted');
-                },
-                onLeaveBack: () => {
-                    document.getElementById('main-nav')?.classList.remove('nav-inverted');
-                    document.querySelector('.mobile-nav-bar')?.classList.remove('nav-inverted');
-                }
-            });
-        })();
-
-
-        (function initProductMatrixHeaderEffect() {
-            const productMatrix = document.getElementById('main-content');
-            
-            if (!productMatrix) return;
-            
-
-            ScrollTrigger.create({
-                trigger: productMatrix,
-                start: "top 80px",
-                end: "bottom 80px",
-                onEnter: () => {
-                    document.getElementById('main-nav')?.classList.add('nav-dark-minimal');
-                    document.querySelector('.mobile-nav-bar')?.classList.add('nav-dark-minimal');
-                },
-                onLeave: () => {
-                    document.getElementById('main-nav')?.classList.remove('nav-dark-minimal');
-                    document.querySelector('.mobile-nav-bar')?.classList.remove('nav-dark-minimal');
-                },
-                onEnterBack: () => {
-                    document.getElementById('main-nav')?.classList.add('nav-dark-minimal');
-                    document.querySelector('.mobile-nav-bar')?.classList.add('nav-dark-minimal');
-                },
-                onLeaveBack: () => {
-                    document.getElementById('main-nav')?.classList.remove('nav-dark-minimal');
-                    document.querySelector('.mobile-nav-bar')?.classList.remove('nav-dark-minimal');
-                }
-            });
-        })();
-
-
-        (function initNewsAndFooterHeaderEffect() {
-            const newsSection = document.getElementById('news-highlights');
-            const footer = document.getElementById('footer-container');
-            const mobileNav = document.querySelector('.mobile-nav-bar');
-            
-
-            const isMobile = () => window.innerWidth <= 1024;
-            
-
-            if (newsSection) {
-                ScrollTrigger.create({
-                    trigger: newsSection,
-                    start: "bottom 100px",
-                    end: "bottom -100px",
-                    onEnter: () => {
-
-                        if (isMobile() && mobileNav) {
-                            mobileNav.classList.add('nav-footer-hidden');
-                        }
-                    },
-                    onLeaveBack: () => {
-
-                        if (isMobile() && mobileNav) {
-                            mobileNav.classList.remove('nav-footer-hidden');
-                        }
-                    }
-                });
-            }
-            
-
-            if (footer) {
-                ScrollTrigger.create({
-                    trigger: footer,
-                    start: "top 80px",
-                    end: "bottom bottom",
-                    onEnter: () => {
-                        document.getElementById('main-nav')?.classList.add('nav-dark-minimal');
-                        if (!isMobile()) {
-                            mobileNav?.classList.add('nav-dark-minimal');
-                        }
-                    },
-                    onLeave: () => {
-                        document.getElementById('main-nav')?.classList.remove('nav-dark-minimal');
-                        mobileNav?.classList.remove('nav-dark-minimal');
-                    },
-                    onEnterBack: () => {
-                        document.getElementById('main-nav')?.classList.add('nav-dark-minimal');
-                        if (!isMobile()) {
-                            mobileNav?.classList.add('nav-dark-minimal');
-                        }
-                    },
-                    onLeaveBack: () => {
-                        document.getElementById('main-nav')?.classList.remove('nav-dark-minimal');
-                        mobileNav?.classList.remove('nav-dark-minimal');
-                    }
-                });
-            }
-            
-
-            window.addEventListener('resize', () => {
-                if (!isMobile() && mobileNav) {
-                    mobileNav.classList.remove('nav-footer-hidden');
-                }
-            });
-        })();
 
     </script>
                 <script src="/media/site-utils.js"></script>

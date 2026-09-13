@@ -981,7 +981,7 @@
           text-transform: uppercase;
           letter-spacing: 0.3em;
           text-decoration: none;
-          border-radius: 2px;
+          border-radius: 8px;
           transition: all 0.4s ease;
       }
 
@@ -1085,6 +1085,7 @@
               margin-top: 40px;
           }
           .cap-cta-btn {
+        border-radius: 8px;
               width: auto;
               justify-content: center;
               padding: 18px 32px;
@@ -1095,8 +1096,7 @@
 
       .mobile-scroll-hint { display: none; margin-top: 24px; text-align: center; flex-direction: column; align-items: center; gap: 8px; }
 
-          #capabilities-grid::after { display: none !important; }
-      }
+      #capabilities-grid::after { display: none !important; }
 
 
       .news-grid {
@@ -2502,13 +2502,13 @@
                   <div class="relative w-full my-auto py-4 flex justify-center items-center">
                     <img
                       id="hero-dual-front"
-                      src="/media/obex_fleet_front_nobg.png"
+                      src="/media/obex_fleet_front_nobg.webp"
                       alt="OBEX Fleet Dual-View Front"
                       class="relative w-72 md:w-[320px] object-contain drop-shadow-2xl scale-[1.3] transition-opacity duration-1000 opacity-100"
                     />
                     <img
                       id="hero-dual-back"
-                      src="/media/obex_fleet_back_nobg.png"
+                      src="/media/obex_fleet_back_nobg.webp"
                       alt="OBEX Fleet Dual-View Back"
                       class="absolute w-72 md:w-[320px] object-contain drop-shadow-2xl scale-[1.3] transition-opacity duration-1000 opacity-0"
                     />
@@ -2630,7 +2630,7 @@
                   <!-- Hardware Carousel (Single) -->
                   <div class="relative w-full my-auto py-4 flex justify-center items-center">
                     <img
-                      src="/media/obex_fleet_back_nobg.png"
+                      src="/media/obex_fleet_back_nobg.webp"
                       alt="OBEX Fleet Single-View Road"
                       class="relative w-72 md:w-[320px] object-contain drop-shadow-2xl scale-[1.3]"
                     />
@@ -2879,7 +2879,6 @@
                   muted
                   loop
                   playsinline
-                  poster="media/events/lane_departure_poster.jpg"
                 >
                   <source
                     id="video-source"
@@ -2921,7 +2920,7 @@
                   </svg>
                   Hear in-cab alert
                 </button>
-                <audio id="event-audio" src="media/Return_to_Lane.wav"></audio>
+                <audio id="event-audio" src="media/Return_to_Lane.mp3"></audio>
               </div>
             </div>
           </div>
@@ -2946,7 +2945,7 @@
                 class="aspect-[3/4] w-full bg-[#f5f5f7] rounded-2xl overflow-hidden mb-2 transition-transform duration-500 group-hover:scale-[1.02] shadow-[0_4px_24px_rgba(0,0,0,0.04)] relative"
               >
                 <img
-                  src="/media/lagos_evidence_pro.png"
+                  src="/media/lagos_evidence_pro.webp"
                   alt="Indisputable trip evidence"
                   class="w-full h-full object-cover"
                 />
@@ -3016,7 +3015,7 @@
                 class="aspect-[3/4] w-full bg-[#1a1a1a] rounded-2xl overflow-hidden mb-4 transition-transform duration-500 group-hover:scale-[1.02] shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
               >
                 <img
-                  src="/media/intervention_driver_pro.png"
+                  src="/media/intervention_driver_pro.webp"
                   alt="Pre-Incident Intervention"
                   class="w-full h-full object-cover"
                 />
@@ -3038,7 +3037,7 @@
                 class="aspect-[3/4] w-full bg-[#1a1a1a] rounded-2xl overflow-hidden mb-4 transition-transform duration-500 group-hover:scale-[1.02] shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
               >
                 <img
-                  src="/media/command_layer_realistic.png"
+                  src="/media/command_layer_realistic.webp"
                   alt="Unified command integration"
                   class="w-full h-full object-cover"
                 />
@@ -3384,7 +3383,7 @@
             <img
               loading="lazy"
               decoding="async"
-              src="media/obex_fleet_back_nobg.png"
+              src="media/obex_fleet_back_nobg.webp"
               class="w-auto h-[35vh] lg:w-[110%] lg:h-auto lg:scale-110 relative z-10 object-contain mb-0"
               id="anatomy-img"
               alt="OBEX Fleet Hardware"
@@ -3682,56 +3681,56 @@
           drowsiness: {
             title: 'Drowsiness detection',
             desc: 'Tracks eye movement, blink rate, and head position using IR sensors to detect fatigue before the driver even realizes they are tired.',
-            video: 'media/US_Drowsiness_Detection.mov',
-            audio: 'media/events/drowsiness_alert.mp3',
+            video: 'media/US_Drowsiness_Detection.mp4',
+            audio: null,
           },
           lane: {
             title: 'Lane departure warning',
             desc: 'Detects when the vehicle drifts from its lane without signaling, delivering an immediate predictive alert to correct the trajectory before leaving the road.',
             video: 'media/Lan_Departure_Warning.mp4',
-            audio: 'media/Return_to_Lane.wav',
+            audio: 'media/Return_to_Lane.mp3',
           },
           collision: {
             title: 'Forward collision warning',
             desc: 'Calculates the closing speed between the vehicle and obstacles ahead, issuing a harsh warning if a collision is imminent.',
             video: 'media/Forward_Collision_Warning.mp4',
-            audio: 'media/FCW_sound.wav',
+            audio: 'media/FCW_sound.mp3',
           },
           distraction: {
             title: 'Inattentive driving',
             desc: 'Identifies if the driver is looking away from the road for an extended period, ensuring their eyes remain on the path ahead.',
             video: 'media/Inattentive_Driving.mp4',
-            audio: 'media/Alert__Distracted_Driving.wav',
+            audio: 'media/Alert__Distracted_Driving.mp3',
           },
           seatbelt: {
             title: 'No seat belt',
             desc: 'Detects when the driver or passenger is operating the vehicle without a secured seat belt.',
             video: 'media/No_Seatbelt.mp4',
-            audio: 'media/seatbelt_us.wav',
+            audio: 'media/seatbelt_us.mp3',
           },
           mobile: {
             title: 'Mobile usage',
             desc: 'Identifies dangerous handheld device usage while the vehicle is in motion, triggering immediate warnings.',
             video: 'media/Mobile_Usage.webp',
-            audio: 'media/phone_policy_US.wav',
+            audio: 'media/phone_policy_US.mp3',
           },
           tailgating: {
             title: 'Tailgating',
             desc: 'Measures following distance dynamically and alerts drivers when they are trailing dangerously close to the vehicle ahead.',
             video: 'media/Tailgating.mp4',
-            audio: 'media/Alert__Following_Distance.wav',
+            audio: 'media/Alert__Following_Distance.mp3',
           },
           rolling: {
             title: 'Rolling stops',
             desc: 'Monitors behavior at stop signs and intersections to ensure complete halts rather than dangerous rolling stops.',
             video: 'media/Rolling_Stop.mp4',
-            audio: 'media/events/rolling_alert.mp3',
+            audio: null,
           },
           harsh: {
             title: 'Harsh driving',
             desc: 'Detects erratic steering, hard braking, or aggressive acceleration using internal G-force and motion sensors.',
             video: 'media/Harsh_Driving.mp4',
-            audio: 'media/Harsh_event_detected_English_US.wav',
+            audio: 'media/Harsh_event_detected_English_US.mp3',
           },
           pedestrian: {
             title: 'Pedestrian collision warning',
@@ -3776,19 +3775,18 @@
                   if (videoSource) {
                     videoSource.src = data.video
                     eventVideo.load()
-                    eventVideo.play()
+                    eventVideo.play().catch(() => {})
                   }
                 }
               }
 
-              // Update audio
-              if (data.audio && eventAudio) {
-                eventAudio.src = data.audio
-                // Show/hide audio button based on user request (drowsiness and rolling do not have sound)
-                if (type === 'drowsiness' || type === 'rolling') {
-                  audioTrigger.style.display = 'none'
-                } else {
+              if (eventAudio) {
+                if (data.audio) {
+                  eventAudio.src = data.audio
                   audioTrigger.style.display = 'flex'
+                } else {
+                  eventAudio.removeAttribute('src')
+                  audioTrigger.style.display = 'none'
                 }
               }
             }
@@ -3797,7 +3795,7 @@
 
         if (audioTrigger && eventAudio) {
           audioTrigger.addEventListener('click', () => {
-            eventAudio.play()
+            eventAudio.play().catch(() => {})
           })
         }
 

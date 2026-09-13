@@ -771,7 +771,7 @@
                 downloadThesisPDF()
                 return false
               "
-              class="group relative px-4 md:px-10 py-3 md:py-5 bg-black text-white overflow-hidden transition-all hover:bg-gray-900 inline-block"
+              class="group relative px-4 md:px-10 py-3 md:py-5 bg-black text-white overflow-hidden transition-all hover:bg-gray-900 inline-block rounded-lg"
             >
               <div
                 class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"
@@ -1066,7 +1066,11 @@
       }
       requestAnimationFrame(raf)
 
-      const mainNav = document.getElementById('main-nav')
+      const applyNavTheme = theme => {
+        document.getElementById('main-nav')?.classList.toggle('nav-dark', theme === 'dark')
+        document.querySelector('.mobile-nav-bar')?.classList.toggle('nav-dark', theme === 'dark')
+      }
+
       document.querySelectorAll('[data-nav-theme]').forEach(section => {
         const theme = section.getAttribute('data-nav-theme')
         ScrollTrigger.create({
@@ -1074,11 +1078,9 @@
           start: 'top 10%',
           end: 'bottom 10%',
           onToggle: self => {
-            if (self.isActive) {
-              mainNav.classList.toggle('nav-dark', theme === 'dark')
-            }
+            if (self.isActive) applyNavTheme(theme)
           },
-          onEnterBack: () => mainNav.classList.toggle('nav-dark', theme === 'dark'),
+          onEnterBack: () => applyNavTheme(theme),
         })
       })
 
