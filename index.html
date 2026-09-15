@@ -285,15 +285,18 @@
             max-width: 62ch;
             margin-bottom: 56px;
         }
-        .chain { display: flex; flex-direction: column; }
+        .chain { --tag-size: 13px; --tag-gap: 16px; display: flex; flex-direction: column; }
         .chain-stage { display: flex; flex-direction: column; }
         .stage-tag {
+            display: block;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.26em;
+            font-size: var(--tag-size);
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.32);
-            margin-bottom: 14px;
+            color: rgba(255,255,255,0.82);
+            margin-bottom: var(--tag-gap);
         }
         .stage-nodes { display: flex; flex-direction: column; gap: 12px; }
         .chain-node {
@@ -443,7 +446,7 @@
             }
             .platform-tag { font-size: 11px; margin-bottom: 32px; }
             .platform-lede { font-size: 19px; margin-bottom: 84px; }
-            .chain { flex-direction: row; align-items: stretch; }
+            .chain { --tag-size: 15px; flex-direction: row; align-items: stretch; }
             .chain-stage { flex: 1 1 0; min-width: 0; }
             .stage-nodes { flex: 1 1 auto; justify-content: center; }
             .chain-link {
@@ -453,12 +456,15 @@
                 flex-direction: column;
             }
             .chain-link::before {
-                content: '01';
+                content: 'Sense';
                 font-family: 'JetBrains Mono', monospace;
-                font-size: 10px;
-                letter-spacing: 0.26em;
+                font-size: var(--tag-size);
+                line-height: 1.2;
+                font-weight: 700;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
                 visibility: hidden;
-                margin-bottom: 14px;
+                margin-bottom: var(--tag-gap);
             }
             .link-rail { flex: 1 1 auto; height: auto; }
             .link-rail::before {
@@ -2562,7 +2568,7 @@
 
             <div class="chain">
                 <div class="chain-stage">
-                    <span class="stage-tag">01 &mdash; Sense</span>
+                    <span class="stage-tag">Sense</span>
                     <div class="stage-nodes">
                         <div class="chain-node">
                             <span class="node-name">Trion</span>
@@ -2582,7 +2588,7 @@
                 <div class="chain-link" aria-hidden="true"><i class="link-rail"></i></div>
 
                 <div class="chain-stage">
-                    <span class="stage-tag">02 &mdash; Predict</span>
+                    <span class="stage-tag">Predict</span>
                     <div class="stage-nodes">
                         <div class="chain-node is-core">
                             <span class="node-name">Primus</span>
@@ -2594,7 +2600,7 @@
                 <div class="chain-link" aria-hidden="true"><i class="link-rail"></i></div>
 
                 <div class="chain-stage">
-                    <span class="stage-tag">03 &mdash; Verify</span>
+                    <span class="stage-tag">Verify</span>
                     <div class="stage-nodes">
                         <div class="chain-node">
                             <span class="node-name">Nest</span>
@@ -2606,7 +2612,7 @@
                 <div class="chain-link" aria-hidden="true"><i class="link-rail"></i></div>
 
                 <div class="chain-stage">
-                    <span class="stage-tag">04 &mdash; Act</span>
+                    <span class="stage-tag">Act</span>
                     <div class="stage-nodes">
                         <div class="chain-node">
                             <span class="node-name">Teletraan</span>
