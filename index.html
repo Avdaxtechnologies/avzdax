@@ -235,6 +235,272 @@
             min-height: 100vh;
             background: #ffffff !important;
         }
+
+        /* Connective layer */
+        #platform {
+            position: relative;
+            z-index: 2;
+            background: #020202;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            margin-top: -24px;
+            padding: 84px 22px 92px;
+        }
+        #platform::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(420px, 70%);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,255,65,0.45), transparent);
+        }
+        .platform-inner { max-width: 1400px; margin: 0 auto; }
+        .platform-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: #00ff41;
+            margin-bottom: 26px;
+        }
+        .platform-heading {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: clamp(27px, 7.2vw, 64px);
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            margin-bottom: 26px;
+        }
+        .platform-heading span { color: rgba(255,255,255,0.28); }
+        .platform-lede {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.62;
+            color: rgba(255,255,255,0.52);
+            max-width: 62ch;
+            margin-bottom: 56px;
+        }
+        .chain { display: flex; flex-direction: column; }
+        .chain-stage { display: flex; flex-direction: column; }
+        .stage-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.32);
+            margin-bottom: 14px;
+        }
+        .stage-nodes { display: flex; flex-direction: column; gap: 12px; }
+        .chain-node {
+            background: rgba(255,255,255,0.022);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 18px 20px;
+            transition: border-color .45s ease, background .45s ease;
+        }
+        .chain-node:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.045); }
+        .node-name {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 7px;
+        }
+        .node-role {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.45);
+        }
+        .chain-node.is-core {
+            border-color: rgba(0,255,65,0.3);
+            background: rgba(0,255,65,0.045);
+            box-shadow: 0 0 40px rgba(0,255,65,0.07);
+        }
+        .chain-node.is-core .node-name { color: #00ff41; }
+        .chain-node.is-core:hover { border-color: rgba(0,255,65,0.55); background: rgba(0,255,65,0.075); }
+        .chain-link { flex: 0 0 auto; height: 58px; padding-bottom: 12px; }
+        .link-rail { position: relative; display: block; height: 100%; }
+        .link-rail::before {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.13);
+        }
+        .link-rail::after {
+            content: '';
+            position: absolute;
+            left: 25.5px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #00ff41;
+            box-shadow: 0 0 10px rgba(0,255,65,0.9);
+            animation: chainPulseY 2.6s linear infinite;
+        }
+        @keyframes chainPulseY {
+            0% { top: -4px; opacity: 0; }
+            12% { opacity: 1; }
+            88% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .chain-foundation {
+            margin-top: 40px;
+            padding: 22px 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.015);
+            position: relative;
+            overflow: hidden;
+        }
+        .chain-foundation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -40%;
+            width: 40%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,255,65,0.8), transparent);
+            animation: foundationSweep 5.5s linear infinite;
+        }
+        @keyframes foundationSweep {
+            0% { left: -40%; }
+            100% { left: 100%; }
+        }
+        .foundation-tag {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.32);
+            margin-bottom: 12px;
+        }
+        .foundation-name {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 7px;
+        }
+        .foundation-role {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.45);
+        }
+        .platform-close {
+            margin-top: 52px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(17px, 4.4vw, 26px);
+            font-weight: 300;
+            line-height: 1.42;
+            color: rgba(255,255,255,0.55);
+            max-width: 42ch;
+        }
+        .platform-close strong { color: #fff; font-weight: 900; }
+        .chain-stage,
+        .chain-foundation,
+        .platform-close {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+        }
+        #platform.is-visible .chain-stage,
+        #platform.is-visible .chain-foundation,
+        #platform.is-visible .platform-close {
+            opacity: 1;
+            transform: none;
+        }
+        #platform.is-visible .chain-stage:nth-of-type(3) { transition-delay: .09s; }
+        #platform.is-visible .chain-stage:nth-of-type(5) { transition-delay: .18s; }
+        #platform.is-visible .chain-stage:nth-of-type(7) { transition-delay: .27s; }
+        #platform.is-visible .chain-foundation { transition-delay: .36s; }
+        #platform.is-visible .platform-close { transition-delay: .42s; }
+        @media (min-width: 1024px) {
+            #platform {
+                border-top-left-radius: 40px;
+                border-top-right-radius: 40px;
+                margin-top: -40px;
+                padding: 140px 64px 150px;
+            }
+            .platform-tag { font-size: 11px; margin-bottom: 32px; }
+            .platform-lede { font-size: 19px; margin-bottom: 84px; }
+            .chain { flex-direction: row; align-items: stretch; }
+            .chain-stage { flex: 1 1 0; min-width: 0; }
+            .stage-nodes { flex: 1 1 auto; justify-content: center; }
+            .chain-link {
+                height: auto;
+                flex: 0 0 72px;
+                display: flex;
+                flex-direction: column;
+            }
+            .chain-link::before {
+                content: '01';
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10px;
+                letter-spacing: 0.26em;
+                visibility: hidden;
+                margin-bottom: 14px;
+            }
+            .link-rail { flex: 1 1 auto; height: auto; }
+            .link-rail::before {
+                left: 0;
+                right: 0;
+                top: 50%;
+                bottom: auto;
+                width: auto;
+                height: 1px;
+            }
+            .link-rail::after {
+                top: calc(50% - 2px);
+                left: 0;
+                animation: chainPulseX 2.6s linear infinite;
+            }
+            @keyframes chainPulseX {
+                0% { left: -4px; opacity: 0; }
+                12% { opacity: 1; }
+                88% { opacity: 1; }
+                100% { left: 100%; opacity: 0; }
+            }
+            .chain-node { padding: 22px 24px; }
+            .node-name { font-size: 15px; }
+            .node-role { font-size: 13.5px; }
+            .chain-foundation {
+                margin-top: 64px;
+                display: flex;
+                align-items: baseline;
+                gap: 18px;
+                padding: 26px 30px;
+            }
+            .foundation-tag { margin-bottom: 0; flex: 0 0 auto; }
+            .foundation-name { display: inline; margin-bottom: 0; margin-right: 12px; }
+            .platform-close { margin-top: 84px; padding-top: 44px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .link-rail::after,
+            .chain-foundation::before { animation: none; }
+            .chain-stage,
+            .chain-foundation,
+            .platform-close { opacity: 1; transform: none; transition: none; }
+        }
         
         
         .hero-video-full {
@@ -2206,7 +2472,7 @@
             <h1 class="hero-headline">Predictive intelligence<br>for critical environments.</h1>
             <p class="hero-lede">AVZDAX builds the intelligence infrastructure governments and enterprises use to understand what is happening across their environments, anticipate what comes next, and act before it does.</p>
             <div class="hero-actions">
-                <button onclick="document.getElementById('platform').scrollIntoView({behavior: 'smooth'})" class="hero-cta">Explore</button>
+                <button onclick="document.getElementById('neural-layer')?.scrollIntoView({behavior: 'smooth'})" class="hero-cta">Explore</button>
                 <a href="/contact" class="hero-link">Talk to us &rarr;</a>
             </div>
         </div>
@@ -2285,6 +2551,83 @@
     </section>
 
     
+    <section id="platform">
+        <div class="platform-inner">
+            <span class="platform-tag">The connective layer</span>
+            <h2 class="platform-heading">
+                Individually, they observe.<br>
+                <span>Connected, they predict.</span>
+            </h2>
+            <p class="platform-lede">Most estates run on systems that never speak to each other. Every AVZDAX product is a stage in one chain: each signal feeds the next, and the last stage is where the decision is made.</p>
+
+            <div class="chain">
+                <div class="chain-stage">
+                    <span class="stage-tag">01 &mdash; Sense</span>
+                    <div class="stage-nodes">
+                        <div class="chain-node">
+                            <span class="node-name">Trion</span>
+                            <span class="node-role">Optical detail held in any light, any environment.</span>
+                        </div>
+                        <div class="chain-node">
+                            <span class="node-name">Obex</span>
+                            <span class="node-role">Presence and intrusion across discreet spaces.</span>
+                        </div>
+                        <div class="chain-node">
+                            <span class="node-name">Obex Fleet</span>
+                            <span class="node-role">Drivers, vehicles and cargo while in motion.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chain-link" aria-hidden="true"><i class="link-rail"></i></div>
+
+                <div class="chain-stage">
+                    <span class="stage-tag">02 &mdash; Predict</span>
+                    <div class="stage-nodes">
+                        <div class="chain-node is-core">
+                            <span class="node-name">Primus</span>
+                            <span class="node-role">Correlates every feed and surfaces the patterns that precede an incident.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chain-link" aria-hidden="true"><i class="link-rail"></i></div>
+
+                <div class="chain-stage">
+                    <span class="stage-tag">03 &mdash; Verify</span>
+                    <div class="stage-nodes">
+                        <div class="chain-node">
+                            <span class="node-name">Nest</span>
+                            <span class="node-role">Analysts confirm the machine before anything escalates.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chain-link" aria-hidden="true"><i class="link-rail"></i></div>
+
+                <div class="chain-stage">
+                    <span class="stage-tag">04 &mdash; Act</span>
+                    <div class="stage-nodes">
+                        <div class="chain-node">
+                            <span class="node-name">Teletraan</span>
+                            <span class="node-role">One command surface for the decision, the dispatch and the record.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chain-foundation">
+                <span class="foundation-tag">Continuity</span>
+                <div>
+                    <span class="foundation-name">Arclight</span>
+                    <span class="foundation-role">Hybrid power keeps the chain live when the grid is not.</span>
+                </div>
+            </div>
+
+            <p class="platform-close">A prediction is only as good as the chain behind it. <strong>We build the whole chain.</strong></p>
+        </div>
+    </section>
+
     <main id="main-content">
         <section id="primus" class="product-section min-h-screen flex items-center px-12 md:px-24 py-32 border-b border-white/5" data-align="left" style="will-change: transform, opacity;">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center w-full">
@@ -3221,5 +3564,19 @@
 
 
 
+    <script>
+        (() => {
+            const platform = document.getElementById('platform');
+            if (!platform) return;
+            const reveal = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    platform.classList.add('is-visible');
+                    reveal.disconnect();
+                });
+            }, { threshold: 0.12 });
+            reveal.observe(platform);
+        })();
+    </script>
 </body>
 </html>
