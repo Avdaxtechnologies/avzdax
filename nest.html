@@ -159,6 +159,7 @@
         color: var(--white);
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        overflow-x: clip;
       }
       html {
         scrollbar-width: none;
@@ -1427,7 +1428,21 @@
           display: none !important;
         }
       }
-    </style>
+    
+        /* each surface meets the one above it as a raised panel, as on the homepage */
+        #phase-1, #phase-2 {
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+        }
+        @media (min-width: 1024px) {
+            #phase-1, #phase-2 {
+                border-top-left-radius: 40px;
+                border-top-right-radius: 40px;
+            }
+        }
+
+        html { overflow-x: clip; }
+</style>
   </head>
   <body class="is-loading">
     

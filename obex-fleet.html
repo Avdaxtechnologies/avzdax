@@ -2389,7 +2389,19 @@
           #specs .space-y-10 { display: flex !important; flex-direction: column !important; gap: 1.5rem !important; }
           .callout { display: none !important; }
       }
-    </style>
+    
+        /* the white panel sits over the dark hero, as on the homepage */
+        #video-grid {
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+        }
+        @media (min-width: 1024px) {
+            #video-grid {
+                border-top-left-radius: 40px;
+                border-top-right-radius: 40px;
+            }
+        }
+</style>
   </head>
   <body>
     

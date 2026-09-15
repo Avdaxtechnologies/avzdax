@@ -135,6 +135,7 @@
         color: var(--void);
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        overflow-x: clip;
         width: 100%;
         transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
@@ -455,7 +456,9 @@
           height: 220px !important;
         }
       }
-    </style>
+    
+        html { overflow-x: clip; }
+</style>
   </head>
   <body>
     
