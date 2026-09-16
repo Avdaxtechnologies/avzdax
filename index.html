@@ -122,7 +122,7 @@
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+            border-radius: 8px;
         }
         
         .tactical-search-btn::before,
@@ -918,13 +918,7 @@
             position: relative;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             
-            clip-path: polygon(
-                12px 0, 100% 0, 
-                100% calc(100% - 12px), 
-                calc(100% - 12px) 100%, 
-                0 100%, 
-                0 12px
-            );
+            border-radius: 8px;
         }
 
         
@@ -1907,7 +1901,7 @@
                 padding: 10px 20px !important;
                 background: white !important;
                 border: 1px solid white !important;
-                border-radius: 0 !important;
+                border-radius: 8px !important;
                 color: black !important;
                 font-size: 9px !important;
                 font-weight: 700;

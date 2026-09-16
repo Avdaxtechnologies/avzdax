@@ -372,14 +372,7 @@ nav.nav-dark-minimal .schedule-btn,
   cursor: pointer;
   position: relative;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  clip-path: polygon(
-    10px 0,
-    100% 0,
-    100% calc(100% - 10px),
-    calc(100% - 10px) 100%,
-    0 100%,
-    0 10px
-  );
+  border-radius: 8px;
 }
 
 .tactical-search-btn::before {
