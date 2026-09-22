@@ -28,14 +28,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;900&family=JetBrains+Mono:wght@300;500&family=Syncopate:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;900&family=JetBrains+Mono:wght@300;500&display=swap">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: { dark: '#020202', silver: { DEFAULT: '#E2E2E2', 400: '#A1A1A1', 700: '#202020' } },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Inter', 'monospace'] }
                 }
             }
         }
@@ -85,10 +85,10 @@
             .news-grid { gap: 20px !important; grid-template-columns: 1fr 1fr !important; }
         }
 
-        body { font-family: 'Inter', sans-serif; background: #020202; color: white; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; color: #000; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        .synco { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: -0.05em; line-height: 0.8; }
-        .mono { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.4em; }
+        .synco { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.025em; line-height: 0.8;  font-weight: 900; }
+        .mono { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.4em; }
 
         
         nav {
@@ -99,8 +99,8 @@
         }
 
         nav:hover, nav.nav-scrolled {
-            background: #000 !important;
-            border-bottom-color: rgba(255,255,255,0.15);
+            background: #fff !important;
+            border-bottom-color: rgba(0,0,0,0.15);
             -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
         }
@@ -251,7 +251,7 @@
             position: fixed;
             top: 40px;
             right: 60px;
-            font-family: 'JetBrains Mono';
+            font-family: 'Inter';
             font-size: 10px;
             font-weight: 900;
             color: #ff3b3b; 
@@ -587,28 +587,19 @@
 
         
         nav#main-nav .nav-item > a, 
-        nav#main-nav button:not(.bg-white) span { color: var(--ghost) !important; }
-        nav#main-nav svg { color: var(--ghost) !important; }
+        nav#main-nav button:not(.bg-white) span { color: #000 !important; }
+        nav#main-nav svg { color: #000 !important; }
         nav#main-nav .bg-white\/5 { background: rgba(255,255,255,0.05) !important; border-color: rgba(255,255,255,0.1) !important; }
         
         
-        .page-background {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.02) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.02) 0%, transparent 40%);
-            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 80px 80px;
-        }
+        .page-background { display: none; }
 
         
         .news-container { width: 100%; max-width: 1800px; margin: 0 auto; padding: 220px 60px 100px; }
         
         .news-header-section { margin-bottom: 120px; }
-        .news-hero-title { font-family: 'Syncopate'; font-size: 10vw; font-weight: 900; line-height: 0.85; letter-spacing: -0.06em; text-transform: uppercase; color: var(--ghost); }
-        .news-sub-label { font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.8em; margin-bottom: 40px; }
+        .news-hero-title { font-family: 'Inter', sans-serif; font-size: 10vw; font-weight: 900; line-height: 0.85; letter-spacing: 0.025em; text-transform: uppercase; color: #000; }
+        .news-sub-label { font-family: 'Inter'; font-size: 12px; font-weight: 700; color: #333; text-transform: uppercase; letter-spacing: 0.8em; margin-bottom: 40px; }
 
         
         .news-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px; }
@@ -616,14 +607,14 @@
         
         .card-wrap { 
             position: relative; 
-            background: #0a0a0a; 
-            border: 1px solid rgba(255,255,255,0.08); 
+            background: #ffffff; 
+            border: none; 
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
-        .card-wrap:hover { transform: translateY(-10px); box-shadow: 0 40px 100px rgba(0,0,0,0.5); border-color: white; }
+        .card-wrap:hover { transform: translateY(-10px); box-shadow: 0 40px 100px rgba(0,0,0,0.5);  }
 
         .featured-card { grid-column: span 12; display: grid; grid-template-columns: repeat(12, 1fr); height: 650px; }
         .standard-card { grid-column: span 6; min-height: 700px; }
@@ -635,36 +626,36 @@
         .standard-card .card-media { height: 400px; }
         .card-img { width: 100%; height: 100%; object-fit: cover; object-position: center center; transition: transform 3s ease; opacity: 1; filter: contrast(1.1) brightness(0.9); }
         .card-wrap:hover .card-img { transform: scale(1.05); opacity: 1; filter: contrast(1) brightness(1.1); }
-        .featured-card .card-media { grid-column: span 7; background: radial-gradient(circle at center, #1a1a1a 0%, #080808 100%); position: relative; height: 100%; }
+        .featured-card .card-media { grid-column: span 7; background: #f9f9f9; position: relative; height: 100%; }
         .featured-card .card-media .card-img { object-fit: contain; width: 90%; height: 90%; filter: drop-shadow(0 0 50px rgba(255,255,255,0.1)); }
-        .featured-card .card-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #080808 0%, transparent 20%); pointer-events: none; }
+        .featured-card .card-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #f9f9f9 0%, transparent 20%); pointer-events: none; }
 
         
         .card-body { padding: 60px; display: flex; flex-direction: column; flex-grow: 1; }
         .featured-card .card-body { grid-column: span 5; padding: 80px; justify-content: center; }
         
-        .c-meta { font-family: 'JetBrains Mono'; font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.4); margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
-        .c-meta::before { content: ''; width: 30px; height: 1px; background: rgba(255,255,255,0.1); }
+        .c-meta { font-family: 'Inter'; font-size: 11px; font-weight: 800; color: #000; display: inline-block; border-bottom: 2px solid #000; padding-bottom: 2px; margin-bottom: 16px; }
+        .c-meta::before { display: none; }
         
-        .c-title { font-family: 'Syncopate'; font-size: 2.2vw; font-weight: 900; line-height: 1.1; margin-bottom: 25px; color: white; text-transform: uppercase; }
+        .c-title { font-family: 'Inter', sans-serif; font-size: 2.2vw; font-weight: 900; line-height: 1.1; margin-bottom: 25px; color: #000; font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; }
         .featured-card .c-title { font-size: 3.5vw; line-height: 1; }
         
-        .c-excerpt { font-family: 'Inter'; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.6); margin-bottom: 40px; font-weight: 400; }
+        .c-excerpt { font-family: 'Inter'; font-size: 16px; line-height: 1.6; color: #666; margin-bottom: 40px; font-weight: 400; }
         
         .c-link { 
             margin-top: auto; 
-            font-family: 'Syncopate'; 
+            font-family: 'Inter', sans-serif; 
             font-size: 10px; 
             font-weight: 900; 
             text-transform: uppercase; 
             letter-spacing: 0.2em; 
-            color: white;
+            color: #000;
             padding-bottom: 10px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
+            border-bottom: 2px solid rgba(0,0,0,0.1);
             width: fit-content;
             transition: all 0.3s ease;
         }
-        .card-wrap:hover .c-link { border-color: white; padding-right: 30px; }
+        .card-wrap:hover .c-link { border-color: #000; padding-right: 30px; }
 
 
         
@@ -674,7 +665,7 @@
             margin-bottom: 0;
         }
         .f-item { 
-            font-family: 'JetBrains Mono'; 
+            font-family: 'Inter'; 
             font-size: 13px; 
             font-weight: 700; 
             cursor: pointer; 
@@ -684,9 +675,9 @@
             border: none;
         }
         .f-item.active { 
-            background: white !important; 
-            color: black !important; 
-            border-color: white !important;
+            background: black !important; 
+            color: white !important; 
+            border-color: black !important;
         }
 
         
@@ -730,7 +721,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', sans-serif;
             font-size: 10px;
             font-weight: 800;
             letter-spacing: 0.4em;
@@ -748,13 +739,13 @@
             max-width: 1100px;
         }
         .r-title {
-            font-family: 'Syncopate';
+            font-family: 'Inter', sans-serif;
             font-size: 7vw;
             font-weight: 900;
             line-height: 0.85;
             margin-bottom: 20px;
             color: #000;
-            letter-spacing: -0.06em;
+            letter-spacing: 0.025em;
             text-transform: uppercase;
         }
         .r-hero-image {
@@ -789,10 +780,10 @@
             font-weight: 400; 
         }
         .r-body p { margin-bottom: 40px; opacity: 0.9; }
-        .r-body h3 { font-family: 'Syncopate'; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: -0.02em; line-height: 1; }
+        .r-body h3 { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: 0.025em; line-height: 1; }
         .r-body strong { font-weight: 900; }
         .r-body em { font-style: italic; }
-        .r-body h2 { font-family: 'Syncopate'; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: -0.02em; line-height: 1; }
+        .r-body h2 { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: 0.025em; line-height: 1; }
         .r-body h4 { font-size: 22px; font-weight: 900; margin: 56px 0 20px; color: #000; }
         .r-body blockquote { margin: 56px 0; padding-left: 32px; border-left: 2px solid #000; font-size: 24px; font-weight: 600; line-height: 1.5; opacity: 1; }
         .r-body ul, .r-body ol { margin: 0 0 40px 24px; opacity: 0.9; }
@@ -827,7 +818,7 @@
         
         .r-quote-full { 
             grid-column: span 12;
-            font-family: 'Syncopate'; 
+            font-family: 'Inter', sans-serif; 
             font-size: 4vw; 
             font-weight: 900; 
             line-height: 1; 
@@ -836,7 +827,7 @@
             border-top: 1px solid rgba(0,0,0,0.1);
             border-bottom: 1px solid rgba(0,0,0,0.1);
             color: #000;
-            letter-spacing: -0.05em;
+            letter-spacing: 0.025em;
             text-transform: uppercase;
             position: relative;
         }
@@ -909,7 +900,7 @@
         
         @media (max-width: 768px) {
             .news-container { padding: 120px 16px 60px; }
-            .news-hero-title { font-size: 12vw; letter-spacing: -0.04em; }
+            .news-hero-title { font-size: 12vw; letter-spacing: 0.025em; }
             .news-sub-label { letter-spacing: 0.4em; font-size: 10px; margin-bottom: 20px; }
             .news-header-section { margin-bottom: 40px; }
 
@@ -941,7 +932,7 @@
             .reader-nav-fixed { height: 70px; padding: 0 16px; }
             .reader-back-btn { font-size: 8px; gap: 10px; }
             .r-header { margin-bottom: 40px; padding-bottom: 30px; }
-            .r-title { font-size: 28px; line-height: 1.1; letter-spacing: -0.03em; }
+            .r-title { font-size: 28px; line-height: 1.1; letter-spacing: 0.025em; }
             .r-content-grid { display: block; }
             .r-main-text, .r-side-meta { width: 100%; }
             .r-body { font-size: 16px; line-height: 1.7; }
@@ -1759,4 +1750,5 @@
 </body>
 </html>
 ```
+
 

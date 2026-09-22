@@ -41,11 +41,11 @@
 }
 
 .article-title {
-  font-family: 'Syncopate', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 800;
   font-size: clamp(34px, 6vw, 88px);
   line-height: 0.95;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
   margin: 0 0 26px;
 }
@@ -81,11 +81,11 @@
 
 .article-body h2,
 .article-body h3 {
-  font-family: 'Syncopate', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 900;
   font-size: 34px;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
   margin: 80px 0 30px;
 }

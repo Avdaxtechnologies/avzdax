@@ -19,7 +19,7 @@
   font-weight: 900 !important;
   font-style: italic !important;
   text-transform: uppercase !important;
-  letter-spacing: -0.05em !important;
+  letter-spacing: 0.025em !important;
   color: rgba(255, 255, 255, 0.18) !important;
   pointer-events: none !important;
   white-space: nowrap !important;
@@ -144,7 +144,7 @@
 .footer-column-title {
   color: rgba(255, 255, 255, 0.5) !important;
   font-size: 10px !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'Inter', sans-serif !important;
   font-weight: 900 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.7em !important;
@@ -226,10 +226,10 @@
 
 .obex-fleet-logo,
 .obex-edge-logo {
-  font-family: 'Syncopate', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-weight: 900 !important;
   font-style: italic !important;
-  letter-spacing: -0.05em !important;
+  letter-spacing: 0.025em !important;
   text-transform: uppercase !important;
   background: linear-gradient(135deg, #007aff 0%, #ffffff 100%);
   -webkit-background-clip: text !important;

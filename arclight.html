@@ -37,7 +37,7 @@
     <link href="/components/header-styles.css" rel="stylesheet" />
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500;700&family=Syncopate:wght@700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500;700&family='Inter':wght@700;800&display=swap');
 
       :root {
           --void: #030303; --white: #ffffff; --alloy: #86868B;
@@ -142,13 +142,13 @@
       }
 
       body { font-family: 'Inter', sans-serif; background: var(--void); color: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-      .synco { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: -0.08em; line-height: 0.85; }
-      .mono { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.4em; }
+      .synco { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: -0.08em; line-height: 0.85; }
+      .mono { font-family: 'Inter', monospace; text-transform: uppercase; letter-spacing: 0.4em; }
       .chrome-text { background: linear-gradient(to bottom, #fff 20%, var(--alloy) 80%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
 
       .hud-border { position: fixed; inset: 30px; border: 1px solid rgba(255,255,255,0.05); pointer-events: none; z-index: 100; }
-      .hud-data { position: absolute; font-family: 'JetBrains Mono'; font-size: 8px; color: var(--cyan); font-weight: 500; }
+      .hud-data { position: absolute; font-family: 'Inter'; font-size: 8px; color: var(--cyan); font-weight: 500; }
 
 
       .main-container { position: relative; width: 100%; }
@@ -704,7 +704,7 @@
 
 
       .capabilities-horizontal-section {
-          background: #030303;
+          background: #ffffff;
           position: relative;
           overflow: hidden;
           min-height: 100vh;
@@ -717,9 +717,8 @@
           position: absolute;
           inset: 0;
           opacity: 0.08;
-          background-image:
-              linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+          background-image: linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
           background-size: 80px 80px;
           pointer-events: none;
       }
@@ -743,7 +742,7 @@
       }
 
       .capabilities-logo {
-          height: 24px;
+          height: 48px;
           margin-bottom: 30px;
           filter: invert(1);
       }
@@ -751,7 +750,7 @@
       .capabilities-title {
         font-size: clamp(2.5rem, 6vw, 4.5rem);
         font-weight: 900;
-        color: #fff;
+        color: #000;
         text-transform: uppercase;
         letter-spacing: -0.08em; /* Synced with trion gold standard */
         line-height: 0.85; /* Synced with trion gold standard */
@@ -759,7 +758,7 @@
       }
 
       .capabilities-title span {
-          color: rgba(255,255,255,0.2);
+          color: rgba(0, 0, 0, 0.2);
       }
 
 
@@ -780,8 +779,8 @@
         flex: 0 0 460px;
         min-width: 460px;
         height: 420px;
-        background: linear-gradient(165deg, rgba(18, 18, 18, 0.95) 0%, rgba(8, 8, 8, 0.98) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: #f9f9f9;
+        border: 1px solid #000;
         border-radius: 8px;
         position: relative;
         padding: 48px;
@@ -805,10 +804,10 @@
       }
 
       .cap-card:hover {
-          border-color: rgba(255,255,255,0.12);
-          background: linear-gradient(165deg, rgba(25,25,25,0.98) 0%, rgba(12,12,12,0.98) 100%);
+          
+          
           transform: translateY(-12px);
-          box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+          
       }
 
       .cap-card:hover::before {
@@ -819,7 +818,7 @@
           position: absolute;
           top: 40px;
           right: 45px;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'Inter', monospace;
           font-size: 13px;
           color: rgba(255,255,255,0.15);
           font-weight: 600;
@@ -827,7 +826,7 @@
       }
 
       .cap-card-tag {
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'Inter', monospace;
           font-size: 10px;
           color: rgba(255,255,255,0.35);
           text-transform: uppercase;
@@ -838,7 +837,7 @@
       .cap-card-title {
         font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 900;
-        color: #fff;
+        color: #000;
         text-transform: uppercase;
         letter-spacing: -0.03em;
         line-height: 0.95;
@@ -847,7 +846,7 @@
 
       .cap-card-description {
         font-size: 15px;
-        color: rgba(255, 255, 255, 0.45);
+        color: rgba(0, 0, 0, 0.7);
         line-height: 1.8;
         font-weight: 400;
         letter-spacing: 0.01em;
@@ -856,7 +855,7 @@
       }
 
       .cap-card:hover .cap-card-description {
-        color: rgba(255, 255, 255, 0.65);
+        color: rgba(0, 0, 0, 0.7);
       }
 
       .cap-card-footer {
@@ -868,26 +867,26 @@
       .cap-card-line {
           width: 40px;
           height: 1px;
-          background: rgba(255,255,255,0.15);
+          background: rgba(0, 0, 0, 0.15);
           transition: all 0.4s ease;
       }
 
       .cap-card:hover .cap-card-line {
           width: 60px;
-          background: rgba(255,255,255,0.4);
+          background: rgba(0, 0, 0, 0.4);
       }
 
       .cap-card-status {
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'Inter', monospace;
           font-size: 10px;
-          color: rgba(255,255,255,0.25);
+          color: rgba(0, 0, 0, 0.4);
           text-transform: uppercase;
           letter-spacing: 0.3em;
           transition: color 0.4s ease;
       }
 
       .cap-card:hover .cap-card-status {
-          color: rgba(255,255,255,0.6);
+          color: rgba(0, 0, 0, 0.8);
       }
 
 
@@ -895,7 +894,7 @@
           display: block;
           width: calc(100% - 120px);
           height: 2px;
-          background: rgba(255,255,255,0.06);
+          background: rgba(0, 0, 0, 0.1);
           margin: 30px 60px 0;
           border-radius: 2px;
           overflow: hidden;
@@ -903,7 +902,7 @@
       .cap-progress-bar {
           height: 100%;
           width: 0%;
-          background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.8));
+          background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
           border-radius: 2px;
           transition: width 0.05s ease;
       }
@@ -924,8 +923,8 @@
           gap: 14px;
           padding: 20px 48px;
           background: transparent;
-          border: 1px solid rgba(255,255,255,0.15);
-          color: white;
+          border: 1px solid #000;
+          color: #000;
           font-size: 11px;
           font-weight: 600;
           text-transform: uppercase;
@@ -936,9 +935,9 @@
       }
 
       .cap-cta-btn:hover {
-          background: #fff;
-          color: #000;
-          border-color: #fff;
+          background: #000;
+          color: #fff;
+          border-color: #000;
           transform: translateY(-2px);
       }
 
@@ -982,7 +981,7 @@
               margin-bottom: 40px;
           }
           .capabilities-logo {
-              height: 20px;
+              height: 36px;
               margin-bottom: 24px;
           }
           .capabilities-title {
@@ -1014,7 +1013,7 @@
           .cap-card-description {
               font-size: 14px;
               line-height: 1.7;
-              color: rgba(255,255,255,0.5);
+              color: rgba(0, 0, 0, 0.7);
           }
           .cap-card-footer {
               padding-top: 30px;
@@ -1527,18 +1526,18 @@
 
       .cap-card {
           flex: 1;
-          background: #080808;
-          border: 1px solid rgba(255,255,255,0.05);
+          background: #f9f9f9;
+          border: 1px solid #000;
           padding: 40px;
           border-radius: 2px;
           min-height: 380px;
           position: relative;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .cap-card:hover { border-color: rgba(255,255,255,0.1); background: #0c0c0c; }
+      .cap-card:hover {   }
       .cap-card-border { position: absolute; top: 0; left: 0; width: 0; height: 1px; background: #fff; transition: width 0.6s ease; }
       .cap-card.active-node .cap-card-border { width: 100%; }
-      .cap-card.active-node { opacity: 1 !important; border-color: rgba(255,255,255,0.15) !important; }
+      .cap-card.active-node { opacity: 1 !important; border-color: #000 !important; }
 
       .mobile-scroll-hint { display: none; margin-top: 24px; text-align: center; flex-direction: column; align-items: center; gap: 8px; }
       @media (max-width: 1024px) {
@@ -2171,6 +2170,13 @@
               overflow: hidden !important;
           }
       }
+      #main-nav, .mobile-nav-bar, .pin-spacer-nav {
+        z-index: 999999 !important;
+      }
+      .capabilities-horizontal-section {
+        z-index: 1 !important;
+        }
+    
     </style>
   </head>
   <body>
@@ -2470,13 +2476,6 @@
 
       <div class="capabilities-container">
         <div class="capabilities-header">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="media/avzdax-logo.png"
-            alt="AVZDAX"
-            class="capabilities-logo"
-          />
           <h2 class="capabilities-title synco">
             INFRASTRUCTURE<br />
             <span>BACKBONE</span>
@@ -2807,24 +2806,25 @@
                 }
               },
               onEnter: () => {
-                document.getElementById('main-nav')?.classList.add('nav-dark-minimal')
-                document.querySelector('.mobile-nav-bar')?.classList.add('nav-dark-minimal')
+                document.getElementById('main-nav')?.classList.add('nav-inverted')
+                document.querySelector('.mobile-nav-bar')?.classList.add('nav-inverted')
               },
               onLeave: () => {
-                document.getElementById('main-nav')?.classList.remove('nav-dark-minimal')
-                document.querySelector('.mobile-nav-bar')?.classList.remove('nav-dark-minimal')
+                document.getElementById('main-nav')?.classList.remove('nav-inverted')
+                document.querySelector('.mobile-nav-bar')?.classList.remove('nav-inverted')
               },
               onEnterBack: () => {
-                document.getElementById('main-nav')?.classList.add('nav-dark-minimal')
-                document.querySelector('.mobile-nav-bar')?.classList.add('nav-dark-minimal')
+                document.getElementById('main-nav')?.classList.add('nav-inverted')
+                document.querySelector('.mobile-nav-bar')?.classList.add('nav-inverted')
               },
               onLeaveBack: () => {
-                document.getElementById('main-nav')?.classList.remove('nav-dark-minimal')
-                document.querySelector('.mobile-nav-bar')?.classList.remove('nav-dark-minimal')
+                document.getElementById('main-nav')?.classList.remove('nav-inverted')
+                document.querySelector('.mobile-nav-bar')?.classList.remove('nav-inverted')
               },
             },
           })
-        }
+          ScrollTrigger.refresh();
+          }
 
         if (document.readyState === 'complete') {
           setTimeout(initCapabilitiesHorizontalScroll, 200)
@@ -2857,11 +2857,8 @@
       document.querySelectorAll('.cap-card').forEach(card => capObserver.observe(card))
     </script>
 
-    <div style="height: 100px; background: #030303"></div>
-    <div style="background: #030303">
-      <div id="footer-container"></div>
+    <div id="footer-container"></div>
       <script src="/components/footer-loader.js"></script>
-    </div>
 
     <script>
       const revealElements = document.querySelectorAll('.reveal-on-scroll, .scroll-reveal')

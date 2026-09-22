@@ -43,7 +43,7 @@
               dark: '#020202',
               silver: { DEFAULT: '#E2E2E2', 400: '#A1A1A1', 700: '#202020' },
             },
-            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Inter', 'monospace'] },
           },
         },
       }
@@ -52,7 +52,7 @@
     <link href="/components/header-styles.css" rel="stylesheet" />
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500;700&family=Syncopate:wght@700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
 
       :root {
         --void: #030303;
@@ -71,7 +71,7 @@
         }
         h1.synco {
           font-size: clamp(4rem, 8vw, 6rem) !important;
-        }
+         font-weight: 900; }
       }
       @media screen and (max-width: 1400px) and (min-width: 1025px) {
         .max-w-\[1600px\] {
@@ -80,10 +80,10 @@
         }
         h1.synco {
           font-size: clamp(3.5rem, 7vw, 5rem) !important;
-        }
+         font-weight: 900; }
         h2.synco {
           font-size: clamp(2rem, 4vw, 3.5rem) !important;
-        }
+         font-weight: 900; }
         .lg\:p-24 {
           padding: 4rem !important;
         }
@@ -95,10 +95,10 @@
         }
         h1.synco {
           font-size: clamp(3rem, 6vw, 4.5rem) !important;
-        }
+         font-weight: 900; }
         h2.synco {
           font-size: clamp(1.8rem, 3.5vw, 3rem) !important;
-        }
+         font-weight: 900; }
         .lg\:p-24 {
           padding: 3rem !important;
         }
@@ -114,10 +114,10 @@
         }
         h1.synco {
           font-size: 2.5rem !important;
-        }
+         font-weight: 900; }
         h2.synco {
           font-size: 1.8rem !important;
-        }
+         font-weight: 900; }
         .lg\:p-24 {
           padding: 2rem !important;
         }
@@ -141,13 +141,13 @@
       }
 
       .synco {
-        font-family: 'Syncopate', sans-serif;
+        font-family: 'Inter', sans-serif;
         text-transform: uppercase;
-        letter-spacing: -0.05em;
+        letter-spacing: 0.025em;
         line-height: 0.8;
-      }
+       font-weight: 900; }
       .mono {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'Inter', sans-serif;
         text-transform: uppercase;
         letter-spacing: 0.4em;
       }
@@ -375,7 +375,7 @@
           line-height: 0.85 !important;
           margin-bottom: 20px !important;
           white-space: nowrap !important;
-        }
+         font-weight: 900; }
 
         .max-w-2xl p.text-xl,
         .max-w-2xl p.text-2xl,
@@ -417,9 +417,9 @@
         section.bg-white h2.synco {
           font-size: 6.5vw !important;
           line-height: 0.9 !important;
-          letter-spacing: -0.03em !important;
+          letter-spacing: 0.025em;important;
           word-break: break-word !important;
-        }
+         font-weight: 900; }
 
         section.bg-white > div.w-full.py-24 {
           padding: 40px 20px !important;
@@ -441,10 +441,10 @@
       @media (max-width: 380px) {
         h1.synco {
           font-size: 11vw !important;
-        }
+         font-weight: 900; }
         section.bg-white h2.synco {
           font-size: 7vw !important;
-        }
+         font-weight: 900; }
         section.bg-white > div[class*='flex'] > div:first-child {
           height: 220px !important;
         }
@@ -494,147 +494,115 @@
     <section class="bg-white text-black w-full">
       <div class="flex flex-col lg:flex-row min-h-[600px] border-t border-black/10">
         <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/media/industry-aviation.webp"
-            alt="Banking & Financial Institutions"
-            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out transform group-hover:scale-105"
-          />
+          <img loading="lazy" decoding="async" src="/media/industry-banking.jpg" alt="Banking Terminal" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
         </div>
         <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
-          <h2 class="synco text-4xl lg:text-6xl uppercase leading-none tracking-tighter">
-            Banking & Financial Institutions
-          </h2>
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Banking &amp; Financial Institutions</h2>
         </div>
       </div>
-
       <div class="flex flex-col lg:flex-row-reverse min-h-[600px] border-t border-black/10">
         <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/media/industry-government.webp"
-            alt="Government & Public Sector"
-            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out transform group-hover:scale-105"
-          />
+          <img loading="lazy" decoding="async" src="/media/industry-government.jpg" alt="Government Infrastructure" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
         </div>
         <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
-          <h2 class="synco text-4xl lg:text-6xl uppercase leading-none tracking-tighter">
-            Government & Public Sector
-          </h2>
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Government &amp; Public Sector</h2>
         </div>
       </div>
-
       <div class="flex flex-col lg:flex-row min-h-[600px] border-t border-black/10">
         <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/media/industry-energy.webp"
-            alt="Energy And Oil & Gas"
-            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out transform group-hover:scale-105"
-          />
+          <img loading="lazy" decoding="async" src="/media/industry-energy.jpg" alt="Energy Infrastructure" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
         </div>
         <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
-          <h2 class="synco text-4xl lg:text-6xl uppercase leading-none tracking-tighter">
-            Energy And<br />Oil & Gas
-          </h2>
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Energy And Oil &amp; Gas</h2>
         </div>
       </div>
-
       <div class="flex flex-col lg:flex-row-reverse min-h-[600px] border-t border-black/10">
         <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/media/industry-banking.webp"
-            alt="Transportation & Mobility"
-            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out transform group-hover:scale-105"
-          />
+          <img loading="lazy" decoding="async" src="/media/industry-logistics.jpg" alt="Logistics Hub" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
         </div>
         <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
-          <h2 class="synco text-4xl lg:text-6xl uppercase leading-none tracking-tighter">
-            Transportation & Mobility
-          </h2>
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Transportation &amp; Logistics</h2>
         </div>
       </div>
-
       <div class="flex flex-col lg:flex-row min-h-[600px] border-t border-black/10">
         <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/media/industry-realestate.webp"
-            alt="Critical Infrastructure"
-            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out transform group-hover:scale-105"
-          />
+          <img loading="lazy" decoding="async" src="/media/industry-critical.jpg" alt="Critical Infrastructure" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
         </div>
         <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
-          <h2 class="synco text-4xl lg:text-6xl uppercase leading-none tracking-tighter">
-            Critical Infrastructure
-          </h2>
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Critical Infrastructure</h2>
         </div>
       </div>
-
       <div class="flex flex-col lg:flex-row-reverse min-h-[600px] border-t border-black/10">
         <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/media/nest-hero.webp"
-            alt="Healthcare"
-            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out transform group-hover:scale-105"
-          />
+          <img loading="lazy" decoding="async" src="/media/industry-datacentre.jpg" alt="Data Centres" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
         </div>
         <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
-          <h2 class="synco text-4xl lg:text-6xl uppercase leading-none tracking-tighter">
-            Healthcare
-          </h2>
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Data Centres</h2>
         </div>
       </div>
-
       <div class="flex flex-col lg:flex-row min-h-[600px] border-t border-black/10">
         <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/media/industry-urban.webp"
-            alt="Education & Campuses"
-            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out transform group-hover:scale-105"
-          />
+          <img loading="lazy" decoding="async" src="/media/industry-telecom.jpg" alt="Telecommunications" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
         </div>
         <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
-          <h2 class="synco text-4xl lg:text-6xl uppercase leading-none tracking-tighter">
-            Education & Campuses
-          </h2>
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Telecommunications</h2>
         </div>
       </div>
-
       <div class="flex flex-col lg:flex-row-reverse min-h-[600px] border-t border-black/10">
         <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/media/industry-maritime.webp"
-            alt="Commercial & Industrial Facilities"
-            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out transform group-hover:scale-105"
-          />
+          <img loading="lazy" decoding="async" src="/media/industry-aviation.jpg" alt="Aviation" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
         </div>
         <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
-          <h2 class="synco text-4xl lg:text-6xl uppercase leading-none tracking-tighter">
-            Commercial & Industrial Facilities
-          </h2>
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Aviation</h2>
         </div>
       </div>
-
-      <div class="w-full py-24 flex justify-center bg-white border-t border-black/10">
-        <a
-          href="/contact"
-          class="inline-block px-12 py-5 border-2 border-black bg-black text-white text-[11px] font-black uppercase tracking-[0.3em] hover:bg-transparent hover:text-black transition-all duration-300 rounded-lg"
-        >
-          SCHEDULE A CONSULTATION →
-        </a>
+      <div class="flex flex-col lg:flex-row min-h-[600px] border-t border-black/10">
+        <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
+          <img loading="lazy" decoding="async" src="/media/industry-maritime.jpg" alt="Ports and Maritime" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
+        </div>
+        <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Ports &amp; Maritime</h2>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row-reverse min-h-[600px] border-t border-black/10">
+        <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
+          <img loading="lazy" decoding="async" src="/media/industry-manufacturing.jpg" alt="Industrial Plant" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
+        </div>
+        <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Industrial &amp; Manufacturing</h2>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row min-h-[600px] border-t border-black/10">
+        <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
+          <img loading="lazy" decoding="async" src="/media/industry-hospitality.jpg" alt="Hospitality" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
+        </div>
+        <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Hospitality</h2>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row-reverse min-h-[600px] border-t border-black/10">
+        <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
+          <img loading="lazy" decoding="async" src="/media/industry-retail.jpg" alt="Retail Operations" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
+        </div>
+        <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Retail</h2>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row min-h-[600px] border-t border-black/10">
+        <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
+          <img loading="lazy" decoding="async" src="/media/industry-education.jpg" alt="Education Campuses" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
+        </div>
+        <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Education &amp; Campuses</h2>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row-reverse min-h-[600px] border-t border-black/10">
+        <div class="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden group">
+          <img loading="lazy" decoding="async" src="/media/industry-estates.jpg" alt="Estates and Communities" class="absolute inset-0 w-full h-full object-cover  transition-all duration-1000 ease-out transform group-hover:scale-105" />
+        </div>
+        <div class="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-white">
+          <h2 class="text-4xl lg:text-6xl uppercase leading-none tracking-tighter" style="font-family: 'Inter', sans-serif; font-weight: 900;">Estates &amp; Communities</h2>
+        </div>
       </div>
     </section>
 
@@ -784,4 +752,8 @@
     <script src="/media/site-utils.js"></script>
   </body>
 </html>
+
+
+
+
 

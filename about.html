@@ -43,7 +43,7 @@
               dark: '#020202',
               silver: { DEFAULT: '#E2E2E2', 400: '#A1A1A1', 700: '#202020' },
             },
-            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Inter', 'monospace'] },
           },
         },
       }
@@ -51,7 +51,7 @@
     <link href="/components/footer-styles.css" rel="stylesheet" />
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500;700&family=Syncopate:wght@700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
 
       :root {
         --void: #030303;
@@ -85,7 +85,7 @@
         }
         h1.synco {
           font-size: clamp(4rem, 8vw, 7rem) !important;
-        }
+         font-weight: 900; }
       }
 
       @media screen and (max-width: 1280px) and (min-width: 1025px) {
@@ -101,13 +101,13 @@
         }
         h1.synco {
           font-size: clamp(3.5rem, 7vw, 6rem) !important;
-        }
+         font-weight: 900; }
         .ceo-block h2 {
           font-size: 3.5rem !important;
         }
         .timeline-grid h2.synco {
           font-size: 3rem !important;
-        }
+         font-weight: 900; }
       }
 
       @media screen and (max-width: 1024px) and (min-width: 769px) {
@@ -125,7 +125,7 @@
 
         h1.synco {
           font-size: clamp(3rem, 8vw, 5rem) !important;
-        }
+         font-weight: 900; }
 
         .ceo-block h2 {
           font-size: 3rem !important;
@@ -133,7 +133,7 @@
 
         .timeline-grid h2.synco {
           font-size: 2.5rem !important;
-        }
+         font-weight: 900; }
 
         section {
           padding: 60px 40px !important;
@@ -150,13 +150,13 @@
       }
 
       .synco {
-        font-family: 'Syncopate', sans-serif;
+        font-family: 'Inter', sans-serif;
         text-transform: uppercase;
-        letter-spacing: -0.07em;
+        letter-spacing: 0.025em;
         line-height: 0.8;
-      }
+       font-weight: 900; }
       .mono {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'Inter', sans-serif;
         text-transform: uppercase;
         letter-spacing: 0.4em;
       }
@@ -256,9 +256,9 @@
           font-size: 8vw !important;
           margin-bottom: 120px !important;
           line-height: 0.95 !important;
-          letter-spacing: -0.05em !important;
+          letter-spacing: 0.025em;important;
           word-break: normal !important;
-        }
+         font-weight: 900; }
         .by-span {
           color: rgba(0, 0, 0, 0.08) !important;
         }
@@ -768,7 +768,7 @@
           font-size: 8vw !important;
           margin-bottom: 20px !important;
           line-height: 0.9 !important;
-        }
+         font-weight: 900; }
         .manifesto-text {
           font-size: 1.2rem !important;
           margin-top: 15px !important;
@@ -788,7 +788,7 @@
 
         .timeline-grid h2.synco {
           font-size: 2.5rem !important;
-        }
+         font-weight: 900; }
         .timeline-item h3 {
           font-size: 1.5rem !important;
         }
@@ -2052,3 +2052,4 @@
     <script src="/media/site-utils.js"></script>
   </body>
 </html>
+

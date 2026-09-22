@@ -36,7 +36,7 @@
               dark: '#020202',
               silver: { DEFAULT: '#E2E2E2', 400: '#A1A1A1', 700: '#202020' },
             },
-            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Inter', 'monospace'] },
           },
         },
       }
@@ -48,7 +48,7 @@
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500&family=Syncopate:wght@700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
       :root {
         --void: #030303;
@@ -65,10 +65,10 @@
         }
         h1.synco {
           font-size: clamp(6rem, 10vw, 11vw) !important;
-        }
+         font-weight: 900; }
         .paper-card .synco {
           font-size: clamp(1.8rem, 2vw, 2.2vw) !important;
-        }
+         font-weight: 900; }
       }
       @media screen and (max-width: 1400px) and (min-width: 1025px) {
         .max-w-\[1400px\] {
@@ -77,16 +77,16 @@
         }
         h1.synco {
           font-size: clamp(5rem, 9vw, 10vw) !important;
-        }
+         font-weight: 900; }
         h2.synco {
           font-size: clamp(2.5rem, 5vw, 4rem) !important;
-        }
+         font-weight: 900; }
         .paper-card {
           padding: 50px 0 !important;
         }
         .paper-card .synco {
           font-size: clamp(1.5rem, 1.8vw, 2vw) !important;
-        }
+         font-weight: 900; }
       }
       @media screen and (max-width: 1280px) and (min-width: 1025px) {
         .max-w-\[1400px\] {
@@ -95,16 +95,16 @@
         }
         h1.synco {
           font-size: clamp(4rem, 8vw, 9vw) !important;
-        }
+         font-weight: 900; }
         h2.synco {
           font-size: clamp(2rem, 4vw, 3.5rem) !important;
-        }
+         font-weight: 900; }
         .paper-card {
           padding: 40px 0 !important;
         }
         .paper-card .synco {
           font-size: clamp(1.2rem, 1.5vw, 1.8vw) !important;
-        }
+         font-weight: 900; }
         section {
           min-height: auto !important;
         }
@@ -117,16 +117,16 @@
         }
         h1.synco {
           font-size: 3rem !important;
-        }
+         font-weight: 900; }
         h2.synco {
           font-size: 1.8rem !important;
-        }
+         font-weight: 900; }
         .paper-card {
           padding: 30px 0 !important;
         }
         .paper-card .synco {
           font-size: 1.2rem !important;
-        }
+         font-weight: 900; }
         section {
           min-height: auto !important;
           padding: 60px 0 !important;
@@ -143,13 +143,13 @@
       }
 
       .synco {
-        font-family: 'Syncopate', sans-serif;
+        font-family: 'Inter', sans-serif;
         text-transform: uppercase;
-        letter-spacing: -0.05em;
+        letter-spacing: 0.025em;
         line-height: 0.8;
-      }
+       font-weight: 900; }
       .mono {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'Inter', sans-serif;
         text-transform: uppercase;
         letter-spacing: 0.4em;
       }
@@ -558,7 +558,7 @@
         line-height: 1.1;
         margin-bottom: 20px;
         color: var(--void);
-      }
+       font-weight: 900; }
       .paper-card .mono {
         font-size: 9px;
         color: rgba(0, 0, 0, 0.3);
@@ -949,3 +949,4 @@
     <script src="/media/site-utils.js"></script>
   </body>
 </html>
+

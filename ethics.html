@@ -31,7 +31,7 @@
             theme: {
                 extend: {
                     colors: { dark: '#020202', silver: { DEFAULT: '#E2E2E2', 400: '#A1A1A1', 700: '#202020' } },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Inter', 'monospace'] }
                 }
             }
         }
@@ -52,26 +52,26 @@
         @media screen and (max-width: 1400px) and (min-width: 1025px) {
             section { padding-left: 3vw !important; padding-right: 3vw !important; }
             .policy-card { padding-left: 25px !important; }
-            h1.synco, h2.synco { font-size: clamp(3rem, 6vw, 5rem) !important; }
+            h1.synco, h2.synco { font-size: clamp(3rem, 6vw, 5rem) !important;  font-weight: 900; }
         }
         @media screen and (max-width: 1280px) and (min-width: 1025px) {
             section { padding-left: 2.5vw !important; padding-right: 2.5vw !important; min-height: auto !important; }
             .policy-card { padding-left: 20px !important; }
-            h1.synco, h2.synco { font-size: clamp(2.5rem, 5vw, 4rem) !important; }
+            h1.synco, h2.synco { font-size: clamp(2.5rem, 5vw, 4rem) !important;  font-weight: 900; }
         }
 
         
         @media screen and (max-width: 1024px) and (min-width: 769px) {
             section { padding-left: 40px !important; padding-right: 40px !important; min-height: auto !important; }
             .policy-card { padding-left: 16px !important; }
-            h1.synco, h2.synco { font-size: 2rem !important; }
+            h1.synco, h2.synco { font-size: 2rem !important;  font-weight: 900; }
             .max-w-3xl { max-width: 100% !important; }
         }
 
         body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--void); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        .synco { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: -0.05em; line-height: 0.8; }
-        .mono { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.4em; }
+        .synco { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.025em; line-height: 0.8;  font-weight: 900; }
+        .mono { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.4em; }
         .chrome-text { background: linear-gradient(to bottom, #fff 30%, var(--alloy) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
 
@@ -849,7 +849,7 @@
         }
         .search-result-category {
             font-size: 0.625rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', sans-serif;
             color: rgba(255,255,255,0.3);
             text-transform: uppercase;
             letter-spacing: 0.2em;
@@ -1214,7 +1214,7 @@
                 overflow-wrap: break-word !important;
                 word-wrap: break-word !important;
                 hyphens: auto !important;
-            }
+             font-weight: 900; }
             
             #viewport h1.synco:not(:first-child) {
                  margin-top: 60px !important;
@@ -1225,7 +1225,7 @@
             #viewport h2.synco {
                 font-size: 2.5rem !important;
                 margin-bottom: 20px !important;
-            }
+             font-weight: 900; }
 
             .prose p {
                 font-size: 1rem !important;
@@ -1515,4 +1515,5 @@
     <script src="/media/site-utils.js"></script>
 </body>
 </html>
+
 
