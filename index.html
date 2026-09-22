@@ -1904,8 +1904,8 @@
         
         #news-highlights {
             padding: 100px 12px;
-            background: linear-gradient(180deg,#000 0%, #050505 100%);
-            color: #fff;
+            background: #ffffff !important;
+            color: #000;
         }
         #news-highlights .news-grid {
             display: grid;
@@ -2420,7 +2420,95 @@
             #neural-layer .space-y-10 > div + div { margin-top: 26px; }
             #neural-layer .mb-14 { margin-bottom: 34px; }
         }
-</style>
+
+        /* === APPLICATIONS / WHY AVZDAX / AFRICA VISION === */
+        .avz-new-section {
+            padding: 104px 22px 92px;
+            background-color: #020202;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .avz-new-section { padding: 172px 64px 150px; }
+        }
+        .avz-heading {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(27px, 7.2vw, 64px);
+            font-weight: 900;
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 64px;
+            color: #fff;
+        }
+        .avz-heading span { color: rgba(255,255,255,0.28); }
+        .avz-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.3em;
+            color: rgba(255,255,255,0.82);
+            margin-bottom: 12px;
+        }
+        @media (min-width: 1024px) { .avz-label { font-size: 15px; } }
+        .avz-card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (min-width: 1024px) { .avz-card-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+        .avz-card {
+            background: rgba(255,255,255,0.022);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 36px 32px;
+        }
+        .avz-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 17px;
+            line-height: 1.55;
+            color: rgba(255,255,255,0.55);
+            margin: 0;
+        }
+        @media (min-width: 1024px) { .avz-card p { font-size: 19px; } }
+        .avz-vision-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 17px;
+            line-height: 1.55;
+            color: rgba(255,255,255,0.55);
+            max-width: 800px;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+        @media (min-width: 1024px) { .avz-vision-text { font-size: 19px; } }
+        .avz-vision-closing {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 48px;
+            color: #fff;
+        }
+        .avz-new-section .avz-reveal-child {
+            opacity: 0; transform: translateY(22px);
+            transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+        }
+        .avz-new-section.is-visible .avz-reveal-child { opacity: 1; transform: none; }
+        .avz-new-section.is-visible .avz-reveal-child:nth-child(2) { transition-delay: .09s; }
+        .avz-new-section.is-visible .avz-reveal-child:nth-child(3) { transition-delay: .18s; }
+        .avz-new-section.is-visible .avz-reveal-child:nth-child(4) { transition-delay: .27s; }
+        .avz-new-section.is-visible .avz-reveal-child:nth-child(5) { transition-delay: .36s; }
+        .avz-new-section.is-visible .avz-reveal-child:nth-child(6) { transition-delay: .45s; }
+        @media (prefers-reduced-motion: reduce) {
+            .avz-new-section .avz-reveal-child { animation: none; opacity: 1; transform: none; }
+        }
+
+    </style>
 </head>
 <body>
 
@@ -2614,6 +2702,31 @@
             </div>
 
             <p class="platform-close">A prediction is only as good as the chain behind it. <strong>We build the whole chain.</strong></p>
+        </div>
+    </section>
+
+    
+    <section id="applications" class="avz-new-section border-t border-white/5">
+        <div class="max-w-[1200px] mx-auto">
+            <h2 class="avz-heading avz-reveal-child">The hour before an incident<br><span>is where we work.</span></h2>
+            <div class="avz-card-grid">
+                <div class="avz-card avz-reveal-child">
+                    <p class="avz-label">Perimeter</p>
+                    <p>A vehicle circles a facility three times over two days. Individually, three ordinary passes. Correlated, it is reconnaissance, flagged before the approach.</p>
+                </div>
+                <div class="avz-card avz-reveal-child">
+                    <p class="avz-label">Cargo in motion</p>
+                    <p>A truck stops 4km off its cleared route at 02:40. Speed, geofence and driver behaviour combine into a hijack alert while the load is still recoverable.</p>
+                </div>
+                <div class="avz-card avz-reveal-child">
+                    <p class="avz-label">Facility access</p>
+                    <p>One credential is used at two doors 900m apart within 90 seconds. The badge is cloned, and the system knows before the second door opens.</p>
+                </div>
+                <div class="avz-card avz-reveal-child">
+                    <p class="avz-label">Power continuity</p>
+                    <p>The grid drops at a remote site. Arclight holds the chain live, so the blind window attackers rely on never opens.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -3310,41 +3423,99 @@
     </script>
 
     
-    <section id="news-highlights">
-        <div class="max-w-[1400px] mx-auto">
-            
-            <h2 class="text-[clamp(2.6rem,6vw,4rem)] font-black uppercase tracking-tighter text-white leading-none text-center">LATEST INTELLIGENCE</h2>
+    
 
-            <div class="news-grid" style="will-change: transform, opacity;">
-                <a href="/news" class="featured group">
-                    <img src="/media/trion-display.webp" alt="Trion Sensing Hardware" loading="eager">
-                    <div class="content">
-                        <h3>Why Surveillance Alone Was Never Enough</h3>
-                        <p>The presence of a camera does not constitute the presence of safety. We must bridge the gap between sight and understanding.</p>
-                        <a href="/news" class="cta"></a>
-                    </div>
-                </a>
-
-                <div class="side-grid">
-                    <a href="/news" class="side-card">
-                        <img src="/media/news-neural-mesh.webp" alt="Neural Mesh Mapping" loading="lazy" decoding="async">
-                        <div class="info">
-                            <h4>Neural Networks and the Limits of Threat Prediction</h4>
-                            <p>Predictive accuracy is often mistaken for foresight. True intelligence requires understanding the boundaries of algorithmic certainty.</p>
-                        </div>
-                    </a>
-                    <a href="/news" class="side-card">
-                        <img src="/media/industry-energy.webp" alt="Energy Infrastructure Defense" loading="lazy" decoding="async">
-                        <div class="info">
-                            <h4>Why Energy Infrastructure Cannot Be Secured Reactively</h4>
-                            <p>When failure is catastrophic, reaction is irrelevant. Critical systems demand preemptive defense architectures.</p>
-                        </div>
-                    </a>
+    
+    <section id="why-avzdax" class="avz-new-section border-t border-white/5">
+        <div class="max-w-[1200px] mx-auto">
+            <h2 class="avz-heading avz-reveal-child">Others sell you hardware.<br><span>We own the whole chain.</span></h2>
+            <div class="avz-card-grid">
+                <div class="avz-card avz-reveal-child">
+                    <p class="avz-label">Built here, for here</p>
+                    <p>Engineered in Nigeria for Nigerian conditions: unstable power, dust, heat, thin bandwidth. Not imported hardware adapted after the fact.</p>
+                </div>
+                <div class="avz-card avz-reveal-child">
+                    <p class="avz-label">One vendor, one chain</p>
+                    <p>Sensing, prediction, verification and response are all ours. No fragmented integration projects, and no suppliers blaming each other during critical failures.</p>
+                </div>
+                <div class="avz-card avz-reveal-child">
+                    <p class="avz-label">Sovereign by design</p>
+                    <p>Critical infrastructure data stays under national control. No foreign dependency on the systems that protect the country.</p>
+                </div>
+                <div class="avz-card avz-reveal-child">
+                    <p class="avz-label">Humans in the loop</p>
+                    <p>Every prediction is confirmed by our own analysts before it escalates. Machine speed, human judgement.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="mt-12 text-center">
-                <a href="/news" class="inline-block px-12 py-4 border-2 border-white bg-white text-black hover:bg-transparent hover:text-white text-[11px] font-mono uppercase tracking-[0.3em] transition-all rounded-lg">Explore Newsroom</a>
+
+    <section id="africa-vision" class="avz-new-section border-t border-white/5">
+        <div class="max-w-[1200px] mx-auto flex flex-col items-center text-center">
+            <h2 class="avz-heading avz-reveal-child">Africa should not import<br><span>its own security.</span></h2>
+            <p class="avz-vision-text avz-reveal-child">The continent's critical infrastructure (ports, grids, pipelines, and banks) increasingly runs on predictive systems built elsewhere, tuned for elsewhere, and dependent on elsewhere.</p>
+            <p class="avz-vision-text avz-reveal-child">AVZDAX is the alternative. Predictive intelligence designed for African operating conditions, owned and maintained on the continent, with the engineering capability kept here.</p>
+            <p class="avz-vision-closing avz-reveal-child">Predict. Prevent. Protect.</p>
+        </div>
+    </section>
+
+
+    <section id="news-highlights" style="background-color: #ffffff; color: #000; padding: 100px 24px 60px;">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-[clamp(2.6rem,6vw,4rem)] font-black uppercase tracking-tighter text-black leading-none text-center mb-16" style="font-family: 'Inter', sans-serif;">LATEST INTELLIGENCE</h2>
+            
+            <style>
+                #news-highlights .news-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+                #news-highlights .news-card { display: flex; flex-direction: column; background: #ffffff; border-radius: 8px; overflow: hidden; text-decoration: none; color: #000; }
+                #news-highlights .news-card img { width: 100%; height: 320px; object-fit: cover; border-radius: 8px; margin-bottom: 24px; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+                #news-highlights .news-card:hover img { transform: scale(1.03); }
+                #news-highlights .news-label-container { margin-bottom: 16px; padding-bottom: 8px; display: flex; align-items: flex-end; }
+                #news-highlights .news-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #000; display: inline-block; border-bottom: 2px solid #000; padding-bottom: 2px; }
+                #news-highlights .news-title { font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(20px, 2vw, 24px); line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.01em; color: #000; }
+                #news-highlights .news-desc { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #666; font-weight: 400; }
+                @media (max-width: 1024px) {
+                    #news-highlights .news-grid-3 { grid-template-columns: 1fr; gap: 40px; }
+                    #news-highlights .news-card img { height: 260px; }
+                }
+            </style>
+
+            <div class="news-grid-3">
+                <a href="/news" class="news-card">
+                    <img src="/media/trion-display.webp" alt="Trion Sensing Hardware" loading="eager">
+                    <div>
+                        <div class="news-label-container">
+                            <span class="news-label">INTELLIGENCE</span>
+                        </div>
+                        <h3 class="news-title">Why Surveillance Alone Was Never Enough</h3>
+                        <p class="news-desc">Cameras only record events after the fact. We build intelligent systems that analyze context, enabling operators to act before an incident materializes.</p>
+                    </div>
+                </a>
+                
+                <a href="/news" class="news-card">
+                    <img src="/media/news-neural-mesh.webp" alt="Neural Mesh Mapping" loading="lazy" decoding="async">
+                    <div>
+                        <div class="news-label-container">
+                            <span class="news-label">RESEARCH</span>
+                        </div>
+                        <h3 class="news-title">Neural Networks and the Limits of Threat Prediction</h3>
+                        <p class="news-desc">Predictive accuracy is often mistaken for foresight. True intelligence requires understanding the boundaries of algorithmic certainty.</p>
+                    </div>
+                </a>
+                
+                <a href="/news" class="news-card">
+                    <img src="/media/industry-energy.webp" alt="Energy Infrastructure Defense" loading="lazy" decoding="async">
+                    <div>
+                        <div class="news-label-container">
+                            <span class="news-label">INFRASTRUCTURE</span>
+                        </div>
+                        <h3 class="news-title">The Sovereign Defense Imperative for 2030</h3>
+                        <p class="news-desc">When failure is catastrophic, reaction is irrelevant. Critical systems demand preemptive defense architectures.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="mt-16 text-center">
+                <a href="/news" class="inline-flex items-center justify-center px-12 py-4 border-2 border-black bg-transparent text-black hover:bg-black hover:text-white text-[11px] uppercase tracking-[0.3em] transition-all rounded-lg gap-3" style="font-family: 'Inter', sans-serif; font-weight: 800;">EXPLORE NEWSROOM <span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span></a>
             </div>
         </div>
     </section>
@@ -3567,5 +3738,22 @@
             reveal.observe(platform);
         })();
     </script>
+
+    <script>
+    (function() {
+        var sections = document.querySelectorAll('.avz-new-section');
+        if (!sections.length) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        sections.forEach(function(s) { observer.observe(s); });
+    })();
+    </script>
+
 </body>
 </html>
