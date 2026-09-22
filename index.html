@@ -280,7 +280,7 @@
         .chain-stage { display: flex; flex-direction: column; }
         .stage-tag {
             display: block;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', sans-serif;
             font-size: var(--tag-size);
             line-height: 1.2;
             font-weight: 700;
@@ -375,7 +375,7 @@
         }
         .foundation-tag {
             display: block;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', sans-serif;
             font-size: 10px;
             letter-spacing: 0.26em;
             text-transform: uppercase;
@@ -447,7 +447,7 @@
             }
             .chain-link::before {
                 content: 'Sense';
-                font-family: 'JetBrains Mono', monospace;
+                font-family: 'Inter', sans-serif;
                 font-size: var(--tag-size);
                 line-height: 1.2;
                 font-weight: 700;
@@ -1326,7 +1326,7 @@
         }
         .search-result-category {
             font-size: 0.625rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', sans-serif;
             color: rgba(255,255,255,0.3);
             text-transform: uppercase;
             letter-spacing: 0.2em;
@@ -1490,7 +1490,7 @@
             letter-spacing: 0.1em;
             color: rgba(0,0,0,0.6);
             margin-bottom: 0.5rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', sans-serif;
         }
 
         .featured h3 {
@@ -1568,7 +1568,7 @@
             letter-spacing: 0.1em;
             color: rgba(0,0,0,0.6);
             margin-bottom: 0.5rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', sans-serif;
         }
 
         .side-card h4 {
@@ -2444,7 +2444,7 @@
         }
         .avz-heading span { color: rgba(255,255,255,0.28); }
         .avz-label {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
             text-transform: uppercase;
             font-size: 13px;
@@ -2986,7 +2986,7 @@
 
             
             <div class="industries-cta">
-                <a href="/industries" class="cta-btn">EXPLORE ALL INDUSTRIES <span class="ml-2">→</span></a>
+                <a href="/industries" class="inline-flex items-center justify-center px-12 py-4 border-2 border-black bg-transparent text-black hover:bg-black hover:text-white text-[11px] uppercase tracking-[0.3em] transition-all rounded-lg gap-3" style="font-family: 'Inter', sans-serif; font-weight: 800;">EXPLORE ALL INDUSTRIES <span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span></a>
             </div>
 
         </div>
@@ -3034,7 +3034,7 @@
             }
 
             .obex-fleet-logo {
-                font-family: 'Syncopate', sans-serif !important;
+                font-family: 'Inter', sans-serif !important;
                 font-weight: 900 !important;
                 font-style: italic !important;
                 letter-spacing: -0.05em !important;
@@ -3068,7 +3068,7 @@
             }
 
             .industries-title {
-                font-family: 'Syncopate', sans-serif;
+                font-family: 'Inter', sans-serif;
                 font-size: clamp(2.5rem, 6vw, 4.2rem);
                 font-weight: 800;
                 color: #000; /* Fixed: was white on white background */
@@ -3140,7 +3140,7 @@
             }
 
             .card-tag {
-                font-family: 'JetBrains Mono', monospace;
+                font-family: 'Inter', sans-serif;
                 font-size: 10px;
                 color: rgba(255,255,255,0.6);
                 text-transform: uppercase;
@@ -3150,7 +3150,7 @@
             }
 
             .industry-card h3 {
-                font-family: 'Syncopate', sans-serif;
+                font-family: 'Inter', sans-serif;
                 font-size: 1.8rem;
                 font-weight: 800;
                 color: #fff;
@@ -3173,7 +3173,7 @@
                 position: absolute;
                 top: 40px;
                 right: 40px;
-                font-family: 'JetBrains Mono', monospace;
+                font-family: 'Inter', sans-serif;
                 font-size: 14px;
                 color: rgba(255,255,255,0.25);
                 font-weight: 600;
@@ -3528,14 +3528,14 @@
     </section>
 
 
-    <section id="news-highlights" style="background-color: #ffffff; color: #000; padding: 100px 24px 60px;">
+    <section id="news-highlights" style="background-color: #ffffff; color: #000; padding: 80px 24px 60px;">
         <div class="max-w-[1400px] mx-auto">
-            <h2 class="text-[clamp(2.6rem,6vw,4rem)] font-black uppercase tracking-tighter text-black leading-none text-center mb-16" style="font-family: 'Inter', sans-serif;">LATEST INTELLIGENCE</h2>
+            <h2 class="industries-title" style="text-align: center; margin-bottom: 48px;">LATEST<br><span>INTELLIGENCE</span></h2>
             
             <style>
                 #news-highlights .news-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
                 #news-highlights .news-card { display: flex; flex-direction: column; background: #ffffff; border-radius: 8px; overflow: hidden; text-decoration: none; color: #000; }
-                #news-highlights .news-card img { width: 100%; height: 320px; object-fit: cover; border-radius: 8px; margin-bottom: 24px; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+                #news-highlights .news-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
                 #news-highlights .news-card:hover img { transform: scale(1.03); }
                 #news-highlights .news-label-container { margin-bottom: 16px; padding-bottom: 8px; display: flex; align-items: flex-end; }
                 #news-highlights .news-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #000; display: inline-block; border-bottom: 2px solid #000; padding-bottom: 2px; }
@@ -3581,7 +3581,7 @@
                     </div>
                 </a>
             </div>
-            <div class="mt-16 text-center">
+            <div class="mt-10 text-center">
                 <a href="/news" class="inline-flex items-center justify-center px-12 py-4 border-2 border-black bg-transparent text-black hover:bg-black hover:text-white text-[11px] uppercase tracking-[0.3em] transition-all rounded-lg gap-3" style="font-family: 'Inter', sans-serif; font-weight: 800;">EXPLORE NEWSROOM <span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span></a>
             </div>
         </div>
