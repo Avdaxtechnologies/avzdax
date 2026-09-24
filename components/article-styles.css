@@ -158,105 +158,82 @@
   .article-hero img { max-height: min(320px, 52vh); }
 }
 
-.article-share {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 30px;
-}
-
-.share-btn,
-.share-copy {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  min-height: 42px;
-  padding: 0 18px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 999px;
-  background: transparent;
-  color: #000;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.share-copy { width: 42px; padding: 0; }
-
-.share-btn:hover,
-.share-copy:hover { background: #000; border-color: #000; color: #fff; }
-
-.share-btn svg,
-.share-copy svg {
-  width: 17px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.share-said {
-  font-family: 'Inter', sans-serif;
-  font-size: 13.5px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-@media (max-width: 640px) {
-  .article-share { margin-bottom: 36px; }
-  .share-btn { flex: 1; }
-}
-
 .article-bottom-share {
-  margin-top: 72px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 44px;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.article-bottom-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.share-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  color: rgba(0, 0, 0, 0.45);
-  text-transform: uppercase;
-}
-
-.share-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: #000;
-  margin: 0;
+  align-items: center;
 }
 
 .article-bottom-actions {
-  display: flex;
+  display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 12px;
 }
 
-.share-linkedin-btn {
-  background: #000 !important;
-  color: #fff !important;
-  border-color: #000 !important;
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 20px;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
   text-decoration: none !important;
+  transition: background 0.18s ease, transform 0.18s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
-.share-linkedin-btn:hover {
-  background: #222 !important;
-  border-color: #222 !important;
+.share-btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: #fff;
+  flex-shrink: 0;
+}
+
+.share-btn:hover {
+  background: #262626;
+  transform: translateY(-1px);
+}
+
+.share-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .article-bottom-share {
+    margin-top: 32px;
+  }
+  .article-bottom-actions {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    width: auto !important;
+  }
+  .share-btn {
+    height: 38px;
+    padding: 0 15px;
+    font-size: 12px;
+    gap: 6px;
+    flex: 0 0 auto;
+  }
+  .share-btn svg {
+    width: 14px;
+    height: 14px;
+  }
 }

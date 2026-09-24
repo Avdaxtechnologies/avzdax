@@ -96,91 +96,68 @@ function articlePage(post) {
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"></path><path d="m11 6-6 6 6 6"></path></svg>
         </a>
         <h1 class="article-title">${post.headline || title}</h1>
-        <div class="article-share">
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="share-btn share-linkedin" aria-label="Share on LinkedIn" title="Share on LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.2a1.64 1.64 0 0 0-1.64 1.63c0 .91.73 1.64 1.64 1.64s1.63-.73 1.63-1.64A1.64 1.64 0 0 0 7.83 6.2Z"/></svg>
-                LinkedIn
-            </a>
-            <button type="button" class="share-btn" id="share-post">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"></circle><circle cx="6" cy="12" r="2.6"></circle><circle cx="18" cy="19" r="2.6"></circle><path d="M8.4 10.8 15.6 6.9M8.4 13.2l7.2 3.9"></path></svg>
-                Share
-            </button>
-            <button type="button" class="share-copy" id="copy-link" aria-label="Copy short link" title="Copy short link">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
-            </button>
-            <span class="share-said" id="share-said" hidden></span>
-        </div>
 ${hero}
         <div class="article-body">${bodyContent}</div>
 
         <div class="article-bottom-share">
-            <div class="article-bottom-meta">
-                <span class="share-tag">SHARE INTELLIGENCE</span>
-                <p class="share-subtitle">Disseminate this announcement</p>
-            </div>
             <div class="article-bottom-actions">
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="share-btn share-linkedin-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.2a1.64 1.64 0 0 0-1.64 1.63c0 .91.73 1.64 1.64 1.64s1.63-.73 1.63-1.64A1.64 1.64 0 0 0 7.83 6.2Z"/></svg>
-                    Share on LinkedIn
-                </a>
-                <button type="button" class="share-btn" id="copy-bottom-link">
-                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
+                <button type="button" class="share-btn" id="copy-bottom-link" aria-label="Copy Link">
+                    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
                     <span id="copy-bottom-label">Copy Link</span>
                 </button>
-                <button type="button" class="share-btn" id="share-bottom-post">
-                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.6"></circle><circle cx="6" cy="12" r="2.6"></circle><circle cx="18" cy="19" r="2.6"></circle><path d="M8.4 10.8 15.6 6.9M8.4 13.2l7.2 3.9"></path></svg>
-                    Share
+                <button type="button" class="share-btn" id="share-bottom-post" aria-label="Share">
+                    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"></circle><circle cx="6" cy="12" r="2.6"></circle><circle cx="18" cy="19" r="2.6"></circle><path d="M8.4 10.8 15.6 6.9M8.4 13.2l7.2 3.9"></path></svg>
+                    <span id="share-bottom-label">Share</span>
                 </button>
             </div>
-            <span class="share-said" id="share-bottom-said" hidden></span>
         </div>
     </div>
 </main>
 <script>
 (function () {
     var link = '${url}'
-    var said = document.getElementById('share-said')
-    var bottomSaid = document.getElementById('share-bottom-said')
-    var timer, bottomTimer
+    var copyLabel = document.getElementById('copy-bottom-label')
+    var shareLabel = document.getElementById('share-bottom-label')
+    var copyTimer, shareTimer
 
-    function say(el, t, message) {
-        if (!el) return
-        el.textContent = message
-        el.hidden = false
-        clearTimeout(t)
-        return setTimeout(function () { el.hidden = true }, 2600)
-    }
-
-    function copy(el, t) {
-        if (!navigator.clipboard) return say(el, t, 'Copy: ' + link)
-        navigator.clipboard.writeText(link).then(function () { say(el, t, 'Link copied') },
-            function () { say(el, t, 'Could not copy') })
-    }
-
-    var shareTop = document.getElementById('share-post')
-    if (shareTop) {
-        shareTop.addEventListener('click', function () {
-            if (!navigator.share) return copy(said, timer)
-            navigator.share({ title: document.title, url: link }).catch(function () {})
+    function copy() {
+        if (!navigator.clipboard) {
+            prompt('Copy link:', link)
+            return
+        }
+        navigator.clipboard.writeText(link).then(function () {
+            if (copyLabel) {
+                copyLabel.textContent = 'Copied!'
+                clearTimeout(copyTimer)
+                copyTimer = setTimeout(function () { copyLabel.textContent = 'Copy Link' }, 2200)
+            }
+        }, function () {
+            prompt('Copy link:', link)
         })
-    }
-
-    var copyTop = document.getElementById('copy-link')
-    if (copyTop) {
-        copyTop.addEventListener('click', function () { copy(said, timer) })
     }
 
     var shareBottom = document.getElementById('share-bottom-post')
     if (shareBottom) {
         shareBottom.addEventListener('click', function () {
-            if (!navigator.share) return copy(bottomSaid, bottomTimer)
-            navigator.share({ title: document.title, url: link }).catch(function () {})
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: link }).catch(function () {})
+            } else {
+                navigator.clipboard.writeText(link).then(function () {
+                    if (shareLabel) {
+                        shareLabel.textContent = 'Copied!'
+                        clearTimeout(shareTimer)
+                        shareTimer = setTimeout(function () { shareLabel.textContent = 'Share' }, 2200)
+                    }
+                }, function () {
+                    prompt('Copy link:', link)
+                })
+            }
         })
     }
 
     var copyBottom = document.getElementById('copy-bottom-link')
     if (copyBottom) {
-        copyBottom.addEventListener('click', function () { copy(bottomSaid, bottomTimer) })
+        copyBottom.addEventListener('click', copy)
     }
 })()
 </script>`
