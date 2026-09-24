@@ -580,6 +580,16 @@ nav.nav-inverted .tactical-search-btn svg {
     transform: scale(1) rotate(0deg) !important;
   }
 
+  /* Neutralize legacy inline transforms */
+  .mobile-menu-toggle-modern.open .bar:nth-child(1),
+  .mobile-menu-toggle-modern.open .bar:nth-child(2),
+  .mobile-menu-toggle-modern.open .bar:nth-child(3),
+  .mobile-menu-toggle-modern .bar:nth-child(1),
+  .mobile-menu-toggle-modern .bar:nth-child(2),
+  .mobile-menu-toggle-modern .bar:nth-child(3) {
+    transform: none !important;
+  }
+
   .mobile-nav-logo {
     display: flex;
     align-items: center;

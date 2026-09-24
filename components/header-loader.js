@@ -1,6 +1,7 @@
 ;(function () {
-  const HEADER_HTML_PATH = '/components/header.html'
-  const HEADER_CSS_PATH = '/components/header-styles.css'
+  const HEADER_VERSION = 'v20260924_3'
+  const HEADER_HTML_PATH = '/components/header.html?v=' + HEADER_VERSION
+  const HEADER_CSS_PATH = '/components/header-styles.css?v=' + HEADER_VERSION
 
   function loadHeaderStyles() {
     if (document.querySelector(`link[href="${HEADER_CSS_PATH}"]`)) return Promise.resolve()
