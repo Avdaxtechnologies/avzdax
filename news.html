@@ -733,20 +733,20 @@
         
         
         .r-header {
-            margin-bottom: 140px;
+            margin-bottom: 48px;
             border-bottom: 2px solid #000;
-            padding-bottom: 80px;
-            max-width: 1100px;
+            padding-bottom: 32px;
+            max-width: 1000px;
         }
         .r-title {
             font-family: 'Inter', sans-serif;
-            font-size: 7vw;
-            font-weight: 900;
-            line-height: 0.85;
-            margin-bottom: 20px;
+            font-size: clamp(28px, 3.2vw, 44px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
             color: #000;
-            letter-spacing: 0.025em;
-            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            text-transform: none;
         }
         .r-hero-image {
             width: 100%;
@@ -876,8 +876,8 @@
 
             
             .reader-container { padding: 120px 24px 80px; }
-            .r-header { margin-bottom: 60px; padding-bottom: 40px; }
-            .r-title { font-size: 12vw; }
+            .r-header { margin-bottom: 40px; padding-bottom: 24px; }
+            .r-title { font-size: clamp(24px, 4vw, 34px); line-height: 1.25; letter-spacing: -0.01em; text-transform: none; }
             .r-content-grid { gap: 40px; }
             .r-main-text, .r-side-meta { grid-column: span 12; }
             .r-body { font-size: 18px; }
@@ -931,8 +931,8 @@
             .reader-container { padding: 100px 20px 60px; }
             .reader-nav-fixed { height: 70px; padding: 0 16px; }
             .reader-back-btn { font-size: 8px; gap: 10px; }
-            .r-header { margin-bottom: 40px; padding-bottom: 30px; }
-            .r-title { font-size: 28px; line-height: 1.1; letter-spacing: 0.025em; }
+            .r-header { margin-bottom: 32px; padding-bottom: 20px; }
+            .r-title { font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; text-transform: none; }
             .r-content-grid { display: block; }
             .r-main-text, .r-side-meta { width: 100%; }
             .r-body { font-size: 16px; line-height: 1.7; }
@@ -967,7 +967,7 @@
             .filter-nav { gap: 12px; padding-right: 30px !important; }
             .f-item { font-size: 9px !important; }
 
-            .r-title { font-size: 22px; }
+            .r-title { font-size: 20px; line-height: 1.3; text-transform: none; }
             .r-body { font-size: 15px; }
             .r-body p { margin-bottom: 20px; }
             .r-body h3 { font-size: 20px; margin: 32px 0 14px; }
@@ -1196,7 +1196,7 @@
         const intelDB = {};
 
         function buildReaderHtml(post) {
-            const headline = post.headline || escapeText(post.title) + '.';
+            const headline = post.headline || escapeText(post.title);
             return `
                     <div class="r-header">
                         <h1 class="r-title">${headline}</h1>
