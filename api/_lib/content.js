@@ -102,9 +102,13 @@ function normalise(input, existing) {
   const keepsHeadline = existing && existing.title === title
   const headline = cleanHeadline(input.headline) || (keepsHeadline ? existing.headline : null)
 
+  const rawShortSlug = input.shortSlug ? slugify(input.shortSlug) : (existing ? existing.shortSlug : null)
+  const shortSlug = rawShortSlug || (slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' ? 'leadership' : null)
+
   return {
     post: {
       slug,
+      shortSlug,
       title,
       excerpt: cleanText(input.excerpt),
       category: input.category,

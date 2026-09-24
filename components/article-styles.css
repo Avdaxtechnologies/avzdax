@@ -210,3 +210,53 @@
   .article-share { margin-bottom: 36px; }
   .share-btn { flex: 1; }
 }
+
+.article-bottom-share {
+  margin-top: 72px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.article-bottom-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.share-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(0, 0, 0, 0.45);
+  text-transform: uppercase;
+}
+
+.share-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.article-bottom-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.share-linkedin-btn {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #000 !important;
+  text-decoration: none !important;
+}
+
+.share-linkedin-btn:hover {
+  background: #222 !important;
+  border-color: #222 !important;
+}

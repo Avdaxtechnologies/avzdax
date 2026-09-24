@@ -498,12 +498,22 @@ function fillEditor(post) {
   $('f-linklabel').value = post.linkLabel || ''
   $('f-content').innerHTML = post.content || ''
 
+  const short = post.shortSlug || (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' ? 'leadership' : '')
+  $('f-slug').value = short
+  updateSlugPreview(short || post.slug)
+
   setCover(post.image || null)
   applyKind()
   state.dirty = false
 
   $('save-state').textContent = post.slug ? 'Saved' : ''
   $('editor-delete').classList.toggle('hidden', !post.slug)
+}
+
+function updateSlugPreview(slug) {
+  const p = $('slug-preview')
+  if (!p) return
+  p.textContent = slug ? `https://www.avzdax.com/news/${slug}` : 'https://www.avzdax.com/news/...'
 }
 
 async function openEditor(slug, fromHistory) {
@@ -541,6 +551,8 @@ function restoreWorking() {
   $('f-external').value = kept.externalUrl || ''
   $('f-linklabel').value = kept.linkLabel || ''
   $('f-content').innerHTML = kept.content || ''
+  $('f-slug').value = kept.shortSlug || ''
+  updateSlugPreview(kept.shortSlug || kept.slug)
 
   state.coverUrl = kept.image || null
   setCover(state.coverUrl)
@@ -557,6 +569,7 @@ function collect() {
 
   return {
     slug: state.editing || undefined,
+    shortSlug: $('f-slug').value.trim() || undefined,
     title,
     excerpt: $('f-excerpt').value.trim(),
     category: $('f-category').value,
@@ -613,11 +626,29 @@ const noteChange = () => {
   keeping = setTimeout(() => keepWorking(collect()), 600)
 }
 
-;['f-title', 'f-excerpt', 'f-status', 'f-category', 'f-layout', 'f-kind', 'f-video', 'f-external', 'f-linklabel']
+;['f-title', 'f-excerpt', 'f-status', 'f-category', 'f-layout', 'f-kind', 'f-video', 'f-external', 'f-linklabel', 'f-slug']
   .forEach((id) => {
-    $(id).addEventListener('input', noteChange)
+    $(id).addEventListener('input', () => {
+      if (id === 'f-slug') updateSlugPreview($('f-slug').value.trim() || state.editing)
+      noteChange()
+    })
     $(id).addEventListener('change', noteChange)
   })
+
+$('editor-copy-link').addEventListener('click', () => {
+  const custom = $('f-slug').value.trim()
+  const current = custom || (state.editing === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' ? 'leadership' : state.editing)
+  if (!current) {
+    flash('Save the post or enter a slug first.')
+    return
+  }
+  const url = `https://www.avzdax.com/news/${current}`
+  navigator.clipboard.writeText(url).then(() => {
+    flash('Short link copied for LinkedIn: ' + url)
+  }).catch(() => {
+    prompt('Copy link:', url)
+  })
+})
 
 $('f-content').addEventListener('input', noteChange)
 
@@ -664,6 +695,23 @@ const coarse = window.matchMedia('(hover: none)')
 // Shown only once a selection has settled. Repositioning while the pointer is still down
 // made dragging jump, and on a phone the toolbar sits below the text so it does not fight
 // with the copy and paste bubble the operating system puts above it.
+let savedRange = null
+
+function saveCurrentRange() {
+  const selection = window.getSelection()
+  if (selection && selection.rangeCount > 0 && !selection.isCollapsed && editable.contains(selection.anchorNode)) {
+    savedRange = selection.getRangeAt(0).cloneRange()
+  }
+}
+
+function restoreCurrentRange() {
+  if (!savedRange) return
+  editable.focus()
+  const selection = window.getSelection()
+  selection.removeAllRanges()
+  selection.addRange(savedRange)
+}
+
 function placeToolbar() {
   const selection = window.getSelection()
 
@@ -676,6 +724,8 @@ function placeToolbar() {
   ) {
     return hideToolbar()
   }
+
+  saveCurrentRange()
 
   const rect = selection.getRangeAt(0).getBoundingClientRect()
   if (!rect.width && !rect.height) return hideToolbar()
@@ -721,21 +771,27 @@ window.addEventListener('scroll', hideToolbar, { passive: true })
 selBar.addEventListener('mousedown', (event) => {
   if (event.target.closest('button')) event.preventDefault()
 })
-selBar.addEventListener('touchstart', (event) => {
+selBar.addEventListener('pointerdown', (event) => {
   if (event.target.closest('button')) event.preventDefault()
-}, { passive: false })
+})
 
 document.querySelectorAll('#toolbar [data-cmd]').forEach((button) => {
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault()
+    restoreCurrentRange()
     document.execCommand(button.dataset.cmd, false, null)
+    saveCurrentRange()
     noteChange()
     placeToolbar()
   })
 })
 
 document.querySelectorAll('#toolbar [data-block]').forEach((button) => {
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault()
+    restoreCurrentRange()
     document.execCommand('formatBlock', false, button.dataset.block)
+    saveCurrentRange()
     noteChange()
     placeToolbar()
   })

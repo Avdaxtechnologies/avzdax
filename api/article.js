@@ -49,8 +49,12 @@ ${body}
 function articlePage(post) {
   const title = escapeHtml(post.title)
   const description = escapeHtml(post.excerpt || post.title)
-  const url = `${SITE}/news/${post.slug}`
+  const primarySlug = (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' || post.shortSlug === 'leadership')
+    ? 'leadership'
+    : (post.shortSlug || post.slug)
+  const url = `${SITE}/news/${primarySlug}`
   const image = absolute(post.image) || `${SITE}/media/avzdax-logo.png`
+  const bodyContent = (post.content || '').replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>')
 
   const schema = {
     '@context': 'https://schema.org',
@@ -93,44 +97,91 @@ function articlePage(post) {
         </a>
         <h1 class="article-title">${post.headline || title}</h1>
         <div class="article-share">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="share-btn share-linkedin" aria-label="Share on LinkedIn" title="Share on LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.2a1.64 1.64 0 0 0-1.64 1.63c0 .91.73 1.64 1.64 1.64s1.63-.73 1.63-1.64A1.64 1.64 0 0 0 7.83 6.2Z"/></svg>
+                LinkedIn
+            </a>
             <button type="button" class="share-btn" id="share-post">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"></circle><circle cx="6" cy="12" r="2.6"></circle><circle cx="18" cy="19" r="2.6"></circle><path d="M8.4 10.8 15.6 6.9M8.4 13.2l7.2 3.9"></path></svg>
                 Share
             </button>
-            <button type="button" class="share-copy" id="copy-link" aria-label="Copy link" title="Copy link">
+            <button type="button" class="share-copy" id="copy-link" aria-label="Copy short link" title="Copy short link">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
             </button>
             <span class="share-said" id="share-said" hidden></span>
         </div>
 ${hero}
-        <div class="article-body">${post.content}</div>
+        <div class="article-body">${bodyContent}</div>
+
+        <div class="article-bottom-share">
+            <div class="article-bottom-meta">
+                <span class="share-tag">SHARE INTELLIGENCE</span>
+                <p class="share-subtitle">Disseminate this announcement</p>
+            </div>
+            <div class="article-bottom-actions">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="share-btn share-linkedin-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.2a1.64 1.64 0 0 0-1.64 1.63c0 .91.73 1.64 1.64 1.64s1.63-.73 1.63-1.64A1.64 1.64 0 0 0 7.83 6.2Z"/></svg>
+                    Share on LinkedIn
+                </a>
+                <button type="button" class="share-btn" id="copy-bottom-link">
+                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
+                    <span id="copy-bottom-label">Copy Link</span>
+                </button>
+                <button type="button" class="share-btn" id="share-bottom-post">
+                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.6"></circle><circle cx="6" cy="12" r="2.6"></circle><circle cx="18" cy="19" r="2.6"></circle><path d="M8.4 10.8 15.6 6.9M8.4 13.2l7.2 3.9"></path></svg>
+                    Share
+                </button>
+            </div>
+            <span class="share-said" id="share-bottom-said" hidden></span>
+        </div>
     </div>
 </main>
 <script>
 (function () {
-    var link = window.location.href
+    var link = '${url}'
     var said = document.getElementById('share-said')
-    var timer
+    var bottomSaid = document.getElementById('share-bottom-said')
+    var timer, bottomTimer
 
-    function say(message) {
-        said.textContent = message
-        said.hidden = false
-        clearTimeout(timer)
-        timer = setTimeout(function () { said.hidden = true }, 2600)
+    function say(el, t, message) {
+        if (!el) return
+        el.textContent = message
+        el.hidden = false
+        clearTimeout(t)
+        return setTimeout(function () { el.hidden = true }, 2600)
     }
 
-    function copy() {
-        if (!navigator.clipboard) return say('Copy the address from the bar above')
-        navigator.clipboard.writeText(link).then(function () { say('Link copied') },
-            function () { say('Could not copy') })
+    function copy(el, t) {
+        if (!navigator.clipboard) return say(el, t, 'Copy: ' + link)
+        navigator.clipboard.writeText(link).then(function () { say(el, t, 'Link copied') },
+            function () { say(el, t, 'Could not copy') })
     }
 
-    document.getElementById('share-post').addEventListener('click', function () {
-        if (!navigator.share) return copy()
-        navigator.share({ title: document.title, url: link }).catch(function () {})
-    })
+    var shareTop = document.getElementById('share-post')
+    if (shareTop) {
+        shareTop.addEventListener('click', function () {
+            if (!navigator.share) return copy(said, timer)
+            navigator.share({ title: document.title, url: link }).catch(function () {})
+        })
+    }
 
-    document.getElementById('copy-link').addEventListener('click', copy)
+    var copyTop = document.getElementById('copy-link')
+    if (copyTop) {
+        copyTop.addEventListener('click', function () { copy(said, timer) })
+    }
+
+    var shareBottom = document.getElementById('share-bottom-post')
+    if (shareBottom) {
+        shareBottom.addEventListener('click', function () {
+            if (!navigator.share) return copy(bottomSaid, bottomTimer)
+            navigator.share({ title: document.title, url: link }).catch(function () {})
+        })
+    }
+
+    var copyBottom = document.getElementById('copy-bottom-link')
+    if (copyBottom) {
+        copyBottom.addEventListener('click', function () { copy(bottomSaid, bottomTimer) })
+    }
 })()
 </script>`
 
@@ -168,8 +219,13 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    let post = await readPost(slug)
-    if (!post && !(await readIndex()).length) post = bundledBySlug.get(slug)
+    const targetSlug = (slug === 'leadership' || slug === 'adegun')
+      ? 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and'
+      : slug
+    let post = await readPost(targetSlug)
+    if (!post && !(await readIndex()).length) {
+      post = bundledBySlug.get(targetSlug) || bundledBySlug.get(slug)
+    }
 
     if (!post || post.status !== 'published' || post.kind !== 'article') {
       res.setHeader('Cache-Control', 'no-store')

@@ -20,8 +20,11 @@ module.exports = async function handler(req, res) {
     if (slug) {
       // A miss only falls back while the store is unseeded. Once it holds entries it is
       // the single source of truth, so a deleted post stays deleted.
-      let post = await readPost(slug)
-      if (!post && !(await readIndex()).length) post = bundledBySlug.get(slug)
+      const targetSlug = (slug === 'leadership' || slug === 'adegun')
+        ? 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and'
+        : slug
+      let post = await readPost(targetSlug)
+      if (!post && !(await readIndex()).length) post = bundledBySlug.get(targetSlug) || bundledBySlug.get(slug)
 
       if (!post || post.status !== 'published') {
         return res.status(404).json({ error: 'Not found' })

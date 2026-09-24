@@ -5,7 +5,7 @@ const postPath = (slug) => `newsroom/posts/${slug}.json`
 const MEDIA_PREFIX = 'newsroom/media/'
 
 const CARD_FIELDS = [
-  'slug', 'title', 'excerpt', 'category', 'layout', 'kind',
+  'slug', 'shortSlug', 'title', 'excerpt', 'category', 'layout', 'kind',
   'image', 'imageAlt', 'imageTitle', 'imageClass', 'hasPlayButton',
   'linkLabel', 'videoUrl', 'externalUrl', 'linkUrl', 'status', 'position', 'updatedAt'
 ]
@@ -86,8 +86,27 @@ async function writeIndex(cards) {
   await writeJson(INDEX_PATH, cards.map((card, position) => ({ ...card, position })))
 }
 
+const KNOWN_SLUG_ALIASES = {
+  'leadership': 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and',
+  'adegun': 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and',
+  'olabode': 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and',
+  'olabode-adegun': 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and'
+}
+
 async function readPost(slug, options) {
-  return readJson(postPath(slug), options)
+  const target = KNOWN_SLUG_ALIASES[slug] || slug
+  let post = await readJson(postPath(target), options)
+  if (!post && target !== slug) {
+    post = await readJson(postPath(slug), options)
+  }
+  if (!post) {
+    const index = await readIndex(options)
+    const match = index.find((c) => c.shortSlug === slug || (c.slug && c.slug.includes(slug)))
+    if (match) {
+      post = await readJson(postPath(match.slug), options)
+    }
+  }
+  return post
 }
 
 const POSTS_PREFIX = 'newsroom/posts/'
