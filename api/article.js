@@ -230,7 +230,7 @@ module.exports = async function handler(req, res) {
       return res.status(404).send(notFoundPage())
     }
 
-    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=300, stale-while-revalidate=3600')
+    res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate')
     return res.status(200).send(articlePage(post))
   } catch (error) {
     console.error('Article render failed:', error.message)
