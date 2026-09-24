@@ -146,14 +146,21 @@ body {
   font-style: italic;
 }
 
-.r-body blockquote {
+.r-body blockquote,
+.r-quote-full {
   margin: 56px 0;
   padding-left: 32px;
-  border-left: 2px solid #000;
+  border-left: 2px solid #000 !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-right: none !important;
   font-size: 24px;
   font-weight: 600;
   line-height: 1.5;
+  letter-spacing: normal;
+  text-transform: none !important;
   opacity: 1;
+  color: #000;
 }
 
 .r-body ul,
@@ -245,7 +252,8 @@ body {
   .r-body { font-size: 18px; }
   .r-body h3, .r-body h2 { font-size: 28px; margin: 50px 0 24px; }
   .r-body h4 { font-size: 19px; margin: 40px 0 16px; }
-  .r-body blockquote { font-size: 21px; margin: 40px 0; padding-left: 24px; }
+  .r-body blockquote,
+  .r-quote-full { font-size: 21px; margin: 40px 0; padding-left: 24px; }
   .r-hero-image { margin-bottom: 40px; }
   .r-hero-image img { max-height: 420px; }
   .reader-nav-fixed { height: 80px; padding: 0 20px; }

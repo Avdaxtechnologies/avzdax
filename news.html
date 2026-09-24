@@ -856,7 +856,22 @@
         .r-body em { font-style: italic; }
         .r-body h2 { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: 0.025em; line-height: 1; }
         .r-body h4 { font-size: 22px; font-weight: 900; margin: 56px 0 20px; color: #000; }
-        .r-body blockquote { margin: 56px 0; padding-left: 32px; border-left: 2px solid #000; font-size: 24px; font-weight: 600; line-height: 1.5; opacity: 1; }
+        .r-body blockquote,
+        .r-quote-full { 
+            margin: 56px 0; 
+            padding-left: 32px; 
+            border-left: 2px solid #000 !important; 
+            border-top: none !important;
+            border-bottom: none !important;
+            border-right: none !important;
+            font-size: 24px; 
+            font-weight: 600; 
+            line-height: 1.5; 
+            letter-spacing: normal;
+            text-transform: none !important;
+            opacity: 1; 
+            color: #000;
+        }
         .r-body ul, .r-body ol { margin: 0 0 40px 24px; opacity: 0.9; }
         .r-body li { margin-bottom: 14px; }
         .r-body img { width: 100%; height: auto; border-radius: 4px; margin: 48px 0; display: block; }
@@ -885,23 +900,6 @@
         .r-grid-img:nth-child(3) { grid-column: span 12; height: 600px; } 
         
         .r-grid-img:hover { transform: scale(1.02); border-color: #fff; z-index: 10; }
-
-        
-        .r-quote-full { 
-            grid-column: span 12;
-            font-family: 'Inter', sans-serif; 
-            font-size: 4vw; 
-            font-weight: 900; 
-            line-height: 1; 
-            margin: 80px 0; 
-            padding: 80px 0;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            color: #000;
-            letter-spacing: 0.025em;
-            text-transform: uppercase;
-            position: relative;
-        }
         
         .accent-green { color: #00ff41; }
         
@@ -955,9 +953,9 @@
             .r-body h3 { font-size: 28px; margin: 50px 0 24px; }
             .r-body h2 { font-size: 28px; margin: 50px 0 24px; }
             .r-body h4 { font-size: 19px; margin: 40px 0 16px; }
-            .r-body blockquote { font-size: 21px; margin: 40px 0; padding-left: 24px; }
+            .r-body blockquote,
+            .r-quote-full { font-size: 21px; margin: 40px 0; padding-left: 24px; }
             .r-body img { margin: 36px 0; }
-            .r-quote-full { font-size: 32px; padding: 40px 0; margin: 40px 0; }
             
             .r-hero-image { margin-bottom: 40px; }
             .r-hero-image img { max-height: 420px; }
@@ -1011,10 +1009,10 @@
             .r-body h3 { font-size: 22px; margin: 40px 0 16px; }
             .r-body h2 { font-size: 22px; margin: 40px 0 16px; }
             .r-body h4 { font-size: 17px; margin: 30px 0 12px; }
-            .r-body blockquote { font-size: 18px; margin: 30px 0; padding-left: 18px; }
+            .r-body blockquote,
+            .r-quote-full { font-size: 18px; margin: 30px 0; padding-left: 18px; }
             .r-body ul, .r-body ol { margin-bottom: 24px; }
             .r-body img { margin: 28px 0; }
-            .r-quote-full { font-size: 24px; padding: 30px 0; margin: 30px 0; }
             .r-hero-image { margin-bottom: 30px; border-radius: 4px; }
             .r-hero-image img { max-height: 300px; }
             .r-image-grid { margin: 40px 0; gap: 10px; grid-template-columns: 1fr; }
@@ -1044,8 +1042,8 @@
             .r-body h3 { font-size: 20px; margin: 32px 0 14px; }
             .r-body h2 { font-size: 20px; margin: 32px 0 14px; }
             .r-body h4 { font-size: 16px; margin: 26px 0 10px; }
-            .r-body blockquote { font-size: 17px; margin: 26px 0; }
-            .r-quote-full { font-size: 20px; padding: 24px 0; margin: 24px 0; }
+            .r-body blockquote,
+            .r-quote-full { font-size: 17px; margin: 26px 0; padding-left: 16px; }
             .r-header { margin-bottom: 16px; padding-bottom: 0; border-bottom: none; }
             .reader-container { padding: 80px 14px 50px; }
             .r-hero-image { margin-bottom: 24px; }
@@ -1260,8 +1258,13 @@
 
         function buildReaderHtml(post) {
             const headline = post.headline || escapeText(post.title);
-            let bodyContent = post.content || '';
-            bodyContent = bodyContent.replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>');
+            let bodyContent = (post.content || '')
+                .replace(/<div\s+class=["']r-quote-full["']>([\s\S]*?)<\/div>/gi, (m, inner) => {
+                    const clean = inner.trim().replace(/^["“]|["”]$/g, '').trim();
+                    return `<blockquote>${clean}</blockquote>`;
+                })
+                .replace(/<span\s+class=["'][^"']*text-white[^"']*["']>([\s\S]*?)<\/span>/gi, '<strong>$1</strong>')
+                .replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>');
             const primarySlug = (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' || post.shortSlug === 'leadership')
                 ? 'leadership'
                 : (post.shortSlug || post.slug);
