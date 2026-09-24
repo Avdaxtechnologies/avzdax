@@ -22,27 +22,16 @@ const page = ({ head, body }) => `<!DOCTYPE html>
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ${head}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/components/footer-styles.css" rel="stylesheet">
-    <link href="/components/header-styles.css" rel="stylesheet">
     <link href="/components/article-styles.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;900&family=JetBrains+Mono:wght@300;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800;900&family=JetBrains+Mono:wght@300;500&display=swap">
     <style>
         body { margin: 0; background: #fff; -webkit-font-smoothing: antialiased; }
     </style>
 </head>
 <body>
-<div id="header-container"></div>
-<script src="/components/header-loader.js"></script>
 ${body}
-<div class="relative">
-    <div id="footer-container"></div>
-    <script src="/components/footer-loader.js"></script>
-</div>
 </body>
 </html>`
 
@@ -87,32 +76,40 @@ function articlePage(post) {
     <script type="application/ld+json">${JSON.stringify(schema)}</script>`
 
   const hero = post.image
-    ? `            <div class="article-hero"><img src="${escapeHtml(post.image)}" alt="${escapeHtml(post.imageAlt || post.title)}"></div>`
+    ? `        <div class="r-hero-image"><img src="${escapeHtml(post.image)}" alt="${escapeHtml(post.imageAlt || post.title)}"></div>`
     : ''
 
-  const body = `<main data-nav-theme="light" class="article-page">
-    <div class="article-shell">
-        <a href="/news" class="article-back" aria-label="Back to the newsroom" title="Back to the newsroom">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"></path><path d="m11 6-6 6 6 6"></path></svg>
+  const body = `
+    <div class="reader-nav-fixed">
+        <a href="/news" class="reader-back-btn" aria-label="Back to newsroom">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            BACK
         </a>
-        <h1 class="article-title">${post.headline || title}</h1>
+    </div>
+    <div class="reader-container">
 ${hero}
-        <div class="article-body">${bodyContent}</div>
-
-        <div class="article-bottom-share">
-            <div class="article-bottom-actions">
-                <button type="button" class="share-btn" id="copy-bottom-link" aria-label="Copy Link">
-                    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
-                    <span id="copy-bottom-label">Copy Link</span>
-                </button>
-                <button type="button" class="share-btn" id="share-bottom-post" aria-label="Share">
-                    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"></circle><circle cx="6" cy="12" r="2.6"></circle><circle cx="18" cy="19" r="2.6"></circle><path d="M8.4 10.8 15.6 6.9M8.4 13.2l7.2 3.9"></path></svg>
-                    <span id="share-bottom-label">Share</span>
-                </button>
+        <div class="r-header">
+            <h1 class="r-title">${post.headline || title}</h1>
+        </div>
+        <div class="r-content-grid">
+            <div class="r-main-text">
+                <div class="r-body">${bodyContent}</div>
+                <div class="r-share-bottom">
+                    <div class="r-share-actions">
+                        <button type="button" class="r-share-btn r-share-copy" data-url="${url}" aria-label="Copy Link" id="copy-bottom-link">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
+                            <span class="copy-label" id="copy-bottom-label">Copy Link</span>
+                        </button>
+                        <button type="button" class="r-share-btn r-share-native" data-url="${url}" data-title="${title}" aria-label="Share" id="share-bottom-post">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"></circle><circle cx="6" cy="12" r="2.6"></circle><circle cx="18" cy="19" r="2.6"></circle><path d="M8.4 10.8 15.6 6.9M8.4 13.2l7.2 3.9"></path></svg>
+                            <span id="share-bottom-label">Share</span>
+                        </button>
+                    </div>
+                </div>
             </div>
+            <div class="r-side-meta"></div>
         </div>
     </div>
-</main>
 <script>
 (function () {
     var link = '${url}'
@@ -169,15 +166,19 @@ const notFoundPage = () =>
   page({
     head: `    <title>Not found | AVZDAX</title>
     <meta name="robots" content="noindex" />`,
-    body: `<main data-nav-theme="light" class="article-page">
-    <div class="article-shell">
-        <a href="/news" class="article-back" aria-label="Back to the newsroom" title="Back to the newsroom">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"></path><path d="m11 6-6 6 6 6"></path></svg>
+    body: `
+    <div class="reader-nav-fixed">
+        <a href="/news" class="reader-back-btn" aria-label="Back to newsroom">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            BACK
         </a>
-        <h1 class="article-title">That entry is not here.</h1>
-        <div class="article-body"><p>It may have been unpublished or the address mistyped.</p></div>
     </div>
-</main>`
+    <div class="reader-container">
+        <div class="r-header">
+            <h1 class="r-title">That entry is not here.</h1>
+        </div>
+        <div class="r-body"><p>It may have been unpublished or the address mistyped.</p></div>
+    </div>`
   })
 
 module.exports = async function handler(req, res) {
