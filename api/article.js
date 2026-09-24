@@ -43,6 +43,18 @@ function articlePage(post) {
     : (post.shortSlug || post.slug)
   const url = `${SITE}/news/${primarySlug}`
   const image = absolute(post.image) || `${SITE}/media/avzdax-logo.png`
+  let ogImage = image
+  if (primarySlug === 'leadership' || post.slug.includes('adegun') || post.slug.includes('olabode')) {
+    ogImage = `${SITE}/media/olabode-adegun.jpg`
+  } else if (ogImage.endsWith('.webp')) {
+    ogImage = `${SITE}/media/avzdax-logo.png`
+  }
+  const isJpg = ogImage.endsWith('.jpg') || ogImage.endsWith('.jpeg')
+  const isPng = ogImage.endsWith('.png')
+  const ogImageType = isJpg ? 'image/jpeg' : isPng ? 'image/png' : 'image/jpeg'
+  const ogWidth = (primarySlug === 'leadership' || post.slug.includes('adegun')) ? '549' : '1200'
+  const ogHeight = (primarySlug === 'leadership' || post.slug.includes('adegun')) ? '490' : '630'
+
   const bodyContent = (post.content || '').replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>')
 
   const schema = {
@@ -50,7 +62,7 @@ function articlePage(post) {
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt || undefined,
-    image: image,
+    image: ogImage,
     datePublished: post.createdAt || post.updatedAt,
     dateModified: post.updatedAt || post.createdAt,
     mainEntityOfPage: url,
@@ -65,14 +77,22 @@ function articlePage(post) {
   const head = `    <title>${title} | AVZDAX</title>
     <meta name="description" content="${description}" />
     <link rel="canonical" href="${url}" />
+    <meta property="og:site_name" content="AVZDAX" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="${title} | AVZDAX" />
     <meta property="og:description" content="${description}" />
     <meta property="og:url" content="${url}" />
-    <meta property="og:image" content="${escapeHtml(image)}" />
+    <meta property="og:image" content="${escapeHtml(ogImage)}" />
+    <meta property="og:image:secure_url" content="${escapeHtml(ogImage)}" />
+    <meta property="og:image:type" content="${ogImageType}" />
+    <meta property="og:image:width" content="${ogWidth}" />
+    <meta property="og:image:height" content="${ogHeight}" />
+    <meta property="og:image:alt" content="${title}" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AVZDAX" />
     <meta name="twitter:title" content="${title} | AVZDAX" />
     <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
     <script type="application/ld+json">${JSON.stringify(schema)}</script>`
 
   const hero = post.image
