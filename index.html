@@ -697,7 +697,7 @@
             -webkit-backdrop-filter: blur(20px) !important;
             backdrop-filter: blur(20px) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-            padding: 8px 28px 8px 10px !important;
+            padding: 8px 16px 8px 0px !important;
         }
         .mobile-nav-bar.nav-hero-dark::after {
             width: 0 !important;
@@ -870,7 +870,7 @@
             .mobile-nav-bar {
                 background: #000 !important;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                padding: 8px 28px 8px 10px;
+                padding: 8px 16px 8px 0px !important;
                 width: 100% !important;
                 max-width: 100vw !important;
                 overflow: hidden !important;
@@ -879,6 +879,20 @@
                 left: 0 !important;
                 right: 0 !important;
                 z-index: 10000 !important;
+            }
+            .mobile-nav-logo {
+                display: flex !important;
+                align-items: center !important;
+                padding-left: 0 !important;
+                margin-left: -26px !important;
+            }
+            @media (max-width: 640px) {
+                .mobile-nav-bar {
+                    padding: 8px 12px 8px 0px !important;
+                }
+                .mobile-nav-logo {
+                    margin-left: -28px !important;
+                }
             }
             .mobile-menu-toggle-modern {
                 display: flex !important;
@@ -2333,7 +2347,7 @@
 
 
 <div id="header-container"></div>
-<script src="/components/header-loader.js?v=v20260924_3"></script>
+<script src="/components/header-loader.js?v=v20260924_4"></script>
 <script>
   ;(function waitForHeader() {
     const check = setInterval(() => {

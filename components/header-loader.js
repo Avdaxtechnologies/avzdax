@@ -1,5 +1,5 @@
 ;(function () {
-  const HEADER_VERSION = 'v20260924_3'
+  const HEADER_VERSION = 'v20260924_4'
   const HEADER_HTML_PATH = '/components/header.html?v=' + HEADER_VERSION
   const HEADER_CSS_PATH = '/components/header-styles.css?v=' + HEADER_VERSION
 
