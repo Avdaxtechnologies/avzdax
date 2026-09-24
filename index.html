@@ -2347,7 +2347,7 @@
 
 
 <div id="header-container"></div>
-<script src="/components/header-loader.js?v=v20260924_4"></script>
+<script src="/components/header-loader.js?v=v20260924_5"></script>
 <script>
   ;(function waitForHeader() {
     const check = setInterval(() => {
@@ -2926,6 +2926,8 @@
                 gap: 32px;
                 padding: 0 60px;
                 will-change: transform;
+                touch-action: pan-y;
+                cursor: grab;
             }
 
             
@@ -2940,6 +2942,9 @@
                 text-decoration: none;
                 transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
                 display: block;
+                user-select: none;
+                -webkit-user-select: none;
+                -webkit-user-drag: none;
             }
 
             .industry-card img {
@@ -3247,6 +3252,151 @@
                     }
                 );
             });
+
+            // Direct Horizontal Touch Gesture & Swipe Controls
+            if (window._industriesScrollAbort) {
+                window._industriesScrollAbort.abort();
+            }
+            window._industriesScrollAbort = new AbortController();
+            const signal = window._industriesScrollAbort.signal;
+
+            const st = scrollTween.scrollTrigger;
+            const ratio = (visualOverflow * 1.2) / scrollDistance;
+
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchStartScroll = 0;
+            let isHorizontalDrag = null;
+            let lastTouchX = 0;
+            let lastTouchTime = 0;
+            let touchVelocity = 0;
+            let hasDragged = false;
+
+            track.addEventListener('touchstart', (e) => {
+                if (e.touches.length !== 1) return;
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                lastTouchX = touchStartX;
+                lastTouchTime = Date.now();
+                touchStartScroll = window.pageYOffset || document.documentElement.scrollTop;
+                isHorizontalDrag = null;
+                touchVelocity = 0;
+                hasDragged = false;
+            }, { passive: true, signal });
+
+            track.addEventListener('touchmove', (e) => {
+                if (e.touches.length !== 1) return;
+                const currentX = e.touches[0].clientX;
+                const currentY = e.touches[0].clientY;
+                const deltaX = touchStartX - currentX;
+                const deltaY = touchStartY - currentY;
+
+                if (isHorizontalDrag === null) {
+                    if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) {
+                        isHorizontalDrag = Math.abs(deltaX) > Math.abs(deltaY);
+                    }
+                }
+
+                if (isHorizontalDrag) {
+                    if (e.cancelable) e.preventDefault();
+                    hasDragged = true;
+
+                    const now = Date.now();
+                    const dt = now - lastTouchTime;
+                    if (dt > 0) {
+                        touchVelocity = (lastTouchX - currentX) / dt;
+                        lastTouchX = currentX;
+                        lastTouchTime = now;
+                    }
+
+                    let targetScroll = touchStartScroll + (deltaX * ratio);
+                    if (st && st.start !== undefined && st.end !== undefined) {
+                        if (touchStartScroll >= st.start - 80 && touchStartScroll <= st.end + 80) {
+                            targetScroll = Math.max(st.start, Math.min(st.end, targetScroll));
+                        }
+                    }
+                    window.scrollTo(0, targetScroll);
+                }
+            }, { passive: false, signal });
+
+            track.addEventListener('touchend', (e) => {
+                if (isHorizontalDrag && Math.abs(touchVelocity) > 0.2) {
+                    const momentumScroll = touchVelocity * 200 * ratio;
+                    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                    let target = currentScroll + momentumScroll;
+                    if (st && st.start !== undefined && st.end !== undefined) {
+                        target = Math.max(st.start, Math.min(st.end, target));
+                    }
+                    window.scrollTo({
+                        top: target,
+                        behavior: 'smooth'
+                    });
+                }
+                setTimeout(() => { hasDragged = false; }, 100);
+            }, { passive: true, signal });
+
+            // Prevent card navigation while dragging
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (hasDragged) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, { capture: true, signal });
+            });
+
+            // Trackpad / Horizontal Wheel Support
+            section.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 3) {
+                    if (e.cancelable) e.preventDefault();
+                    const current = window.pageYOffset || document.documentElement.scrollTop;
+                    let targetScroll = current + (e.deltaX * 1.2);
+                    if (st && st.start !== undefined && st.end !== undefined) {
+                        if (current >= st.start - 80 && current <= st.end + 80) {
+                            targetScroll = Math.max(st.start, Math.min(st.end, targetScroll));
+                        }
+                    }
+                    window.scrollTo(0, targetScroll);
+                }
+            }, { passive: false, signal });
+
+            // Desktop Mouse Drag Support
+            let isMouseDown = false;
+            let mouseStartX = 0;
+            let mouseStartScroll = 0;
+
+            track.addEventListener('mousedown', (e) => {
+                if (e.button !== 0) return;
+                isMouseDown = true;
+                hasDragged = false;
+                mouseStartX = e.clientX;
+                mouseStartScroll = window.pageYOffset || document.documentElement.scrollTop;
+                track.style.cursor = 'grabbing';
+                track.style.userSelect = 'none';
+            }, { signal });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isMouseDown) return;
+                const deltaX = mouseStartX - e.clientX;
+                if (Math.abs(deltaX) > 5) {
+                    hasDragged = true;
+                    let targetScroll = mouseStartScroll + (deltaX * ratio);
+                    if (st && st.start !== undefined && st.end !== undefined) {
+                        if (mouseStartScroll >= st.start - 80 && mouseStartScroll <= st.end + 80) {
+                            targetScroll = Math.max(st.start, Math.min(st.end, targetScroll));
+                        }
+                    }
+                    window.scrollTo(0, targetScroll);
+                }
+            }, { signal });
+
+            window.addEventListener('mouseup', () => {
+                if (!isMouseDown) return;
+                isMouseDown = false;
+                track.style.cursor = '';
+                track.style.userSelect = '';
+                setTimeout(() => { hasDragged = false; }, 100);
+            }, { signal });
         }
 
 
