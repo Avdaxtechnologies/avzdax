@@ -1,4 +1,5 @@
 const { put, head, del, list } = require('@vercel/blob')
+const { normalizeParagraphs } = require('./content')
 
 const INDEX_PATH = 'newsroom/index.json'
 const postPath = (slug) => `newsroom/posts/${slug}.json`
@@ -106,6 +107,9 @@ async function readPost(slug, options) {
       post = await readJson(postPath(match.slug), options)
     }
   }
+  if (post && post.content) {
+    post.content = normalizeParagraphs(post.content)
+  }
   return post
 }
 
@@ -131,7 +135,11 @@ async function reconcile(index) {
 }
 
 async function savePost(post) {
-  const stamped = { ...post, updatedAt: new Date().toISOString() }
+  const stamped = {
+    ...post,
+    content: post.content ? normalizeParagraphs(post.content) : post.content,
+    updatedAt: new Date().toISOString()
+  }
   await writeJson(postPath(stamped.slug), stamped)
 
   const index = await readIndex({ fresh: true })

@@ -841,32 +841,31 @@
             gap: 80px;
         }
         .r-main-text { grid-column: span 8; }
-        .r-side-meta { grid-column: 10 / span 3; }
-
-        .r-body { 
-            font-family: 'Inter'; 
-            font-size: 24px; 
-            line-height: 1.6; 
-            color: #000; 
+        .r-side-meta { grid-column: 10 / span 3; }        .r-body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            font-size: 20px; 
+            line-height: 1.7; 
+            color: #111111; 
             font-weight: 400; 
+            letter-spacing: -0.01em;
         }
-        .r-body p { margin-bottom: 40px; opacity: 0.9; }
-        .r-body h3 { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: 0.025em; line-height: 1; }
-        .r-body strong, .r-body b { font-weight: 900; }
+        .r-body p { margin: 0 0 30px 0; line-height: 1.7; opacity: 1; }
+        .r-body p:last-child { margin-bottom: 0; }
+        .r-body h3, .r-body h2 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 32px; font-weight: 900; margin: 64px 0 24px; text-transform: uppercase; color: #000; letter-spacing: 0.02em; line-height: 1.2; }
+        .r-body strong, .r-body b { font-weight: 800; color: #000; }
         .r-body em { font-style: italic; }
-        .r-body h2 { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: 0.025em; line-height: 1; }
-        .r-body h4 { font-size: 22px; font-weight: 900; margin: 56px 0 20px; color: #000; }
+        .r-body h4 { font-size: 22px; font-weight: 800; margin: 48px 0 18px; color: #000; line-height: 1.3; }
         .r-body blockquote,
         .r-quote-full { 
-            margin: 56px 0; 
-            padding-left: 32px; 
-            border-left: 2px solid #000 !important; 
+            margin: 48px 0; 
+            padding-left: 28px; 
+            border-left: 3px solid #000 !important; 
             border-top: none !important;
             border-bottom: none !important;
             border-right: none !important;
-            font-size: 24px; 
+            font-size: 22px; 
             font-weight: 600; 
-            line-height: 1.5; 
+            line-height: 1.55; 
             letter-spacing: normal;
             text-transform: none !important;
             opacity: 1; 
@@ -949,12 +948,12 @@
             .r-title { font-size: clamp(22px, 3.5vw, 30px); line-height: 1.25; letter-spacing: -0.01em; text-transform: none; }
             .r-content-grid { gap: 40px; }
             .r-main-text, .r-side-meta { grid-column: span 12; }
-            .r-body { font-size: 18px; }
-            .r-body h3 { font-size: 28px; margin: 50px 0 24px; }
-            .r-body h2 { font-size: 28px; margin: 50px 0 24px; }
-            .r-body h4 { font-size: 19px; margin: 40px 0 16px; }
+            .r-body { font-size: 18px; line-height: 1.7; }
+            .r-body p { margin-bottom: 24px; line-height: 1.7; }
+            .r-body h3, .r-body h2 { font-size: 26px; margin: 44px 0 20px; }
+            .r-body h4 { font-size: 19px; margin: 36px 0 16px; }
             .r-body blockquote,
-            .r-quote-full { font-size: 21px; margin: 40px 0; padding-left: 24px; }
+            .r-quote-full { font-size: 20px; margin: 36px 0; padding-left: 22px; }
             .r-body img { margin: 36px 0; }
             
             .r-hero-image { margin-bottom: 40px; }
@@ -1004,13 +1003,12 @@
             .r-title { font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; text-transform: none; }
             .r-content-grid { display: block; }
             .r-main-text, .r-side-meta { width: 100%; }
-            .r-body { font-size: 16px; line-height: 1.7; }
-            .r-body p { margin-bottom: 24px; }
-            .r-body h3 { font-size: 22px; margin: 40px 0 16px; }
-            .r-body h2 { font-size: 22px; margin: 40px 0 16px; }
-            .r-body h4 { font-size: 17px; margin: 30px 0 12px; }
+            .r-body { font-size: 16.5px; line-height: 1.75; }
+            .r-body p { margin-bottom: 22px; line-height: 1.75; }
+            .r-body h3, .r-body h2 { font-size: 22px; margin: 36px 0 16px; }
+            .r-body h4 { font-size: 17px; margin: 28px 0 12px; }
             .r-body blockquote,
-            .r-quote-full { font-size: 18px; margin: 30px 0; padding-left: 18px; }
+            .r-quote-full { font-size: 18px; margin: 28px 0; padding-left: 18px; }
             .r-body ul, .r-body ol { margin-bottom: 24px; }
             .r-body img { margin: 28px 0; }
             .r-hero-image { margin-bottom: 30px; border-radius: 4px; }
@@ -1037,10 +1035,9 @@
             .f-item { font-size: 9px !important; }
 
             .r-title { font-size: 20px; line-height: 1.3; text-transform: none; }
-            .r-body { font-size: 15px; }
-            .r-body p { margin-bottom: 20px; }
-            .r-body h3 { font-size: 20px; margin: 32px 0 14px; }
-            .r-body h2 { font-size: 20px; margin: 32px 0 14px; }
+            .r-body { font-size: 15.5px; line-height: 1.75; }
+            .r-body p { margin-bottom: 20px; line-height: 1.75; }
+            .r-body h3, .r-body h2 { font-size: 20px; margin: 32px 0 14px; }
             .r-body h4 { font-size: 16px; margin: 26px 0 10px; }
             .r-body blockquote,
             .r-quote-full { font-size: 17px; margin: 26px 0; padding-left: 16px; }
@@ -1256,15 +1253,52 @@
         const intelDB = {};
         let currentArticleUrl = '';
 
-        function buildReaderHtml(post) {
-            const headline = post.headline || escapeText(post.title);
-            let bodyContent = (post.content || '')
+        function normalizeParagraphs(html) {
+            if (!html) return '';
+
+            let s = String(html)
                 .replace(/<div\s+class=["']r-quote-full["']>([\s\S]*?)<\/div>/gi, (m, inner) => {
                     const clean = inner.trim().replace(/^["“]|["”]$/g, '').trim();
                     return `<blockquote>${clean}</blockquote>`;
                 })
                 .replace(/<span\s+class=["'][^"']*text-white[^"']*["']>([\s\S]*?)<\/span>/gi, '<strong>$1</strong>')
-                .replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>');
+                .replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>')
+                .replace(/(?:<br\s*\/?>\s*)+(<\/?(?:blockquote|h[1-6]|ul|ol|li|figure|div|p)\b)/gi, '$1')
+                .replace(/(<\/(?:blockquote|h[1-6]|ul|ol|li|figure|div|p)>)(?:\s*<br\s*\/?>)+/gi, '$1');
+
+            const blockRegex = /(<(?:blockquote|h[1-6]|ul|ol|figure|div|p)[^>]*>[\s\S]*?<\/(?:blockquote|h[1-6]|ul|ol|figure|div|p)>)/gi;
+            const parts = s.split(blockRegex);
+
+            const normalizedParts = parts.map(part => {
+                const trimmed = part.trim();
+                if (!trimmed) return '';
+                if (/^<(?:blockquote|h[1-6]|ul|ol|figure|div|p)\b/i.test(trimmed)) {
+                    if (/^<p\b/i.test(trimmed) && trimmed.includes('<br')) {
+                        const inner = trimmed.replace(/^<p[^>]*>/i, '').replace(/<\/p>$/i, '');
+                        const sub = inner
+                            .split(/(?:<br\s*\/?>\s*)+/gi)
+                            .map(t => t.trim())
+                            .filter(Boolean)
+                            .map(t => `<p>${t}</p>`);
+                        return sub.join('\n');
+                    }
+                    return trimmed;
+                }
+                const paragraphs = trimmed
+                    .split(/(?:<br\s*\/?>\s*|\n\s*\n)+/gi)
+                    .map(t => t.trim())
+                    .filter(t => t.length > 0)
+                    .map(t => `<p>${t}</p>`);
+
+                return paragraphs.join('\n');
+            });
+
+            return normalizedParts.filter(Boolean).join('\n');
+        }
+
+        function buildReaderHtml(post) {
+            const headline = post.headline || escapeText(post.title);
+            let bodyContent = normalizeParagraphs(post.content || '');
             const primarySlug = (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' || post.shortSlug === 'leadership')
                 ? 'leadership'
                 : (post.shortSlug || post.slug);

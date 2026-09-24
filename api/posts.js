@@ -1,4 +1,5 @@
 const { readIndex, readPost, toCard } = require('./_lib/store')
+const { normalizeParagraphs } = require('./_lib/content')
 
 // Until the store is seeded — or if it is ever unreachable — the newsroom falls back to
 // the entries shipped with the deployment so the page is never empty.
@@ -32,13 +33,7 @@ module.exports = async function handler(req, res) {
       if (post.content) {
         post = {
           ...post,
-          content: post.content
-            .replace(/<div\s+class=["']r-quote-full["']>([\s\S]*?)<\/div>/gi, (m, inner) => {
-              const clean = inner.trim().replace(/^["“]|["”]$/g, '').trim();
-              return `<blockquote>${clean}</blockquote>`;
-            })
-            .replace(/<span\s+class=["'][^"']*text-white[^"']*["']>([\s\S]*?)<\/span>/gi, '<strong>$1</strong>')
-            .replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>')
+          content: normalizeParagraphs(post.content)
         }
       }
       return res.status(200).json(post)

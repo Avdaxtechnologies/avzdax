@@ -41,6 +41,49 @@ const cleanBody = (html) => sanitizeHtml(String(html || ''), BODY_RULES)
 const cleanHeadline = (html) => sanitizeHtml(String(html || ''), HEADLINE_RULES)
 const cleanText = (value) => sanitizeHtml(String(value || ''), { allowedTags: [], allowedAttributes: {} }).trim()
 
+function normalizeParagraphs(html) {
+  if (!html) return ''
+
+  let s = String(html)
+    .replace(/<div\s+class=["']r-quote-full["']>([\s\S]*?)<\/div>/gi, (m, inner) => {
+      const clean = inner.trim().replace(/^["“]|["”]$/g, '').trim()
+      return `<blockquote>${clean}</blockquote>`
+    })
+    .replace(/<span\s+class=["'][^"']*text-white[^"']*["']>([\s\S]*?)<\/span>/gi, '<strong>$1</strong>')
+    .replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>')
+    .replace(/(?:<br\s*\/?>\s*)+(<\/?(?:blockquote|h[1-6]|ul|ol|li|figure|div|p)\b)/gi, '$1')
+    .replace(/(<\/(?:blockquote|h[1-6]|ul|ol|li|figure|div|p)>)(?:\s*<br\s*\/?>)+/gi, '$1')
+
+  const blockRegex = /(<(?:blockquote|h[1-6]|ul|ol|figure|div|p)[^>]*>[\s\S]*?<\/(?:blockquote|h[1-6]|ul|ol|figure|div|p)>)/gi
+  const parts = s.split(blockRegex)
+
+  const normalizedParts = parts.map(part => {
+    const trimmed = part.trim()
+    if (!trimmed) return ''
+    if (/^<(?:blockquote|h[1-6]|ul|ol|figure|div|p)\b/i.test(trimmed)) {
+      if (/^<p\b/i.test(trimmed) && trimmed.includes('<br')) {
+        const inner = trimmed.replace(/^<p[^>]*>/i, '').replace(/<\/p>$/i, '')
+        const sub = inner
+          .split(/(?:<br\s*\/?>\s*)+/gi)
+          .map(t => t.trim())
+          .filter(Boolean)
+          .map(t => `<p>${t}</p>`)
+        return sub.join('\n')
+      }
+      return trimmed
+    }
+    const paragraphs = trimmed
+      .split(/(?:<br\s*\/?>\s*|\n\s*\n)+/gi)
+      .map(t => t.trim())
+      .filter(t => t.length > 0)
+      .map(t => `<p>${t}</p>`)
+
+    return paragraphs.join('\n')
+  })
+
+  return normalizedParts.filter(Boolean).join('\n')
+}
+
 const DIACRITICS = /[\u0300-\u036f]/g
 
 const slugify = (value) =>
@@ -124,7 +167,7 @@ function normalise(input, existing) {
       externalUrl: kind === 'external' ? input.externalUrl : null,
       linkUrl: existing ? existing.linkUrl || null : null,
       headline,
-      content: kind === 'article' ? cleanBody(input.content) : '',
+      content: kind === 'article' ? normalizeParagraphs(cleanBody(input.content)) : '',
       status: input.status === 'draft' ? 'draft' : 'published',
       position: existing ? existing.position : 0,
       createdAt: existing ? existing.createdAt : new Date().toISOString()
@@ -132,4 +175,4 @@ function normalise(input, existing) {
   }
 }
 
-module.exports = { CATEGORIES, LAYOUTS, KINDS, normalise, slugify, isSafeSlug, youtubeId, cleanBody }
+module.exports = { CATEGORIES, LAYOUTS, KINDS, normalise, slugify, isSafeSlug, youtubeId, cleanBody, normalizeParagraphs }

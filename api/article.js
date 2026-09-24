@@ -1,5 +1,5 @@
 const { readPost, readIndex } = require('./_lib/store')
-const { isSafeSlug } = require('./_lib/content')
+const { isSafeSlug, normalizeParagraphs } = require('./_lib/content')
 
 const bundledBySlug = new Map(require('./_lib/seed/newsroom.json').map((post) => [post.slug, post]))
 
@@ -55,13 +55,7 @@ function articlePage(post) {
   const ogWidth = (primarySlug === 'leadership' || post.slug.includes('adegun')) ? '549' : '1200'
   const ogHeight = (primarySlug === 'leadership' || post.slug.includes('adegun')) ? '490' : '630'
 
-  const bodyContent = (post.content || '')
-    .replace(/<div\s+class=["']r-quote-full["']>([\s\S]*?)<\/div>/gi, (m, inner) => {
-      const clean = inner.trim().replace(/^["“]|["”]$/g, '').trim();
-      return `<blockquote>${clean}</blockquote>`;
-    })
-    .replace(/<span\s+class=["'][^"']*text-white[^"']*["']>([\s\S]*?)<\/span>/gi, '<strong>$1</strong>')
-    .replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>')
+  const bodyContent = normalizeParagraphs(post.content || '')
 
   const schema = {
     '@context': 'https://schema.org',

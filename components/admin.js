@@ -62,6 +62,49 @@ const escapeHtml = (value) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
 
+function normalizeParagraphs(html) {
+  if (!html) return ''
+
+  let s = String(html)
+    .replace(/<div\s+class=["']r-quote-full["']>([\s\S]*?)<\/div>/gi, (m, inner) => {
+      const clean = inner.trim().replace(/^["“]|["”]$/g, '').trim()
+      return `<blockquote>${clean}</blockquote>`
+    })
+    .replace(/<span\s+class=["'][^"']*text-white[^"']*["']>([\s\S]*?)<\/span>/gi, '<strong>$1</strong>')
+    .replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>')
+    .replace(/(?:<br\s*\/?>\s*)+(<\/?(?:blockquote|h[1-6]|ul|ol|li|figure|div|p)\b)/gi, '$1')
+    .replace(/(<\/(?:blockquote|h[1-6]|ul|ol|li|figure|div|p)>)(?:\s*<br\s*\/?>)+/gi, '$1')
+
+  const blockRegex = /(<(?:blockquote|h[1-6]|ul|ol|figure|div|p)[^>]*>[\s\S]*?<\/(?:blockquote|h[1-6]|ul|ol|figure|div|p)>)/gi
+  const parts = s.split(blockRegex)
+
+  const normalizedParts = parts.map(part => {
+    const trimmed = part.trim()
+    if (!trimmed) return ''
+    if (/^<(?:blockquote|h[1-6]|ul|ol|figure|div|p)\b/i.test(trimmed)) {
+      if (/^<p\b/i.test(trimmed) && trimmed.includes('<br')) {
+        const inner = trimmed.replace(/^<p[^>]*>/i, '').replace(/<\/p>$/i, '')
+        const sub = inner
+          .split(/(?:<br\s*\/?>\s*)+/gi)
+          .map(t => t.trim())
+          .filter(Boolean)
+          .map(t => `<p>${t}</p>`)
+        return sub.join('\n')
+      }
+      return trimmed
+    }
+    const paragraphs = trimmed
+      .split(/(?:<br\s*\/?>\s*|\n\s*\n)+/gi)
+      .map(t => t.trim())
+      .filter(t => t.length > 0)
+      .map(t => `<p>${t}</p>`)
+
+    return paragraphs.join('\n')
+  })
+
+  return normalizedParts.filter(Boolean).join('\n')
+}
+
 async function api(path, options = {}) {
   const response = await fetch(path, {
     credentials: 'same-origin',
@@ -496,7 +539,7 @@ function fillEditor(post) {
   $('f-video').value = post.videoUrl || ''
   $('f-external').value = post.externalUrl || ''
   $('f-linklabel').value = post.linkLabel || ''
-  $('f-content').innerHTML = post.content || ''
+  $('f-content').innerHTML = post.content ? normalizeParagraphs(post.content) : ''
 
   const short = post.shortSlug || (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' ? 'leadership' : '')
   $('f-slug').value = short
@@ -583,7 +626,7 @@ function collect() {
     videoUrl: $('f-video').value.trim(),
     externalUrl: $('f-external').value.trim(),
     headline: null,
-    content: kind === 'article' ? $('f-content').innerHTML : ''
+    content: kind === 'article' ? normalizeParagraphs($('f-content').innerHTML) : ''
   }
 }
 
@@ -755,6 +798,20 @@ document.addEventListener('touchend', settle)
 document.addEventListener('touchcancel', settle)
 document.addEventListener('pointerup', settle)
 editable.addEventListener('keyup', settle)
+editable.addEventListener('paste', (e) => {
+  const text = e.clipboardData && e.clipboardData.getData('text/plain')
+  if (text && !text.includes('<')) {
+    e.preventDefault()
+    const paragraphs = text
+      .split(/\r?\n\s*\r?\n/)
+      .map(p => p.trim())
+      .filter(Boolean)
+      .map(p => `<p>${p.replace(/\r?\n/g, ' ')}</p>`)
+      .join('')
+    document.execCommand('insertHTML', false, paragraphs)
+    noteChange()
+  }
+})
 
 // Dragging the selection handles is driven by the operating system and does not reliably
 // end with a touch event on the page, so a changed selection alone brings the bar back.
