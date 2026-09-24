@@ -1504,6 +1504,11 @@
 
             const opening = decodeURIComponent(window.location.hash.replace('#', ''));
             if (opening && intelDB[opening]) openArticle(opening);
+
+            window.addEventListener('hashchange', () => {
+                const h = decodeURIComponent(window.location.hash.replace('#', ''));
+                if (h && intelDB[h]) openArticle(h);
+            });
         }
 
         loadNewsroom();
