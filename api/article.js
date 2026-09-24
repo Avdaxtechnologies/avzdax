@@ -27,7 +27,8 @@ ${head}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800;900&family=JetBrains+Mono:wght@300;500&display=swap">
     <style>
-        body { margin: 0; background: #fff; -webkit-font-smoothing: antialiased; }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; width: 100%; max-width: 100%; overflow-x: hidden; background: #fff; -webkit-font-smoothing: antialiased; }
     </style>
 </head>
 <body>

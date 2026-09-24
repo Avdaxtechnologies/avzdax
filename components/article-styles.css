@@ -1,18 +1,38 @@
-/* Exact news reader CSS matching news.html 1:1 */
+/* ==========================================================================
+   Article Styles — AVZDAX Standalone Reader
+   Matches news.html reader 1:1 across Desktop, Tablet, and Mobile
+   ========================================================================== */
+
+/* 1. Global Box-Sizing & Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background: #ffffff;
   color: #000;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-.reader-page {
-  min-height: 100vh;
-  background: #ffffff;
-  color: #000;
-  position: relative;
+img, video {
+  max-width: 100%;
+  height: auto;
 }
 
+/* 2. Reader Navigation Bar */
 .reader-nav-fixed {
   position: fixed;
   top: 0;
@@ -49,6 +69,7 @@ body {
   opacity: 0.6;
 }
 
+/* 3. Container */
 .reader-container {
   width: 100%;
   max-width: 1400px;
@@ -57,11 +78,13 @@ body {
   position: relative;
 }
 
+/* 4. Hero Image */
 .r-hero-image {
   width: 100%;
   border-radius: 8px;
   margin-bottom: 60px;
   overflow: hidden;
+  text-align: center;
 }
 
 .r-hero-image img {
@@ -71,8 +94,10 @@ body {
   object-fit: contain;
   object-position: center center;
   display: block;
+  margin: 0 auto;
 }
 
+/* 5. Header & Title */
 .r-header {
   margin-bottom: 28px;
   border-bottom: none;
@@ -91,6 +116,7 @@ body {
   text-transform: none;
 }
 
+/* 6. Content Grid */
 .r-content-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -99,12 +125,14 @@ body {
 
 .r-main-text {
   grid-column: span 8;
+  width: 100%;
 }
 
 .r-side-meta {
   grid-column: 10 / span 3;
 }
 
+/* 7. Typography & Body Content */
 .r-body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 20px;
@@ -112,6 +140,8 @@ body {
   color: #111111;
   font-weight: 400;
   letter-spacing: -0.01em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .r-body p {
@@ -127,25 +157,27 @@ body {
 .r-body h2,
 .r-body h3 {
   font-family: 'Inter', sans-serif;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 900;
-  margin: 80px 0 30px;
+  margin: 64px 0 24px;
   text-transform: uppercase;
   color: #000;
-  letter-spacing: 0.025em;
-  line-height: 1;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
 .r-body h4 {
   font-size: 22px;
-  font-weight: 900;
-  margin: 56px 0 20px;
+  font-weight: 800;
+  margin: 48px 0 18px;
   color: #000;
+  line-height: 1.3;
 }
 
 .r-body strong,
 .r-body b {
-  font-weight: 900;
+  font-weight: 800;
+  color: #000;
 }
 
 .r-body em {
@@ -154,15 +186,15 @@ body {
 
 .r-body blockquote,
 .r-quote-full {
-  margin: 56px 0;
-  padding-left: 32px;
-  border-left: 2px solid #000 !important;
+  margin: 48px 0;
+  padding-left: 28px;
+  border-left: 3px solid #000 !important;
   border-top: none !important;
   border-bottom: none !important;
   border-right: none !important;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.55;
   letter-spacing: normal;
   text-transform: none !important;
   opacity: 1;
@@ -193,6 +225,7 @@ body {
   text-underline-offset: 4px;
 }
 
+/* 8. Share Section */
 .r-share-bottom {
   margin-top: 44px;
   display: flex;
@@ -249,33 +282,53 @@ body {
   transform: translateY(0);
 }
 
+/* ==========================================================================
+   Responsive Breakpoints — Matching news.html exactly
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
   .reader-container { padding: 120px 24px 80px; }
   .r-header { margin-bottom: 24px; padding-bottom: 0; border-bottom: none; }
   .r-title { font-size: clamp(22px, 3.5vw, 30px); line-height: 1.25; letter-spacing: -0.01em; text-transform: none; }
   .r-content-grid { gap: 40px; }
-  .r-main-text, .r-side-meta { grid-column: span 12; }
+  .r-main-text, .r-side-meta { grid-column: span 12; width: 100%; }
   .r-body { font-size: 18px; line-height: 1.7; }
   .r-body p { margin-bottom: 24px; line-height: 1.7; }
-  .r-body h3, .r-body h2 { font-size: 28px; margin: 50px 0 24px; }
-  .r-body h4 { font-size: 19px; margin: 40px 0 16px; }
+  .r-body h3, .r-body h2 { font-size: 26px; margin: 44px 0 20px; }
+  .r-body h4 { font-size: 19px; margin: 36px 0 16px; }
   .r-body blockquote,
-  .r-quote-full { font-size: 21px; margin: 40px 0; padding-left: 24px; }
+  .r-quote-full { font-size: 20px; margin: 36px 0; padding-left: 22px; }
+  .r-body img { margin: 36px 0; }
   .r-hero-image { margin-bottom: 40px; }
   .r-hero-image img { max-height: 420px; }
   .reader-nav-fixed { height: 80px; padding: 0 20px; }
   .reader-back-btn { font-size: 8px; }
 }
 
-@media (max-width: 640px) {
+/* Mobile Large (max-width: 768px) */
+@media (max-width: 768px) {
   .reader-container { padding: 100px 20px 60px; }
-  .r-title { font-size: 24px; line-height: 1.25; }
+  .reader-nav-fixed { height: 70px; padding: 0 16px; }
+  .reader-back-btn { font-size: 8px; gap: 10px; }
+  .r-header { margin-bottom: 20px; padding-bottom: 0; border-bottom: none; }
+  .r-title { font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; text-transform: none; }
+  .r-content-grid { display: block; }
+  .r-main-text, .r-side-meta { width: 100%; }
   .r-body { font-size: 16.5px; line-height: 1.75; }
   .r-body p { margin-bottom: 22px; line-height: 1.75; }
   .r-body h3, .r-body h2 { font-size: 22px; margin: 36px 0 16px; }
   .r-body h4 { font-size: 17px; margin: 28px 0 12px; }
   .r-body blockquote,
   .r-quote-full { font-size: 18px; margin: 28px 0; padding-left: 18px; }
+  .r-body ul, .r-body ol { margin-bottom: 24px; }
+  .r-body img { margin: 28px 0; }
+  .r-hero-image { margin-bottom: 30px; border-radius: 4px; }
+  .r-hero-image img { max-height: 300px; }
+}
+
+/* Mobile Share Actions (max-width: 640px) */
+@media (max-width: 640px) {
   .r-share-bottom { margin-top: 32px; }
   .r-share-actions {
     display: inline-flex !important;
@@ -295,4 +348,19 @@ body {
     width: 14px;
     height: 14px;
   }
+}
+
+/* Mobile Small (max-width: 480px) */
+@media (max-width: 480px) {
+  .reader-container { padding: 80px 14px 50px; }
+  .r-header { margin-bottom: 16px; padding-bottom: 0; border-bottom: none; }
+  .r-title { font-size: 20px; line-height: 1.3; text-transform: none; }
+  .r-body { font-size: 15.5px; line-height: 1.75; }
+  .r-body p { margin-bottom: 20px; line-height: 1.75; }
+  .r-body h3, .r-body h2 { font-size: 20px; margin: 32px 0 14px; }
+  .r-body h4 { font-size: 16px; margin: 26px 0 10px; }
+  .r-body blockquote,
+  .r-quote-full { font-size: 17px; margin: 26px 0; padding-left: 16px; }
+  .r-hero-image { margin-bottom: 24px; }
+  .r-hero-image img { max-height: 240px; }
 }
