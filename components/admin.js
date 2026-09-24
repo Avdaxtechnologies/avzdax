@@ -721,10 +721,14 @@ window.addEventListener('scroll', hideToolbar, { passive: true })
 selBar.addEventListener('mousedown', (event) => {
   if (event.target.closest('button')) event.preventDefault()
 })
+selBar.addEventListener('touchstart', (event) => {
+  if (event.target.closest('button')) event.preventDefault()
+}, { passive: false })
 
 document.querySelectorAll('#toolbar [data-cmd]').forEach((button) => {
   button.addEventListener('click', () => {
     document.execCommand(button.dataset.cmd, false, null)
+    noteChange()
     placeToolbar()
   })
 })
@@ -732,6 +736,7 @@ document.querySelectorAll('#toolbar [data-cmd]').forEach((button) => {
 document.querySelectorAll('#toolbar [data-block]').forEach((button) => {
   button.addEventListener('click', () => {
     document.execCommand('formatBlock', false, button.dataset.block)
+    noteChange()
     placeToolbar()
   })
 })

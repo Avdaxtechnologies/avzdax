@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -781,7 +781,7 @@
         }
         .r-body p { margin-bottom: 40px; opacity: 0.9; }
         .r-body h3 { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: 0.025em; line-height: 1; }
-        .r-body strong { font-weight: 900; }
+        .r-body strong, .r-body b { font-weight: 900; }
         .r-body em { font-style: italic; }
         .r-body h2 { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; margin: 80px 0 30px; text-transform: uppercase; color: #000; letter-spacing: 0.025em; line-height: 1; }
         .r-body h4 { font-size: 22px; font-weight: 900; margin: 56px 0 20px; color: #000; }
@@ -1188,6 +1188,8 @@
 
         function buildReaderHtml(post) {
             const headline = post.headline || escapeText(post.title);
+            let bodyContent = post.content || '';
+            bodyContent = bodyContent.replace(/(?:<strong>|<b>)?(Predict\s*→\s*Prevent\s*→\s*Protect\.?)(?:<\/strong>|<\/b>)?/g, '<strong>$1</strong>');
             return `
                     <div class="r-header">
                         <h1 class="r-title">${headline}</h1>
@@ -1195,7 +1197,7 @@
 
                     <div class="r-content-grid">
                         <div class="r-main-text">
-                            <div class="r-body">${post.content}</div>
+                            <div class="r-body">${bodyContent}</div>
                         </div>
 
                         <div class="r-side-meta"></div>
@@ -1212,7 +1214,7 @@
             if (!data) return;
 
             if (!data.content) {
-                const response = await fetch('/api/posts?slug=' + encodeURIComponent(id));
+                const response = await fetch('/api/posts?slug=' + encodeURIComponent(id) + '&t=' + Date.now());
                 if (!response.ok) return;
                 data.content = buildReaderHtml(await response.json());
             }
