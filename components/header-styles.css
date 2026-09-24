@@ -222,8 +222,18 @@ nav.nav-inverted .schedule-btn:hover {
   filter: invert(1) brightness(0) !important;
 }
 
-.mobile-nav-bar.nav-inverted .mobile-menu-toggle-modern .bar {
-  stroke: #000 !important;
+.mobile-nav-bar.nav-inverted .mobile-menu-toggle-modern:not(.open) {
+  color: #000000 !important;
+}
+.mobile-nav-bar.nav-inverted .mobile-menu-toggle-modern:not(.open) line,
+.mobile-nav-bar.nav-inverted .mobile-menu-toggle-modern:not(.open) .bar {
+  stroke: #000000 !important;
+}
+.mobile-menu-toggle-modern.open,
+.mobile-menu-toggle-modern.open line,
+.mobile-menu-toggle-modern.open .bar {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
 }
 
 nav.nav-dark-minimal,
@@ -515,35 +525,59 @@ nav.nav-inverted .tactical-search-btn svg {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 44px !important;
+    height: 44px !important;
     background: none !important;
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    padding: 0;
+    padding: 0 !important;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: none;
     appearance: none;
+    color: #ffffff !important;
+    z-index: 10002 !important;
+    position: relative;
   }
 
+  .mobile-menu-toggle-modern svg,
+  .mobile-menu-toggle-modern .menu-icon {
+    width: 28px !important;
+    height: 28px !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .mobile-menu-toggle-modern line,
   .mobile-menu-toggle-modern .bar {
-    stroke: #fff;
-    stroke-width: 2;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    stroke: currentColor !important;
+    stroke-width: 2.2 !important;
+    stroke-linecap: round !important;
   }
 
-  .mobile-menu-toggle-modern.open .bar:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+  .mobile-menu-toggle-modern .icon-hamburger {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: 14px 14px;
   }
 
-  .mobile-menu-toggle-modern.open .bar:nth-child(2) {
+  .mobile-menu-toggle-modern .icon-close {
     opacity: 0;
+    transform: scale(0.6) rotate(-90deg);
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: 14px 14px;
   }
 
-  .mobile-menu-toggle-modern.open .bar:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+  .mobile-menu-toggle-modern.open .icon-hamburger {
+    opacity: 0 !important;
+    transform: scale(0.6) rotate(90deg) !important;
+  }
+
+  .mobile-menu-toggle-modern.open .icon-close {
+    opacity: 1 !important;
+    transform: scale(1) rotate(0deg) !important;
   }
 
   .mobile-nav-logo {
@@ -563,10 +597,56 @@ nav.nav-inverted .tactical-search-btn svg {
     transform: scale(0.92);
   }
 
-  .mobile-menu-toggle-modern svg,
-  .mobile-menu-toggle-modern .menu-icon {
-    width: 24px !important;
-    height: 24px !important;
+  /* Mobile News Highlight inside drawer */
+  .mobile-news-highlight-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    padding-top: 1.5rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    opacity: 1 !important;
+  }
+
+  .mobile-news-highlight-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    display: block !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .mobile-news-highlight-card:hover,
+  .mobile-news-highlight-card:active {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .mobile-news-subcard {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .mobile-news-subcard:hover,
+  .mobile-news-subcard:active {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
   }
 }
 

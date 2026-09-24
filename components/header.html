@@ -743,17 +743,22 @@
     >
       <svg
         class="menu-icon"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        viewBox="0 0 28 28"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         role="img"
       >
-        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path class="bar" d="M6 8h12" stroke="white" stroke-width="1.8" />
-          <path class="bar" d="M9 12h9" stroke="white" stroke-width="1.8" opacity="0.8" />
-          <path class="bar" d="M6 16h12" stroke="white" stroke-width="1.8" opacity="0.6" />
+        <g class="icon-hamburger">
+          <line class="bar" x1="4" y1="7.5" x2="24" y2="7.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          <line class="bar" x1="4" y1="14" x2="24" y2="14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          <line class="bar" x1="4" y1="20.5" x2="24" y2="20.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+        </g>
+        <g class="icon-close">
+          <line x1="6" y1="6" x2="22" y2="22" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="22" y1="6" x2="6" y2="22" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
         </g>
       </svg>
     </button>
@@ -1000,34 +1005,60 @@
 
     
     <!-- News Highlight Section -->
-    <div class="mt-8 mb-4 border-t border-white/10 pt-6">
-      <h3 class="text-[10px] font-bold text-white/50 uppercase tracking-[0.3em] mb-4 pl-2">News Highlight</h3>
-      <div class="flex gap-4 overflow-x-auto pb-4 pl-2 pr-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
-        <!-- CEO Card -->
-        <a href="/news" class="block min-w-[240px] flex-shrink-0 bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden" style="scroll-snap-align: start;">
-          <img src="/media/avzdax-ceo.webp" class="w-full h-[140px] object-cover grayscale opacity-80" alt="CEO">
-          <div class="p-4">
-            <span class="text-[8px] font-bold text-green-500 uppercase tracking-widest mb-1 block">Leadership</span>
-            <h4 class="text-sm font-black uppercase text-white/90 leading-tight">AVZDAX Founder Announces New Infrastructure Defense Initiative</h4>
-          </div>
-        </a>
-        <!-- Card 2 -->
-        <a href="/news" class="block min-w-[240px] flex-shrink-0 bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden" style="scroll-snap-align: start;">
-          <img src="/media/trion-display.webp" class="w-full h-[140px] object-cover grayscale opacity-80" alt="Trion">
-          <div class="p-4">
-            <span class="text-[8px] font-bold text-blue-400 uppercase tracking-widest mb-1 block">Technology</span>
-            <h4 class="text-sm font-black uppercase text-white/90 leading-tight">Trion Optical Sensing System Deployed in Key Ports</h4>
-          </div>
-        </a>
-        <!-- Card 3 -->
-        <a href="/news" class="block min-w-[240px] flex-shrink-0 bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden" style="scroll-snap-align: start;">
-          <img src="/media/industry-energy.webp" class="w-full h-[140px] object-cover grayscale opacity-80" alt="Energy">
-          <div class="p-4">
-            <span class="text-[8px] font-bold text-silver-400 uppercase tracking-widest mb-1 block">Infrastructure</span>
-            <h4 class="text-sm font-black uppercase text-white/90 leading-tight">Securing Sovereign Energy Grids for 2030</h4>
-          </div>
-        </a>
+    <div class="mobile-news-highlight-section mt-8 mb-4 border-t border-white/10 pt-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-[10px] font-bold text-white/50 uppercase tracking-[0.3em]">News Highlight</h3>
+        <a href="/news" class="text-[9px] font-bold text-white/40 hover:text-white uppercase tracking-[0.2em] transition-colors">View All &rarr;</a>
       </div>
+
+      <!-- Featured Real Article: Leadership -->
+      <a href="/news/leadership" class="mobile-news-highlight-card block w-full group">
+        <div class="relative w-full h-[155px] overflow-hidden bg-black/60">
+          <img src="/media/olabode-adegun.jpg" class="w-full h-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105" alt="AVZDAX Welcomes Olabode Adegun">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2 py-0.5 text-[8px] font-bold uppercase tracking-widest bg-black/70 backdrop-blur-md border border-white/15 text-[#00FF41] rounded">Leadership</span>
+        </div>
+        <div class="p-4 bg-white/[0.02]">
+          <h4 class="text-[13px] font-bold text-white/95 leading-snug tracking-tight mb-1.5 group-hover:text-white transition-colors">
+            AVZDAX Welcomes Olabode Adegun as Senior Strategic Advisor – National Security and Global Partnerships
+          </h4>
+          <p class="text-[11px] text-white/50 leading-relaxed line-clamp-2 mb-3">
+            Two decades of operational experience spanning military special operations, corporate security governance, and strategic risk advisory.
+          </p>
+          <div class="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest text-[#00FF41]">
+            <span>Read Announcement</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Secondary Real Article: The End of Reactive Security -->
+      <a href="/news/the-end-of-reactive-security" class="mobile-news-subcard mt-3 group">
+        <div class="w-12 h-12 rounded-lg overflow-hidden bg-black/50 flex-shrink-0 border border-white/10">
+          <img src="/media/primusbox.webp" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="The End of Reactive Security">
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="text-[7.5px] font-bold uppercase tracking-widest text-white/40 block mb-0.5">Insight</span>
+          <h5 class="text-[11.5px] font-bold text-white/90 truncate group-hover:text-white transition-colors">
+            The End of Reactive Security
+          </h5>
+          <span class="text-[9px] text-white/40 group-hover:text-white/70 transition-colors block mt-0.5">Read Thesis &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Tertiary Real Article: Why Surveillance Alone Was Never Enough -->
+      <a href="/news/surveillance-is-not-enough" class="mobile-news-subcard mt-2 group">
+        <div class="w-12 h-12 rounded-lg overflow-hidden bg-black/50 flex-shrink-0 border border-white/10">
+          <img src="/media/trion-display.webp" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Why Surveillance Alone Was Never Enough">
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="text-[7.5px] font-bold uppercase tracking-widest text-white/40 block mb-0.5">Analysis</span>
+          <h5 class="text-[11.5px] font-bold text-white/90 truncate group-hover:text-white transition-colors">
+            Why Surveillance Alone Was Never Enough
+          </h5>
+          <span class="text-[9px] text-white/40 group-hover:text-white/70 transition-colors block mt-0.5">Read Analysis &rarr;</span>
+        </div>
+      </a>
     </div>
 
     <div class="mt-8 space-y-4">

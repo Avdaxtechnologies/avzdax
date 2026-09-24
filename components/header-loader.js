@@ -246,6 +246,14 @@
       }
     }
 
+    if (mobileOverlay) {
+      mobileOverlay.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function () {
+          window.closeMobileMenu()
+        })
+      })
+    }
+
     document.querySelectorAll('.nav-toggle').forEach(toggle => {
       toggle.addEventListener('click', function () {
         const dropdown = this.nextElementSibling
