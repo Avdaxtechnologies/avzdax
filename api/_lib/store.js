@@ -88,10 +88,6 @@ async function writeIndex(cards) {
 }
 
 const KNOWN_SLUG_ALIASES = {
-  'leadership': 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and',
-  'adegun': 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and',
-  'olabode': 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and',
-  'olabode-adegun': 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and'
 }
 
 async function readPost(slug, options) {

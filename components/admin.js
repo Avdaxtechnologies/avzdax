@@ -541,7 +541,7 @@ function fillEditor(post) {
   $('f-linklabel').value = post.linkLabel || ''
   $('f-content').innerHTML = post.content ? normalizeParagraphs(post.content) : ''
 
-  const short = post.shortSlug || (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' ? 'leadership' : '')
+  const short = post.shortSlug || ''
   $('f-slug').value = short
   updateSlugPreview(short || post.slug)
 
@@ -680,7 +680,7 @@ const noteChange = () => {
 
 $('editor-copy-link').addEventListener('click', () => {
   const custom = $('f-slug').value.trim()
-  const current = custom || (state.editing === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' ? 'leadership' : state.editing)
+  const current = custom || state.editing
   if (!current) {
     flash('Save the post or enter a slug first.')
     return

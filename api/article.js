@@ -39,22 +39,18 @@ ${body}
 function articlePage(post) {
   const title = escapeHtml(post.title)
   const description = escapeHtml(post.excerpt || post.title)
-  const primarySlug = (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' || post.shortSlug === 'leadership')
-    ? 'leadership'
-    : (post.shortSlug || post.slug)
+  const primarySlug = post.shortSlug || post.slug
   const url = `${SITE}/news/${primarySlug}`
   const image = absolute(post.image) || `${SITE}/media/avzdax-logo.png`
   let ogImage = image
-  if (primarySlug === 'leadership' || post.slug.includes('adegun') || post.slug.includes('olabode')) {
-    ogImage = `${SITE}/media/olabode-adegun.jpg`
-  } else if (ogImage.endsWith('.webp')) {
+  if (ogImage.endsWith('.webp')) {
     ogImage = `${SITE}/media/avzdax-logo.png`
   }
   const isJpg = ogImage.endsWith('.jpg') || ogImage.endsWith('.jpeg')
   const isPng = ogImage.endsWith('.png')
   const ogImageType = isJpg ? 'image/jpeg' : isPng ? 'image/png' : 'image/jpeg'
-  const ogWidth = (primarySlug === 'leadership' || post.slug.includes('adegun')) ? '549' : '1200'
-  const ogHeight = (primarySlug === 'leadership' || post.slug.includes('adegun')) ? '490' : '630'
+  const ogWidth = '1200'
+  const ogHeight = '630'
 
   const bodyContent = normalizeParagraphs(post.content || '')
 
@@ -218,12 +214,9 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const targetSlug = (slug === 'leadership' || slug === 'adegun')
-      ? 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and'
-      : slug
-    let post = await readPost(targetSlug)
+    let post = await readPost(slug)
     if (!post && !(await readIndex()).length) {
-      post = bundledBySlug.get(targetSlug) || bundledBySlug.get(slug)
+      post = bundledBySlug.get(slug)
     }
 
     if (!post || post.status !== 'published' || post.kind !== 'article') {

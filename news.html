@@ -1299,9 +1299,7 @@
         function buildReaderHtml(post) {
             const headline = post.headline || escapeText(post.title);
             let bodyContent = normalizeParagraphs(post.content || '');
-            const primarySlug = (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' || post.shortSlug === 'leadership')
-                ? 'leadership'
-                : (post.shortSlug || post.slug);
+            const primarySlug = post.shortSlug || post.slug;
             const shareUrl = 'https://www.avzdax.com/news/' + primarySlug;
             const encodedUrl = encodeURIComponent(shareUrl);
 
@@ -1352,9 +1350,7 @@
             const heroImg = data.img ? `<div class="r-hero-image"><img src="${data.img}" alt="${data.title}"></div>` : '';
             readerContent.innerHTML = heroImg + data.content;
 
-            const shortSlug = (id === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' || id === 'leadership')
-                ? 'leadership'
-                : (data.shortSlug || id);
+            const shortSlug = data.shortSlug || id;
             currentArticleUrl = 'https://www.avzdax.com/news/' + shortSlug;
 
             reader.style.display = 'block';
@@ -1654,10 +1650,6 @@
 
             posts.filter(post => post.kind === 'article').forEach(post => {
                 intelDB[post.slug] = { title: post.title, img: post.image, shortSlug: post.shortSlug };
-                if (post.slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and') {
-                    intelDB['leadership'] = intelDB[post.slug];
-                    intelDB['adegun'] = intelDB[post.slug];
-                }
                 if (post.shortSlug) {
                     intelDB[post.shortSlug] = intelDB[post.slug];
                 }
@@ -1671,16 +1663,11 @@
             if (!opening && window.location.pathname.startsWith('/news/')) {
                 opening = window.location.pathname.replace('/news/', '').trim();
             }
-            if (opening === 'leadership' || opening === 'adegun' || opening === 'olabode') {
-                opening = 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and';
-            }
+
             if (opening && intelDB[opening]) openArticle(opening);
 
             window.addEventListener('hashchange', () => {
                 let h = decodeURIComponent(window.location.hash.replace('#', ''));
-                if (h === 'leadership' || h === 'adegun') {
-                    h = 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and';
-                }
                 if (h && intelDB[h]) openArticle(h);
             });
         }

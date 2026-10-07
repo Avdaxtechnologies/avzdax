@@ -146,7 +146,7 @@ function normalise(input, existing) {
   const headline = cleanHeadline(input.headline) || (keepsHeadline ? existing.headline : null)
 
   const rawShortSlug = input.shortSlug ? slugify(input.shortSlug) : (existing ? existing.shortSlug : null)
-  const shortSlug = rawShortSlug || (slug === 'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and' ? 'leadership' : null)
+  const shortSlug = rawShortSlug || (existing ? existing.shortSlug : null)
 
   return {
     post: {
