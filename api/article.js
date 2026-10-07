@@ -1,4 +1,4 @@
-const { readPost, readIndex } = require('./_lib/store')
+const { readPost, readIndex, DELETED_SLUGS } = require('./_lib/store')
 const { isSafeSlug, normalizeParagraphs } = require('./_lib/content')
 
 const bundledBySlug = new Map(require('./_lib/seed/newsroom.json').map((post) => [post.slug, post]))
@@ -208,7 +208,7 @@ module.exports = async function handler(req, res) {
 
   const slug = req.query.slug
 
-  if (!isSafeSlug(slug)) {
+  if (!isSafeSlug(slug) || (DELETED_SLUGS && (DELETED_SLUGS.has(slug) || DELETED_SLUGS.has(decodeURIComponent(slug))))) {
     res.setHeader('Cache-Control', 'no-store')
     return res.status(404).send(notFoundPage())
   }

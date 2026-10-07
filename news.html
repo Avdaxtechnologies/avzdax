@@ -20,7 +20,7 @@
 
     <link rel="preload" href="/api/posts" as="fetch" crossorigin>
     <script>
-        window.newsroomFeed = fetch('/api/posts', { headers: { Accept: 'application/json' } })
+        window.newsroomFeed = fetch('/api/posts?t=' + Date.now(), { headers: { Accept: 'application/json' }, cache: 'no-store' })
             .then(response => (response.ok ? response.json() : null))
             .catch(() => null);
     </script>
@@ -1635,8 +1635,13 @@
 
             let posts = [];
             try {
-                const feed = await (window.newsroomFeed || fetch('/api/posts', { headers: { Accept: 'application/json' } }).then(r => (r.ok ? r.json() : null)));
-                posts = (feed && feed.posts) || [];
+                const feed = await (window.newsroomFeed || fetch('/api/posts?t=' + Date.now(), { headers: { Accept: 'application/json' }, cache: 'no-store' }).then(r => (r.ok ? r.json() : null)));
+                posts = ((feed && feed.posts) || []).filter(post => {
+                    const slug = (post.slug || '').toLowerCase();
+                    const short = (post.shortSlug || '').toLowerCase();
+                    const title = (post.title || '').toLowerCase();
+                    return !slug.includes('adegun') && !slug.includes('olabode') && short !== 'leadership' && !title.includes('adegun') && !title.includes('olabode');
+                });
             } catch (error) {
                 console.error('Newsroom could not be loaded');
             }

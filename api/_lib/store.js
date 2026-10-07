@@ -78,20 +78,59 @@ const toCard = (post) =>
 
 const byPosition = (a, b) => a.position - b.position
 
+const DELETED_SLUGS = new Set([
+  'avzdax-welcomes-olabode-adegun-as-senior-strategic-advisor-national-security-and',
+  'leadership',
+  'adegun',
+  'olabode',
+  'olabode-adegun'
+])
+
+const DELETED_MEDIA_URLS = [
+  'https://tzx2gwrktygdlgka.public.blob.vercel-storage.com/newsroom/media/olabode-adeogun-FZ8dadqlF3Gkmz6i33L8ISSareGkst.webp'
+]
+
 async function readIndex(options) {
   const index = await readJson(INDEX_PATH, options)
-  return Array.isArray(index) ? index.sort(byPosition) : []
+  let list = Array.isArray(index) ? index.sort(byPosition) : []
+
+  const hasDeleted = list.some((c) => DELETED_SLUGS.has(c.slug) || DELETED_SLUGS.has(c.shortSlug))
+  if (hasDeleted) {
+    list = list.filter((c) => !DELETED_SLUGS.has(c.slug) && !DELETED_SLUGS.has(c.shortSlug))
+    try {
+      for (const slug of DELETED_SLUGS) {
+        try {
+          const meta = await head(postPath(slug))
+          forget(postPath(slug))
+          if (meta && meta.url) await del(meta.url)
+        } catch {}
+      }
+      for (const mediaUrl of DELETED_MEDIA_URLS) {
+        try {
+          await del(mediaUrl)
+        } catch {}
+      }
+      await writeIndex(list)
+    } catch (e) {
+      console.error('Purging deleted post failed:', e.message)
+    }
+  }
+
+  return list.filter((c) => !DELETED_SLUGS.has(c.slug) && !DELETED_SLUGS.has(c.shortSlug))
 }
 
 async function writeIndex(cards) {
-  await writeJson(INDEX_PATH, cards.map((card, position) => ({ ...card, position })))
+  const filtered = cards.filter((c) => !DELETED_SLUGS.has(c.slug) && !DELETED_SLUGS.has(c.shortSlug))
+  await writeJson(INDEX_PATH, filtered.map((card, position) => ({ ...card, position })))
 }
 
 const KNOWN_SLUG_ALIASES = {
 }
 
 async function readPost(slug, options) {
+  if (DELETED_SLUGS.has(slug)) return null
   const target = KNOWN_SLUG_ALIASES[slug] || slug
+  if (DELETED_SLUGS.has(target)) return null
   let post = await readJson(postPath(target), options)
   if (!post && target !== slug) {
     post = await readJson(postPath(slug), options)
@@ -99,12 +138,15 @@ async function readPost(slug, options) {
   if (!post) {
     const index = await readIndex(options)
     const match = index.find((c) => c.shortSlug === slug || (c.slug && c.slug.includes(slug)))
-    if (match) {
+    if (match && !DELETED_SLUGS.has(match.slug)) {
       post = await readJson(postPath(match.slug), options)
     }
   }
-  if (post && post.content) {
-    post.content = normalizeParagraphs(post.content)
+  if (post) {
+    if (DELETED_SLUGS.has(post.slug) || DELETED_SLUGS.has(post.shortSlug)) return null
+    if (post.content) {
+      post.content = normalizeParagraphs(post.content)
+    }
   }
   return post
 }
@@ -120,14 +162,26 @@ async function reconcile(index) {
 
   const missing = blobs
     .map((blob) => blob.pathname.slice(POSTS_PREFIX.length).replace(/\.json$/, ''))
-    .filter((slug) => slug && !known.has(slug))
+    .filter((slug) => slug && !known.has(slug) && !DELETED_SLUGS.has(slug))
 
   for (const slug of missing) {
     const post = await readJson(postPath(slug), { fresh: true })
-    if (post) index.push(toCard(post))
+    if (post && !DELETED_SLUGS.has(post.slug) && !DELETED_SLUGS.has(post.shortSlug)) {
+      index.push(toCard(post))
+    }
   }
 
-  return index
+  for (const blob of blobs) {
+    const slug = blob.pathname.slice(POSTS_PREFIX.length).replace(/\.json$/, '')
+    if (DELETED_SLUGS.has(slug)) {
+      try {
+        await del(blob.url)
+        forget(postPath(slug))
+      } catch {}
+    }
+  }
+
+  return index.filter((c) => !DELETED_SLUGS.has(c.slug) && !DELETED_SLUGS.has(c.shortSlug))
 }
 
 async function savePost(post) {
@@ -219,5 +273,6 @@ module.exports = {
   listMedia,
   saveMedia,
   deleteMedia,
-  toCard
+  toCard,
+  DELETED_SLUGS
 }

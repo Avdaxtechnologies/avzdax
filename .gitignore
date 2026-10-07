@@ -10,3 +10,4 @@ submissions/
 composer.phar
 
 node_modules/
+.env*.local
