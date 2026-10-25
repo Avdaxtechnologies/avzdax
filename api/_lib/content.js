@@ -39,7 +39,7 @@ const HEADLINE_RULES = {
 
 const cleanBody = (html) => sanitizeHtml(String(html || ''), BODY_RULES)
 const cleanHeadline = (html) => sanitizeHtml(String(html || ''), HEADLINE_RULES)
-const cleanText = (value) => sanitizeHtml(String(value || ''), { allowedTags: [], allowedAttributes: {} }).trim()
+const cleanText = (value) => sanitizeHtml(String(value || ''), { allowedTags: [], allowedAttributes: {} }).trim().replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&#39;/g, "'")
 
 function normalizeParagraphs(html) {
   if (!html) return ''
@@ -165,9 +165,9 @@ function normalise(input, existing) {
       linkLabel: cleanText(input.linkLabel) || (kind === 'video' ? 'Watch Interview' : kind === 'external' ? 'Read Article' : 'Read Analysis'),
       videoUrl: kind === 'video' ? input.videoUrl : null,
       externalUrl: kind === 'external' ? input.externalUrl : null,
-      linkUrl: existing ? existing.linkUrl || null : null,
+      linkUrl: input.linkUrl || (existing ? existing.linkUrl || null : null),
       headline,
-      content: kind === 'article' ? normalizeParagraphs(cleanBody(input.content)) : '',
+      content: input.content ? normalizeParagraphs(cleanBody(input.content)) : (existing ? existing.content || '' : ''),
       status: input.status === 'draft' ? 'draft' : 'published',
       position: existing ? existing.position : 0,
       createdAt: existing ? existing.createdAt : new Date().toISOString()
