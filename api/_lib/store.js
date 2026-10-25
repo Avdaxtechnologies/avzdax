@@ -83,7 +83,8 @@ const DELETED_SLUGS = new Set([
   'leadership',
   'adegun',
   'olabode',
-  'olabode-adegun'
+  'olabode-adegun',
+  'cyber-security-amp-predictive-intelligence-uks-ai-warning'
 ])
 
 const DELETED_MEDIA_URLS = [
@@ -208,9 +209,13 @@ async function deletePost(slug) {
   if (remaining.length === index.length) return false
 
   try {
-    const meta = await head(postPath(slug))
+    const { blobs } = await list({ prefix: postPath(slug) })
+    for (const b of blobs) {
+      if (b.pathname === postPath(slug)) {
+        await del(b.url)
+      }
+    }
     forget(postPath(slug))
-    await del(meta.url)
   } catch {
     // the index is the source of truth; a missing body file is not an error
   }

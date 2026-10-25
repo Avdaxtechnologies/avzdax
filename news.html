@@ -1584,6 +1584,12 @@
         const escapeText = (value) => String(value == null ? '' : value)
             .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+        const decodeEntities = (value) => {
+            const el = document.createElement('textarea');
+            el.innerHTML = String(value == null ? '' : value);
+            return el.value;
+        };
+
         function cardMarkup(post) {
             const videoId = post.videoUrl ? getYoutubeId(post.videoUrl) : null;
             const destination = post.linkUrl || post.externalUrl || (videoId ? 'https://youtu.be/' + videoId : post.videoUrl);
@@ -1607,8 +1613,8 @@
 
             const body = `
                 <div class="card-body">
-                    <h2 class="c-title">${escapeText(post.title)}</h2>
-                    <p class="c-excerpt">${escapeText(post.excerpt)}</p>
+                    <h2 class="c-title">${escapeText(decodeEntities(post.title))}</h2>
+                    <p class="c-excerpt">${escapeText(decodeEntities(post.excerpt))}</p>
                     ${anchor}
                 </div>`;
 
