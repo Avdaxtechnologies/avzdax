@@ -84,6 +84,27 @@
     "position": 3
   },
   {
+    "slug": "cyber-security-predictive-intelligence-uk-ai-warning",
+    "title": "Cyber Security & Predictive Intelligence: UK's AI Warning",
+    "excerpt": "Gbenga Sosan analyzes the UK Intelligence Chief's warnings on escalating threats from Russia, Iran, and Artificial Intelligence on TVC News World Now.",
+    "category": "broadcast",
+    "layout": "standard",
+    "kind": "video",
+    "image": "https://img.youtube.com/vi/hhPLNvGehX0/maxresdefault.jpg",
+    "imageAlt": "TVC News World Now Broadcast",
+    "imageTitle": "CEO on TVC News World Now",
+    "imageClass": null,
+    "hasPlayButton": true,
+    "linkLabel": "Watch Interview",
+    "videoUrl": "https://www.youtube.com/watch?v=hhPLNvGehX0",
+    "externalUrl": null,
+    "linkUrl": "https://youtu.be/hhPLNvGehX0",
+    "headline": "Cyber Security & <span class=\"accent-green\">Predictive Intelligence</span>.",
+    "content": "<p>Gbenga Sosan, CEO of AVZDAX Technologies, joins World Now on TVC News to analyze the recent warnings from the UK Intelligence Chief regarding escalating threats from Russia, Iran, and Artificial Intelligence.</p>\n<p>The discussion explores the intersection of cyber security, geopolitical threat vectors, and the role of predictive intelligence in building sovereign defense architectures. This is <strong>Peacetech</strong> applied to the global stage.</p>\n<blockquote>The future of security is not reactive containment — it is predictive sovereignty.</blockquote>",
+    "status": "published",
+    "position": 4
+  },
+  {
     "slug": "plateau-state-security",
     "title": "Plateau State Security",
     "excerpt": "Operational analysis of Sovereign Shield deployment and the impact of predictive autonomous sensing on regional stabilization efforts.",
@@ -102,7 +123,7 @@
     "headline": "Plateau State <span class=\"accent-green\">Stabilization</span>.",
     "content": "<p>In an exclusive interview with TVC News, AVZDAX leadership discusses the deployment of the Sovereign Shield in Plateau State. The discussion centers on how <strong>Peacetech</strong> is providing a proactive solution to long-standing security challenges.</p>\n<p>We are moving from response to prevention by mapping behavioral anomalies before they turn into kinetic incidents. The Plateau deployment is a testament to how indigenous technology can solve deep-seated regional conflicts through architectural peace rather than traditional force.</p>\n<blockquote>We are not just monitoring conflict; we are architecting the conditions for its impossibility.</blockquote>",
     "status": "published",
-    "position": 4
+    "position": 5
   },
   {
     "slug": "proactive-technology-over-reactive-response",
